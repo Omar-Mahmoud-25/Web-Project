@@ -28,3 +28,11 @@ Code
     </nav>
 </header>
 ```
+
+- OR
+
+Embed this piece of html in your code
+
+```
+<embed type="text/html" src="nav-bar.html" />
+```
