@@ -34,5 +34,5 @@ Code
 Embed this piece of html in your code
 
 ```
-<embed type="text/html" src="nav-bar.html" />
+    <embed type="text/html" src="nav-bar.html" height="70px" />
 ```
