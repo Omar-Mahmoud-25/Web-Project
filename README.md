@@ -13,3 +13,18 @@
 - Borrowed Books (User)
 
 ----------
+
+## Navigation Bar
+
+Code
+
+```
+<header>
+    <a href="#" class="logo">Project Name</a>
+    <nav class="navigation">
+        <a href="#">Home</a>
+        <a href="#">Books</a>
+        <a href="#">About Us</a>
+    </nav>
+</header>
+```
