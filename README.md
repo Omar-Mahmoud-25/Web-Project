@@ -19,28 +19,26 @@
 Code
 
 ```
-   <header>
+    <!--Header (^_^)start-->
+    <header>
        <div id="navbar">
         <img src="./image/MyLogo.png" alt="MYLogo">
-        
-
         <nav>
-
-
             <ul>
-            
                 <li><a href="#Home">Home</a></li>
                 <li><a href="#about">about</a></li>
                 <li><a href="#featured">featured</a></li>
                 <li><a href="#newArrival">newArrival</a></li>
                 <li><a href="#contact">contact</a></li>
                 <li><a href="#reviews">reviews</a></li>
-                <li><a href="#available Books"></a></li>
-                <li></li>
+                <li><a href="#available Books">Available Books</a></li>
+            
             </ul>
         </nav>
        </div>
     </header>
+    <!--Header (^_^)end-->
+
 ```
 
 - OR
