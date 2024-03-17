@@ -4,3 +4,20 @@ body{
     background-repeat: no-repeat;
     /* opacity: 0.5; */
 }
+
+#nav{
+    background-color: rgb(211, 189, 148);
+}
+
+#logo{
+    height: 50px;
+    width: 50px;
+}
+
+nav a:link{
+    color: rgb(193, 57, 57);
+}
+
+body{
+    color: red;
+}
