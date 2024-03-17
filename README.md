@@ -16,6 +16,10 @@
 
 ## Navigation Bar
 
+!!! Do not use Embed tag !!!
+
+!!!use this code until javascript phase
+
 Code
 
 ```
@@ -41,10 +45,16 @@ Code
 
 ```
 
-- OR
+!!!in javascript phase do the following:
 
-Embed this piece of html in your code
+- replace navigation bar in the html file with
 
 ```
-    <embed type="text/html" src="nav-bar.html" height="70px" />
+<header id="nav"></header>
+```
+
+- then add this before the closing of the "html" tag
+
+```
+<script src="snippet.js"></script>
 ```
