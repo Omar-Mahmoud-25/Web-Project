@@ -28,3 +28,10 @@ body{
 #admin-home {
     padding: 100px 10px;
 }
+.afterNav{
+    padding-top: 70px;
+}
+a:link, a:visited{
+    color:lightskyblue;
+    color:cornsilk;
+}

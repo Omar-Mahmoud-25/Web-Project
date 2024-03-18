@@ -8,6 +8,7 @@ header,
   background-color: rgb(211, 189, 148);
   padding: 0px 20px;
   align-items: center;
+  /* margin-bottom: 200px; */
 }
 #logo {
   height: 60px;
