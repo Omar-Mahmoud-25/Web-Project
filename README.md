@@ -26,7 +26,7 @@ Code
     <!--Header (^_^)start-->
     <header>
        <div id="navbar">
-        <img id = 'logo' src='images/logo.jpeg' alt='Book Store Logo' />
+        <a href="index.html"><img id = 'logo' src='images/logo.jpeg' alt='Book Store Logo' /></a>
         <input type="text" name="Search" id="" placeholder="Search">
         <nav class='navigation'>
                 <a href="index.html">Home</a>
