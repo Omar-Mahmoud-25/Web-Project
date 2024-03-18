@@ -1,0 +1,27 @@
+header, #nav{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 999;
+  position: fixed;
+  background-color: rgb(211, 189, 148);
+  padding: 0px 20px;
+  align-items: center;
+}
+#logo{
+    height: 50px;
+    width: 50px;
+}
+.navigation a {
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 700;
+  padding-left: 30px;
+  transition: 0.5s ease;
+}
+.navigation a:link {
+    color: rgb(193, 57, 57);
+}
+.navigation a:hover {
+  color: #050588;
+}

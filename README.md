@@ -12,7 +12,7 @@
 - Book Details Page (User)
 - Borrowed Books (User)
 
-----------
+---
 
 ## Navigation Bar
 
@@ -28,16 +28,13 @@ Code
        <div id="navbar">
         <img src="./image/MyLogo.png" alt="MYLogo">
         <nav>
-            <ul>
-                <li><a href="#Home">Home</a></li>
-                <li><a href="#about">about</a></li>
-                <li><a href="#featured">featured</a></li>
-                <li><a href="#newArrival">newArrival</a></li>
-                <li><a href="#contact">contact</a></li>
-                <li><a href="#reviews">reviews</a></li>
-                <li><a href="#available Books">Available Books</a></li>
-            
-            </ul>
+                <a href="#Home">Home</a>
+                <a href="#about">about</a>
+                <a href="#featured">featured</a>
+                <a href="#newArrival">newArrival</a>
+                <a href="#contact">contact</a>
+                <a href="#reviews">reviews</a>
+                <a href="#available Books">Available Books</a>
         </nav>
        </div>
     </header>
