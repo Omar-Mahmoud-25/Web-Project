@@ -26,15 +26,16 @@ Code
     <!--Header (^_^)start-->
     <header>
        <div id="navbar">
-        <img src="./image/MyLogo.png" alt="MYLogo">
-        <nav>
-                <a href="#Home">Home</a>
+        <img id = 'logo' src='images/logo.jpeg' alt='Book Store Logo' />
+        <input type="text" name="Search" id="" placeholder="Search">
+        <nav class='navigation'>
+                <a href="index.html">Home</a>
                 <a href="#about">about</a>
                 <a href="#featured">featured</a>
                 <a href="#newArrival">newArrival</a>
                 <a href="#contact">contact</a>
                 <a href="#reviews">reviews</a>
-                <a href="#available Books">Available Books</a>
+                <a href="categories.html">Available Books</a>
         </nav>
        </div>
     </header>

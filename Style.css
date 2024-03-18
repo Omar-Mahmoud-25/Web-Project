@@ -35,3 +35,6 @@ a:link, a:visited{
     color:lightskyblue;
     color:cornsilk;
 }
+a:hover{
+    color: violet;
+}
