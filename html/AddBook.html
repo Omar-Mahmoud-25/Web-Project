@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Web Project</title>
+        <link rel="stylesheet" href="../CSS/Style.css">
+        <link rel="stylesheet" href="../CSS/nav.css" />
+    </head>
+
+    <body>
+        <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
+        <header id="nav"></header>
+        <h2 style="text-align: center;" class="afterNav">Add a new Book</h2>
+        <form method="post" action="admin-homepage.html" style="text-align: center;">
+            <label style="font-size: large;" for="name">Book Name</label><br>
+            <input type="text" id="name"><br><br>
+            <label style="font-size: large;" for="author">Author</label><br>
+            <input type="text" id="author"> <br><br>
+            <label style="font-size: large;">Category?</label><br>
+            <label for="Romantic">Romantic </label>
+            <input id="Romantic" type="checkbox"> <br>
+            <label for="Novel">Novel</label>
+            <input type="checkbox" id="novel"><br>
+            <label for="prog">programming</label>
+            <input type="checkbox" id="prog"><br>
+            <label for="scary">Scary</label>
+            <input type="checkbox" id="scary"><br><br>
+            <label style="font-size: large;" for="description">Description</label><br>
+            <textarea name="" id="description" cols="20" rows="3"></textarea><br>
+            <input type="submit" value="Add" class="index-button">
+        </form>
+        <script src="../JS/snippet.js"></script>
+    </body>
+</html>

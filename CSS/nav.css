@@ -1,0 +1,44 @@
+header,
+#nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 999;
+  position: fixed;
+  background-color: rgb(205, 176, 122);
+  padding: 0px 20px;
+  align-items: center;
+  /* margin-bottom: 200px; */
+}
+#logo {
+  height: 50px;
+  width: 50px;
+  margin-left: 20px;
+  color: white;
+}
+.navigation a {
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 700;
+  padding-left: 30px;
+  transition: 0.5s ease;
+}
+.navigation .nav-link {
+  color: rgb(222, 196, 146);
+  transition: 0.5s;
+}
+.navigation .nav-link:hover {
+  color: rgb(225, 193, 132);
+  transition: 0.5s;
+}
+
+.navigation input,
+.navigation input:focus,
+input,
+input:focus {
+  padding: 5px;
+  border-radius: 3px;
+  border-color: transparent;
+  color: rgb(182, 154, 103);
+  outline: none;
+}

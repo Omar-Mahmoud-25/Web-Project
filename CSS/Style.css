@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+body {
+  background-image: url("../images/Wallpaper.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  color: rgb(211, 189, 148);
+}
+.main {
+  padding: 100px 200px;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+}
+.main .index-button,
+.button,
+button {
+  background-color: rgb(211, 189, 148);
+  padding: 10px;
+  border-radius: 2px;
+  border-color: transparent;
+  font-weight: 600;
+}
+#admin-home {
+  padding: 100px 10px;
+}
+.afterNav {
+  padding-top: 70px;
+}
+.account {
+    text-decoration: none;
+    color: rgb(211, 189, 148);
+    transition: 0.5s;
+}
+.account:hover {
+    transition: 0.5s;
+    color: rgb(234, 215, 182);
+}

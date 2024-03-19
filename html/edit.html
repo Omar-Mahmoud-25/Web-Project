@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Web Project</title>
+        <link rel="stylesheet" href="../CSS/nav.css">
+        <link rel="stylesheet" href="../CSS/Style.css" />
+    </head>
+
+    <body>
+        <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
+        <header id="nav"></header>
+        <h2 style="text-align: center;" class="afterNav">Edit Book Details</h2>
+        <form method="post" action="bookDetails.html" style="text-align: center;">
+            <label for="name" style="font-size: large;">Book Name</label><br>
+            <input id="name" type="text"><br><br>
+            <label for="author" style="font-size: large;">Author</label><br>
+            <input id="author" type="text"> <br><br>
+            <label for="cat" style="font-size: large;">Category?</label><br>
+            <label for="Romantic">Romantic </label>
+            <input id="Romantic" type="checkbox"> <br>
+            <label for="Novel">Novel</label>
+            <input id="Novel" type="checkbox"><br>
+            <label for="programming">Programming</label>
+            <input id="programming" type="checkbox"><br>
+            <label for="Scary">Scary</label>
+            <input id="Scary" type="checkbox"><br><br>
+            <label for="area" style="font-size: large;">Description</label><br>
+            <textarea id="area" cols="20" rows="3"></textarea><br>
+            <input type="submit" value="Save">
+        </form>
+        <script src="../JS/snippet.js"></script>
+    </body>
+</html>
