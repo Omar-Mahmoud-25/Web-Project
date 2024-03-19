@@ -8,6 +8,7 @@ body {
   background-image: url("../images/Wallpaper.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
   color: rgb(211, 189, 148);

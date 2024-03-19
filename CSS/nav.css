@@ -10,12 +10,6 @@ header,
   align-items: center;
   /* margin-bottom: 200px; */
 }
-#logo {
-  height: 50px;
-  width: 50px;
-  margin-left: 20px;
-  color: white;
-}
 .navigation a {
   text-decoration: none;
   font-size: 1.1em;
