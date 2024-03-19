@@ -1,6 +1,8 @@
+import User from "./user.js";
+
 const form = document.getElementById("signUpForm");
 
-const users = [];
+const users = {};
 
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // Prevent default form submission
@@ -11,8 +13,10 @@ form.addEventListener("submit", (event) => {
   const admin = document.getElementById("admin").checked;
 
   // Process the form data (name and email) using JavaScript
-  users.push(name, email, password, admin);
-  window.location.href='../html/login.html';
-  //   users.push(new User(name, email, password, admin));
-  // You can also send data to a server using techniques like Fetch API or Axios
+  const userData = new User(name, email, password, admin);
+  users[name] = userData;
+  const jsonData = JSON.stringify(users);
+  localStorage.setItem("formData", jsonData);
+  window.location.href = "login.html";
+   // You can also send data to a server using techniques like Fetch API or Axios
 });
