@@ -5,8 +5,8 @@ header,
   justify-content: space-between;
   z-index: 999;
   position: fixed;
-  background-color: rgb(205, 176, 122);
-  padding: 0px 20px;
+  background-color: rgb(178, 146, 88);
+  padding: 5px 50px 5px 20px;
   align-items: center;
   /* margin-bottom: 200px; */
 }
@@ -18,11 +18,11 @@ header,
   transition: 0.5s ease;
 }
 .navigation .nav-link {
-  color: rgb(222, 196, 146);
+  color: white;
   transition: 0.5s;
 }
 .navigation .nav-link:hover {
-  color: rgb(225, 193, 132);
+  color: rgb(214, 177, 109);
   transition: 0.5s;
 }
 

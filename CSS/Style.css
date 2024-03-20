@@ -11,7 +11,7 @@ body {
   background-attachment: fixed;
   margin: 0;
   padding: 0;
-  color: rgb(211, 189, 148);
+  color: white;
 }
 .main {
   padding: 100px 200px;
@@ -22,17 +22,29 @@ body {
 .main .index-button,
 .button,
 button {
-  background-color: rgb(211, 189, 148);
+  background-color: rgb(178, 146, 88);
   padding: 10px;
   border-radius: 2px;
   border-color: transparent;
   font-weight: 600;
+  color: white;
+}
+h1 {
+  font-size: 30px;
+}
+.main #index-p {
+  font-size: medium;
+  padding-bottom: 50px;
+}
+.main .index-button {
+  margin-right: 10px;
+  font-size: medium;
 }
 #admin-home {
   padding: 100px 10px;
 }
 .afterNav {
-  padding-top: 70px;
+  padding: 130px;
 }
 .account {
     text-decoration: none;
@@ -42,4 +54,22 @@ button {
 .account:hover {
     transition: 0.5s;
     color: rgb(234, 215, 182);
+}
+footer {
+  background-color: rgb(178, 146, 88);
+  padding: 20px;
+  display: flex;
+  text-align: center;
+}
+footer #website {
+  width: 50%;
+  justify-content: left;
+}
+footer #website #logo-copy {
+  display:flex;
+  width: 30%;
+  justify-content: space-between;
+}
+footer #website #logo-copy p {
+  margin-top: 7px;
 }
