@@ -19,7 +19,7 @@ footer.innerHTML +=
 ;
 
 footer.innerHTML +=
-  '<section id="social-media"><h3>Connect With Us</h3><ul><li><a href="https://www.facebook.com">Facebook</a></li><li><a href="https://twitter.com">Twitter</a></li><li><a href="https://www.instagram.com">Instagram</a></li></ul></section>\n'
+  '<section id="social-media"><h3>Connect With Us</h3><ul><li><a href="https://www.facebook.com" target="_blank">Facebook</a></li><li><a href="https://twitter.com" target="_blank">Twitter</a></li><li><a href="https://www.instagram.com" target="_blank">Instagram</a></li></ul></section>\n'
 ;
 
 footer.innerHTML +=
