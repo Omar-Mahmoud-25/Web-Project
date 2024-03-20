@@ -56,7 +56,7 @@ h1 {
     color: rgb(234, 215, 182);
 }
 footer {
-  background-color: rgb(178, 146, 88);
+  background-color: rgba(178, 146, 88, 0.7);
   padding: 20px;
   display: flex;
   text-align: center;
