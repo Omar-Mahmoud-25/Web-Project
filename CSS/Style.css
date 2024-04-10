@@ -47,33 +47,35 @@ h1 {
   padding: 130px;
 }
 .account {
-    text-decoration: none;
-    color: rgb(211, 189, 148);
-    transition: 0.5s;
+  text-decoration: none;
+  color: rgb(211, 189, 148);
+  transition: 0.5s;
 }
 .account:hover {
-    transition: 0.5s;
-    color: rgb(235, 225, 208);
+  transition: 0.5s;
+  color: rgb(235, 225, 208);
 }
-footer a{
-  color:rgb(241, 231, 221);
+footer a {
+  color: white;
+  transition: 0.5s ease;
+  text-decoration: none;
 }
-footer a:hover{
-  color: rgb(212, 184, 147);
+footer a:hover {
+  color: rgb(214, 177, 109);
+  transition: 0.5s ease;
 }
 footer {
   background-color: rgba(178, 146, 88, 0.7);
   padding: 20px;
   display: flex;
-  text-align: center;
+  justify-content: space-between;
 }
 footer #website {
-  width: 50%;
+  width: 100%;
   justify-content: left;
 }
 footer #website #logo-copy {
-  display:flex;
-  width: 30%;
+  display: flex;
   justify-content: space-between;
 }
 footer #website #logo-copy p {
