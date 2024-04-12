@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="../CSS/nav.css">
+        <link rel="stylesheet" href="../CSS/Style.css" />
+
+    </head>
+    <body>
+        <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
+        <header id="nav"></header>
+        <div class="main">
+        <form class="afterNav" id="signUpForm" style="text-align: center;">
+            <label>Username</label> 
+            <br>
+            <input type="text" name="UserName" placeholder="UserName" id="username" required>
+            <br>
+            <label for="Email">Email </label>
+            <br>
+            <input type="email" name="Email" id="email" required>
+            <br>
+            <label for="password">Password</label> <br>
+            <input id="password" name="password" type="password" required>
+            <br>
+            <label for="confirm">Confirm Password</label> <br>
+            <input id="confirm" type="password" name="confirm" required>
+            <br>
+            <label for="admin">Admin?</label>
+            <input name="admin" id="admin" type="checkbox">
+            <br>
+            <input type="submit" value="Sign up" id="signUp">
+            <br>
+        </form>
+        <p style="text-align: center;"><a href="login.html" class="account">
+            Already have an account? 
+        </a></p></div>
+        <script src="../JS/signUp.js" type="module"></script>
+    </body>
+    <footer id="footer"></footer>
+    <script src="../JS/snippet.js"></script>
+</html>

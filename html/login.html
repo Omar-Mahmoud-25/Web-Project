@@ -4,26 +4,30 @@
         <title>Web Project</title>
         <link rel="stylesheet" href="../CSS/Style.css">
         <link rel="stylesheet" href="../CSS/nav.css" />
+        <link rel="stylesheet" href="../CSS/footer.css">
     </head>
     <body>
         <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
         <header id="nav"></header>
         <div class="main">
-        <form class="afterNav" id="loginForm" style="text-align: center;">
-            <label for="username">Username</label> 
-            <br>
-            <input type="text" name="username" placeholder="UserName" id="username" required>
-            <br>
-            <label for="password">Password</label> <br>
-            <input id="password" type="password" name="password" required>
-            <br>
-            <br>
-            <input type="submit" value="Login" class="button"><br><br>
-            <a href="" class="account">forget password?</a>
-        </form>
-        <p style="text-align: center;"><a href="signUp.html" class="account">
-            You don't have an account?
-        </a></p></div>
+            <form id="loginForm" method="post" style="text-align: center;" action="user-homepage.html">
+                <label for="username">Username</label> 
+                <br><br>
+                <input type="text" name="username" placeholder="UserName" id="username" required>
+                <br><br><br>
+                <label for="password">Password</label>
+                <br><br>
+                <input id="password" type="password" placeholder="Password" name="password" required>
+                <br><br><br>
+                <input type="submit" value="Login" class="button">
+                <br><br>
+                <a href="" class="account">forget password?</a>
+                <br><br><br>
+                <p style="text-align: center;"><a href="signUp.html" class="account">
+                    You don't have an account?
+                </a></p>
+            </form>
+        </div>
         <script src="../JS/login.js" type="module"></script>
     </body>
     <footer id="footer"></footer>
