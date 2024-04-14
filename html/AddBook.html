@@ -2,32 +2,44 @@
 <html lang="en">
     <head>
         <title>Web Project</title>
-        <link rel="stylesheet" href="../CSS/Style.css">
         <link rel="stylesheet" href="../CSS/nav.css" />
+        <link rel="stylesheet" href="../CSS/Style.css">
+        <link rel="stylesheet" href="../CSS/footer.css">
     </head>
 
     <body>
         <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
         <header id="nav"></header>
         <div class="main">
-        <h2 style="text-align: center;" class="afterNav">Add a new Book</h2>
-        <form method="post" action="admin-homepage.html" style="text-align: center;">
-            <label style="font-size: large;" for="name">Book Name</label><br>
-            <input type="text" id="name"><br><br>
-            <label style="font-size: large;" for="author">Author</label><br>
-            <input type="text" id="author"> <br><br>
-            <label style="font-size: large;">Category?</label><br>
-            <label for="Romantic">Romantic </label>
-            <input id="Romantic" type="checkbox"> <br>
-            <label for="Novel">Novel</label>
-            <input type="checkbox" id="novel"><br>
-            <label for="prog">programming</label>
-            <input type="checkbox" id="prog"><br>
-            <label for="scary">Scary</label>
-            <input type="checkbox" id="scary"><br><br>
-            <label style="font-size: large;" for="description">Description</label><br>
-            <textarea name="" id="description" cols="20" rows="3"></textarea><br>
-            <input type="submit" value="Add" class="index-button">
+        <h1 style="text-align: center;" class="afterNav">Add a new Book</h1>
+        <br>
+        <form method="post" action="admin-homepage.html">
+            <div class="left">
+                <label style="font-size: large;" for="name">Book Name</label>
+                <br>
+                <input type="text" id="name" placeholder="Title">
+                <br><br><br>
+                <label style="font-size: large;" for="author">Author</label>
+                <br>
+                <input type="text" id="author" placeholder="Author">
+                <br><br><br>
+                <label style="font-size: large;" for="description">Description</label>
+                <br><br>
+                <textarea name="" id="description" cols="20" rows="3"></textarea><br>
+            </div>
+            <div class="right">
+                <label style="font-size:30px;">Category?</label>
+                <br><br>
+                <label for="Romantic">Romantic </label>
+                <input id="Romantic" type="checkbox"> <br>
+                <label for="Novel">Novel </label>
+                <input type="checkbox" id="novel"><br>
+                <label for="prog">programming </label>
+                <input type="checkbox" id="prog"><br>
+                <label for="scary">Scary </label>
+                <input type="checkbox" id="scary"><br><br>
+            </div>
+            <input type="submit" value="Add" class="index-button" style="text-align: center;">
         </form>
         </div>
     </body>
