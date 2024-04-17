@@ -10,18 +10,18 @@
     <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
     <header id="nav"></header>
     <div class="main">
-      <form id="loginForm" style="text-align: center">
+      <form id="loginForm" method="post" style="text-align: center">
         <label for="username">Username</label>
         <br /><br />
         <input
-          type="text"
+        type="text"
           name="username"
           placeholder="UserName"
           id="username"
           required
-        />
-        <br /><br /><br />
-        <label for="password">Password</label>
+          />
+          <br /><br /><br />
+          <label for="password">Password</label>
         <br /><br />
         <input
           id="password"
@@ -29,19 +29,20 @@
           placeholder="Password"
           name="password"
           required
-        />
-      </form>
-
-      <br /><br /><br />
-      <button onclick="login()" style="font-size: medium" class="button">Login</button>
-      <br /><br />
-      <a href="" class="account">forget password?</a>
-      <br /><br /><br />
+          />
+          <br /><br /><br />
+          <input type="submit" id="loginButton" onclick="login();" style="font-size: medium;" value="Login" class="button">
+          <br /><br />
+          <a href="" class="account">forget password?</a>
+          <br /><br /><br />
+        </form>
+      
       <p style="text-align: center">
         <a href="signUp.html" class="account"> You don't have an account? </a>
       </p>
     </div>
-    <script src="../JS/login.js" type="module"></script>
+    <script src="../JS/login.js"></script>
+    
   </body>
   <footer id="footer"></footer>
   <script src="../JS/snippet.js"></script>

@@ -12,19 +12,25 @@
             <form id="signUpForm" method="post" style="text-align: center;" action="login.html">
                 <label>Username</label> 
                 <br>
-                <input type="text" name="UserName" placeholder="UserName" id="username" required>
+                <input type="text" id="UserName" placeholder="UserName" id="username" required>
+                <span id="usernameMessage"><br></span>
                 <br><br><br>
                 <label for="Email">Email </label>
                 <br>
-                <input type="email" name="Email" placeholder="Email" id="email" required>
+                <input type="email" id="Email" placeholder="Email" id="email" required>
                 <br><br><br>
                 <label for="password">Password</label>
                 <br>
                 <input id="password" name="password" placeholder="Password" type="password" required>
-                <br><br><br>
+                <button id="showPassword">Show Password</button>
+                <br>
+                <span id="passwordMessage"></span>
+                <br><br>
                 <label for="confirm">Confirm Password</label>
                 <br>
-                <input id="confirm" type="password" placeholder="Confirm Password" name="confirm" required>
+                <input id="confirm" type="password" placeholder="Confirm Password" id="confirm" required>
+                <br>
+                <span id="confirmMessage"></span>
                 <br>
                 <label for="admin">Admin?</label>
                 <input name="admin" id="admin" type="checkbox">
@@ -36,7 +42,7 @@
                 </a></p>
             </form>
         </div>
-        <script src="../JS/signUp.js" type="module"></script>
+        <script src="../JS/signUp.js"></script>
     </body>
     <footer id="footer"></footer>
     <script src="../JS/snippet.js"></script>
