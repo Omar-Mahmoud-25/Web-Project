@@ -1,13 +1,13 @@
-// import User from "./user.js";
+import User from "./user.js";
 
-class User {
-  constructor(userName, email, password, isAdmin) {
-      this.userName = userName;
-      this.email = email;
-      this.password = password;
-      this.isAdmin = isAdmin;
-  }
-};
+// class User {
+//   constructor(userName, email, password, isAdmin) {
+//       this.userName = userName;
+//       this.email = email;
+//       this.password = password;
+//       this.isAdmin = isAdmin;
+//   }
+// };
 
 const form = document.getElementById("signUpForm");
 
@@ -17,7 +17,7 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const Confirm = document.getElementById("confirm");
 const show = document.getElementById("showPassword");
-const admin = document.getElementById("admin").checked;
+const admin = document.getElementById("admin");
 
 function isValidPassword(){
   str = password.value
@@ -47,19 +47,6 @@ password.addEventListener('input',function(){
   }
 });
 
-show.addEventListener('click',function(){
-  if (password.type === "password"){
-    password.type = "text";
-    Confirm.type = "text";
-    show.textContent = "Hide Password";
-  }
-  else{
-    password.type = "password";
-    Confirm.type = "password";
-    show.textContent = "Show Password";
-  }
-})
-
 Confirm.addEventListener('input',function(){
   message = document.getElementById("confirmMessage");
   if (Confirm.value !== password.value){
@@ -78,7 +65,7 @@ form.addEventListener("submit", (event) => {
   if (isValidPassword() === false || password.value !== Confirm.value)
     return alert("Invalid data!");
   // Process the form data (Name and email) using JavaScript
-  const userData = new User(Name.value, email.value, password.value, admin);
+  const userData = new User(Name.value, email.value, password.value, admin.checked);
   users[Name.value] = userData;
   const jsonData = JSON.stringify(users);
   localStorage.setItem("formData", jsonData);
