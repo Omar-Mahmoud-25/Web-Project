@@ -23,13 +23,5 @@ footer.innerHTML +=
 ;
 
 footer.innerHTML +=
-  '<section id="legal"><h3>Legal</h3><ul><li><a href="...">Privacy Policy</a></li><li><a href="...">Terms of Service</a></li></ul></section>\n'
-;
-
-footer.innerHTML +=
   '<section id="subscribe"><h3>Subscribe to Our Newsletter</h3><form action="...." method="post"><input type="email" name="email" placeholder="Enter your email" required /><button type="submit">Subscribe</button></form></section>\n'
-;
-
-footer.innerHTML +=
-  '<section id="sitemap"><h3>Site Map</h3><ul><li><a href="index.html">Home</a></li><li><a href="categories.html">Books</a></li></ul></section>\n'
 ;
