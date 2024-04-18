@@ -90,12 +90,25 @@ h1 {
   text-decoration: dashed;
 }
 
+
+
+.formBackGround {
+  background-color: rgba(142, 141, 141, 0.3);
+  width: 70%;
+  margin-left: 160px;
+  margin-top: 50px;
+  height: 450px;
+  padding: 70px;
+}
+
 .left{
   float: left;
-  width: 50%;
+  padding-right: 400px;
+  padding-left: 50px;
 }
 
 .right{
   float: right;
-  width: 50%;
+  padding-left: 40px;
+  padding-right: 70px;
 }

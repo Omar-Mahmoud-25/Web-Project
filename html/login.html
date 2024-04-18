@@ -5,13 +5,12 @@
     <link rel="stylesheet" href="../CSS/Style.css" />
     <link rel="stylesheet" href="../CSS/nav.css" />
     <link rel="stylesheet" href="../CSS/footer.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   </head>
   <body>
     <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
     <header id="nav"></header>
     <div class="main">
-      <form id="loginForm" style="text-align: center">
+      <form id="loginForm" style="text-align: center" method="post">
         <label for="username">Username</label>
         <br /><br />
         <input
@@ -31,18 +30,18 @@
           name="password"
           required
         />
-        <br /><br /><br />
-        <br /><br />
+        <br>
         <a href="" class="account">forget password?</a>
+        <br /><br />  
+        <input
+          id="loginButton"
+          type="submit"
+          style="font-size: medium"
+          class="button"
+          value="login"
+        >
         <br /><br /><br />
       </form>
-      <button
-        id="loginButton"
-        style="font-size: medium"
-        class="button"
-      >
-        Login
-      </button>
       <p style="text-align: center">
         <a href="signUp.html" class="account"> You don't have an account? </a>
       </p>

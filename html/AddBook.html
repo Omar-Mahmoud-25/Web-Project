@@ -1,48 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Web Project</title>
-        <link rel="stylesheet" href="../CSS/nav.css" />
-        <link rel="stylesheet" href="../CSS/Style.css">
-        <link rel="stylesheet" href="../CSS/footer.css">
-    </head>
+  <head>
+    <title>Web Project</title>
+    <link rel="stylesheet" href="../CSS/nav.css" />
+    <link rel="stylesheet" href="../CSS/Style.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
+  </head>
 
-    <body>
-        <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
-        <header id="nav"></header>
-        <div class="main">
-        <h1 style="text-align: center;" class="afterNav">Add a new Book</h1>
-        <br>
-        <form method="post" action="admin-homepage.html">
+  <body>
+    <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
+    <header id="nav"></header>
+    <div class="main">
+        <br />
+        <form
+        method="post"
+        action="admin-homepage.html"
+        style="height: fit-content; text-align: center;"
+        >
+        <h1 style="text-align: center" class="afterNav">Add a new Book</h1>
+            <div class="formBackGround" style="display: flex;">
             <div class="left">
-                <label style="font-size: large;" for="name">Book Name</label>
-                <br>
-                <input type="text" id="name" placeholder="Title">
-                <br><br><br>
-                <label style="font-size: large;" for="author">Author</label>
-                <br>
-                <input type="text" id="author" placeholder="Author">
-                <br><br><br>
-                <label style="font-size: large;" for="description">Description</label>
-                <br><br>
-                <textarea name="" id="description" cols="20" rows="3"></textarea><br>
+                <label style="font-size: large" for="name">Book Name</label>
+                <br />
+                <input type="text" id="name" placeholder="Title" />
+                <br /><br /><br />
+                <label style="font-size: large" for="author">Author</label>
+                <br />
+                <input type="text" id="author" placeholder="Author" />
+                <br /><br /><br />
+                <label style="font-size: large" for="description"
+                >Description</label
+                >
+                <br /><br />
+                <textarea name="" id="description" cols="20" rows="3"></textarea
+                ><br />
             </div>
             <div class="right">
-                <label style="font-size:30px;">Category?</label>
-                <br><br>
+                <label style="font-size: 30px">Category?</label>
+                <br /><br />
+                <input id="Romantic" type="checkbox" /> 
                 <label for="Romantic">Romantic </label>
-                <input id="Romantic" type="checkbox"> <br>
+                <br />
+                <input type="checkbox" id="novel" />
                 <label for="Novel">Novel </label>
-                <input type="checkbox" id="novel"><br>
+                <br />
+                <input type="checkbox" id="prog" />
                 <label for="prog">programming </label>
-                <input type="checkbox" id="prog"><br>
+                <br />
+                <input type="checkbox" id="scary" />
                 <label for="scary">Scary </label>
-                <input type="checkbox" id="scary"><br><br>
+                <br /><br />
             </div>
-            <input type="submit" value="Add" class="index-button" style="text-align: center;">
-        </form>
         </div>
-    </body>
-    <footer id="footer"></footer>
-    <script src="../JS/snippet.js"></script>
+        <br>
+        <input
+        type="submit"
+        value="Add"
+        class="index-button"
+        />
+        </form>
+      </div>
+  </body>
+  <footer id="footer"></footer>
+  <script src="../JS/snippet.js"></script>
 </html>

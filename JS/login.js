@@ -1,13 +1,13 @@
-import User from "./user.js";
+// import User from "./user.js";
 
-// class User {
-//   constructor(userName, email, password, isAdmin) {
-//       this.userName = userName;
-//       this.email = email;
-//       this.password = password;
-//       this.isAdmin = isAdmin;
-//   }
-// };
+class User {
+  constructor(userName, email, password, isAdmin) {
+      this.userName = userName;
+      this.email = email;
+      this.password = password;
+      this.isAdmin = isAdmin;
+  }
+};
 
 const form = document.getElementById("loginForm");
 // console.log("in File");
@@ -45,17 +45,24 @@ function findUserByEmail(email, password) {
 // });
 
 function login() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  const found = findUserByEmail(username, password);
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
+  const found = findUserByEmail(username.value, password.value);
+  console.log(found);
   if (found[0] && found[1] == true) {
     window.location.href = "admin-homepage.html";
   } else if (found[0] && found[1] == false) {
     window.location.href = "user-homepage.html";
   } else {
     alert("Invalid username or password");
+    username.value = "";
+    password.value = "";
   }
 }
 
-var button = document.getElementById("loginButton");
-button.addEventListener("click", login());
+form.addEventListener("submit",function(event){
+  event.preventDefault();
+  login();
+});
+// var button = document.getElementById("loginButton");
+// button.addEventListener("click", login());
