@@ -88,6 +88,32 @@ h1 {
   transition: 0.5s;
   color: rgb(235, 225, 208);
 }
+.Book-Details.afterNav.main {
+  display: flex;
+  width: 100%;
+}
+.Book-Details.afterNav.main .imgAndButton {
+  flex: 0.3;
+}
+
+.Book-Details.afterNav.main .imgAndButton #edit {
+  border-radius: 3rem;
+  justify-content: center;
+  width: 150px;
+  cursor: pointer;
+  margin-top: 3%;
+  margin-left: 20%;
+  display: block;
+}
+.Book-Details.afterNav.main .imgAndButton #delete {
+  border-radius: 3rem;
+  justify-content: center;
+  width: 150px;
+  cursor: pointer;
+  margin-top: 3%;
+  margin-left: 20%;
+}
+
 
 .category{
   color: white;
