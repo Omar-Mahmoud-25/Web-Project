@@ -34,6 +34,54 @@ input{
 
 }
 
+input[type="text"],
+input[type="password"] ,
+input[type="Email"]{
+  padding: 10px; /* Optional: Add padding for better appearance */
+  border: 2px solid #56502a81; /* Optional: Add a border */
+  border-radius: 10px; /* Adjust the border radius to make corners rounded */
+  width: 250px; /* Optional: Set a specific width */
+}
+
+
+
+
+#loginForm , #signUpForm {
+  text-align:  center ;
+  /* background-image: url("../images/frame-with-writing-standing-books1.png"); */
+  background-image: url("../images/form.png");
+
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: 900px;
+  background-position:  top 100px center;
+  width: 1300px;
+  height:700px;
+
+
+}
+#loginForm{
+  padding: 172px;
+  padding-left: 580px;
+  margin: auto;
+  /* padding-right: 470px; */
+  color: black;
+  font-size:12px;
+
+
+}
+
+#signUpForm{
+  padding: 140px;
+  padding-left: 550px;
+  margin: auto;
+  /* padding-right: 470px; */
+
+  color: black;
+  font-size: 0px;
+}
+  
+
 .main {
   padding: 80px 100px;
   width: 100%;
@@ -79,14 +127,14 @@ h1 {
 
 .account {
   text-decoration: none;
-  color: rgb(211, 189, 148);
+  color: rgb(0, 0, 0);
   transition: 0.5s;
   font-size: 20px;
 }
 
 .account:hover {
   transition: 0.5s;
-  color: rgb(235, 225, 208);
+  color: rgb(150, 106, 49);
 }
 .Book-Details.afterNav.main {
   display: flex;
