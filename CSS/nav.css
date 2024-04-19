@@ -30,9 +30,9 @@ header,
 .navigation input:focus,
 input,
 input:focus {
-  padding: 5px;
+/*   padding: 5px;
   border-radius: 3px;
-  border-color: transparent;
+  border-color: transparent; */
   color: rgb(182, 154, 103);
   outline: none;
 }
