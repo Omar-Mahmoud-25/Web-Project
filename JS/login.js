@@ -11,6 +11,17 @@ class User {
 
 const form = document.getElementById("loginForm");
 // console.log("in File");
+const password = document.getElementById("password");
+const toggle = document.getElementById("togglePassword");
+
+toggle.addEventListener('click',function(){
+  if (password.type == 'password')
+    password.type = 'text';
+  else
+    password.type = 'password';
+  toggle.innerHTML = (toggle.innerHTML == '👀'? '🙈':'👀');
+  
+});
 
 function findUserByEmail(email, password) {
   // console.log("in find");
