@@ -19,68 +19,64 @@ body {
   background-image: url("../images/Wallpaper.jpg");
 }
 
-
-p, label{
-  font-family:Cambria;
+p,
+label {
+  font-family: Cambria;
 }
 
-label{
+label {
   font-size: 20px;
 }
 
-input{
+input {
   margin-top: 10px;
   margin-bottom: 10px;
-
 }
 
 input[type="text"],
-input[type="password"] ,
-input[type="Email"]{
+input[type="password"],
+input[type="Email"] {
   padding: 10px; /* Optional: Add padding for better appearance */
   border: 2px solid #56502a81; /* Optional: Add a border */
   border-radius: 10px; /* Adjust the border radius to make corners rounded */
   width: 250px; /* Optional: Set a specific width */
 }
 
-
-
-
-#loginForm , #signUpForm {
-  text-align:  center ;
+#loginForm,
+#signUpForm {
+  text-align: justify;
+  justify-content: center;
   /* background-image: url("../images/frame-with-writing-standing-books1.png"); */
   background-image: url("../images/form.png");
 
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: 900px;
-  background-position:  top 100px center;
+  background-position: top 100px center;
   width: 1300px;
-  height:700px;
-
-
+  height: 700px;
 }
-#loginForm{
+#loginForm {
   padding: 172px;
   padding-left: 580px;
-  margin: auto;
   /* padding-right: 470px; */
   color: black;
-  font-size:12px;
-
-
+  font-size: 12px;
 }
 
-#signUpForm{
+#signUpForm {
   padding: 140px;
   padding-left: 550px;
-  margin: auto;
   /* padding-right: 470px; */
-
   color: black;
   font-size: 0px;
 }
-  
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .main {
   padding: 80px 100px;
@@ -101,7 +97,7 @@ button {
   width: 100px;
 }
 
-.Book-Button{
+.Book-Button {
   width: 80px;
   margin-top: 2px;
   margin-bottom: 2px;
@@ -162,14 +158,11 @@ h1 {
   margin-left: 20%;
 }
 
-
-.category{
+.category {
   color: white;
   font-size: 20px;
   text-decoration: dashed;
 }
-
-
 
 .formBackGround {
   background-color: rgba(142, 141, 141, 0.3);
@@ -180,13 +173,13 @@ h1 {
   padding: 70px;
 }
 
-.left{
+.left {
   float: left;
   padding-right: 400px;
   padding-left: 50px;
 }
 
-.right{
+.right {
   float: right;
   padding-left: 40px;
   padding-right: 70px;
