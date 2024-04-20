@@ -2,6 +2,7 @@ footer a {
     color: white;
     transition: 0.5s ease;
     text-decoration: none;
+    
 }
   
 footer a:hover {
@@ -10,10 +11,12 @@ footer a:hover {
 }
   
 footer {
-    background-color: rgba(178, 146, 88, 0.7);
+    background-color: rgba(178, 146, 88, 0.8);
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    border-top-right-radius: 35px;
+    border-top-left-radius: 35px;
 }
   
 footer #website {
