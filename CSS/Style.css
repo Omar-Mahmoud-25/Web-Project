@@ -185,3 +185,7 @@ h1 {
   padding-left: 40px;
   padding-right: 70px;
 }
+
+.btn-danger {
+  margin-right: 50px;
+}
