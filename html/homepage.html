@@ -12,9 +12,9 @@
   <body>
     <header id="nav"></header>
     <section class="main afterNav" id="admin-home">
-      <section class="borrowed">
+      <section class user="borrowed">
         <div>
-          <h2>Borrowed<br /></h2>
+          <h2>Welcome<br /></h2>
           <div class="horizontal-list">
             <div style="display: inline-flex">
               <div
@@ -27,11 +27,14 @@
                 "
               >
                 <p>Book 1</p>
-                <button class="Book-Button">Borrow</button>
-                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">
+                <button class="Book-Button user">Borrow</button>
+                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button user admin">
                   Details
                 </button>
-                <button class="Book-Button">Delete</button>
+                <button onclick="window.location.href = 'edit.html'" class="Book-Button admin">
+                  Edit
+                </button>
+                <button class="Book-Button admin">Delete</button>
               </div>
               <div
                 style="
@@ -43,11 +46,14 @@
                 "
               >
                 <p>Book 1</p>
-                <button class="Book-Button">Borrow</button>
-                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">
+                <button class="Book-Button user">Borrow</button>
+                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button user admin">
                   Details
                 </button>
-                <button class="Book-Button">Delete</button>
+                <button onclick="window.location.href = 'edit.html'" class="Book-Button admin">
+                  Edit
+                </button>
+                <button class="Book-Button admin">Delete</button>
               </div>
               <div
                 style="
@@ -59,11 +65,14 @@
                 "
               >
                 <p>Book 1</p>
-                <button class="Book-Button">Borrow</button>
-                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">
+                <button class="Book-Button user">Borrow</button>
+                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button user admin">
                   Details
                 </button>
-                <button class="Book-Button">Delete</button>
+                <button onclick="window.location.href = 'edit.html'" class="Book-Button admin">
+                  Edit
+                </button>
+                <button class="Book-Button admin">Delete</button>
               </div>
               <div
                 style="
@@ -75,11 +84,14 @@
                 "
               >
                 <p>Book 1</p>
-                <button class="Book-Button">Borrow</button>
-                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">
+                <button class="Book-Button user">Borrow</button>
+                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button user admin">
                   Details
                 </button>
-                <button class="Book-Button">Delete</button>
+                <button onclick="window.location.href = 'edit.html'" class="Book-Button admin">
+                  Edit
+                </button>
+                <button class="Book-Button admin">Delete</button>
               </div>
               <div
                 style="
@@ -91,11 +103,14 @@
                 "
               >
                 <p>Book 1</p>
-                <button class="Book-Button">Borrow</button>
-                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">
+                <button class="Book-Button user">Borrow</button>
+                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button user admin">
                   Details
                 </button>
-                <button class="Book-Button">Delete</button>
+                <button onclick="window.location.href = 'edit.html'" class="Book-Button admin">
+                  Edit
+                </button>
+                <button class="Book-Button admin">Delete</button>
               </div>
               <div
                 style="
@@ -107,11 +122,14 @@
                 "
               >
                 <p>Book 1</p>
-                <button class="Book-Button">Borrow</button>
-                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">
+                <button class="Book-Button user">Borrow</button>
+                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button user admin">
                   Details
                 </button>
-                <button class="Book-Button">Delete</button>
+                <button onclick="window.location.href = 'edit.html'" class="Book-Button admin">
+                  Edit
+                </button>
+                <button class="Book-Button admin">Delete</button>
               </div>
               <div
                 style="
@@ -123,23 +141,34 @@
                 "
               >
                 <p>Book 1</p>
-                <button class="Book-Button">Borrow</button>
-                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">
+                <button class="Book-Button user">Borrow</button>
+                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button user admin">
                   Details
                 </button>
-                <button class="Book-Button">Delete</button>
+                <button hidden onclick="window.location.href = 'edit.html'" class="Book-Button admin">
+                  Edit
+                </button>
+                <button class="Book-Button admin">Delete</button>
               </div>
             </div>
           </div>
         </div>
         <button
-          class="index-button"
+          class="index-button admin"
+          style="display: none;"
           onclick="window.location.href='AddBook.html'"
         >
           Add Book
         </button>
+        <button onclick="window.location.href='categories.html'">
+          Available Books
+        </button>
+        <button>
+            Borrow Book
+        </button>
       </section>
     </section>
+    <script src = "../JS/hidden.js"></script>
   </body>
   <footer id="footer"></footer>
   <script src="../JS/snippet.js"></script>
