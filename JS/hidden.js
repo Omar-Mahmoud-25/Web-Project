@@ -12,18 +12,13 @@ function adminHidden() {
 }
 
 let User = sessionStorage.getItem("user");
-// let admin = User[User.indexOf('"isAdmin":') + 10] == 't';
+User = JSON.parse(User);
 
 // console.log(User);
-// console.log(User.indexOf('"isAdmin":'));
-// console.log(admin);
 
-if (User[User.indexOf('"isAdmin":') + 10] == 't') {
+if (User.isAdmin) {
     adminHidden();
 }
 else {
     userHidden();
 }
-
-// adminHidden();
-// userHidden();
