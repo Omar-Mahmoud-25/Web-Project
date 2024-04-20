@@ -21,48 +21,39 @@ function findUserByEmail(email, password) {
     var user = JSON.stringify(foundUser);
     sessionStorage.setItem("user", user);
     if (foundUser.password === password) {
-      return [true, foundUser.isAdmin];
+      return true;
     }
   }
-  return [false, false];
+  return false;
 }
 
-// form.addEventListener('submit',function(event){
-//   event.preventDefault();
-//   const username = document.getElementById("username").value;
-//   const password = document.getElementById("password").value;
-//   // window.location.href = "user-homepage.html";
-//   // Process the form data (name and email) using JavaScript
-//   const found = findUserByEmail(username, password);
-//   if (found[0] && found[1] == true) {
-//     window.location.href = "admin-homepage.html";
-//   } else if (found[0] && found[1] == false) {
-//     window.location.href = "user-homepage.html";
-//   }
+// function login() {
+//   const username = document.getElementById("username");
+//   const password = document.getElementById("password");
+//   const found = findUserByEmail(username.value, password.value);
+//   console.log(found);
+//   if (found[0])
+//     window.location.href="homepage.html";
 //   else {
 //     alert("Invalid username or password");
+//     username.value = "";
+//     password.value = "";
 //   }
-// });
+// }
 
-function login() {
+form.addEventListener("submit",function(event){
+  event.preventDefault();
   const username = document.getElementById("username");
   const password = document.getElementById("password");
   const found = findUserByEmail(username.value, password.value);
   console.log(found);
-  if (found[0] && found[1] == true) {
-    window.location.href = "admin-homepage.html";
-  } else if (found[0] && found[1] == false) {
-    window.location.href = "user-homepage.html";
-  } else {
+  if (found)
+    window.location.href="homepage.html";
+  else {
     alert("Invalid username or password");
     username.value = "";
     password.value = "";
   }
-}
-
-form.addEventListener("submit",function(event){
-  event.preventDefault();
-  login();
 });
 // var button = document.getElementById("loginButton");
 // button.addEventListener("click", login());
