@@ -34,34 +34,30 @@ function findUserByEmail() {
       }
     }
   }
-  console.log("in find");
   return [true, true];
 }
 
-Name.addEventListener('input', function (event) {
+Name.addEventListener("input", function (event) {
   var valid = findUserByEmail();
   var messageUser = document.getElementById("usernameMessage");
   messageUser.style.color = "red";
   if (!valid[1] && valid[0]) {
     console.log("in 1");
     messageUser.textContent = "this username is already in use";
-  }
-  else {
+  } else {
     messageUser.textContent = "";
   }
-  if (Name.value.endsWith(" ")) 
-    Name.value = Name.value.slice(0, -1);
+  if (Name.value.endsWith(" ")) Name.value = Name.value.slice(0, -1);
 });
 
-email.addEventListener('input', function (event) {
+email.addEventListener("input", function (event) {
   var valid = findUserByEmail();
   var messageEmail = document.getElementById("emailMessage");
   messageEmail.style.color = "red";
   if (!valid[0]) {
     console.log("in 0");
     messageEmail.textContent = "this email is already in use";
-  }
-  else {
+  } else {
     messageEmail.textContent = "";
   }
 });
@@ -79,7 +75,6 @@ function isValidPassword() {
     else if (str[i] >= "0" && str[i] <= "9") num = true;
   return num && upper && special && size;
 }
-
 
 password.addEventListener("input", function () {
   var passMessage = document.getElementById("passwordMessage");
@@ -109,7 +104,11 @@ form.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent default form submission
   // validation = isValidPassword();
   var valid = findUserByEmail();
-  if (isValidPassword() === false || password.value !== Confirm.value || !(valid[1] && valid[0]))
+  if (
+    isValidPassword() === false ||
+    password.value !== Confirm.value ||
+    !(valid[1] && valid[0])
+  )
     return alert("Invalid data!");
   // Process the form data (Name and email) using JavaScript
   const userData = new User(

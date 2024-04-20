@@ -2,13 +2,13 @@ function userHidden() {
     let ele = document.getElementsByClassName("user");
     // ele.removeAttribute("hidden");
     for (let i = 0; i<ele.length; i++)
-        ele[i].style.display = "block";
+        ele[i].style.display = "inline";
 }
 function adminHidden() {
     let ele = document.getElementsByClassName("admin");
     // ele.removeAttribute("hidden");
     for (let i = 0; i<ele.length; i++)
-        ele[i].style.display = "block";
+        ele[i].style.display = "inline";
 }
 
 let User = sessionStorage.getItem("user");
