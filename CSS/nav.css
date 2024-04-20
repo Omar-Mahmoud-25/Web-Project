@@ -9,6 +9,9 @@ header,
   padding: 5px 50px 5px 20px;
   align-items: center;
   /* margin-bottom: 200px; */
+  border-bottom-right-radius: 35px;
+  border-bottom-left-radius: 35px;
+
 }
 .navigation a {
   text-decoration: none;
