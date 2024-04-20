@@ -16,9 +16,9 @@ User = JSON.parse(User);
 
 // console.log(User);
 
-if (User.isAdmin) {
-    adminHidden();
-}
-else {
+// if (User.isAdmin) {
+//     adminHidden();
+// }
+// else {
     userHidden();
-}
+// }

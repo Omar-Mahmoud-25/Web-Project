@@ -17,6 +17,15 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const Confirm = document.getElementById("confirm");
 const admin = document.getElementById("admin");
+const toggle = document.getElementById("togglePassword");
+
+toggle.addEventListener('click',function(){
+  if (password.type == 'password')
+    password.type = 'text';
+  else
+    password.type = 'password';
+  toggle.innerHTML = (toggle.innerHTML == '👀'? '🙈':'👀');
+});
 
 function findUserByEmail() {
   const jsonData = localStorage.getItem("formData");
