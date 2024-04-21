@@ -25,5 +25,5 @@ document.querySelector('.Book-Details.afterNav.main div .BookName').innerHTML = 
 document.querySelector('.Book-Details.afterNav.main div .Author').innerHTML = `${targetBook.author}`;
 document.querySelector('.Book-Details.afterNav.main div .Category').innerHTML = `${targetBook.category}`;
 document.querySelector('.Book-Details.afterNav.main div .Description').innerHTML = `${targetBook.description}`;
-document.querySelector('.Book-Details.afterNav.main .imgAndButton').innerHTML = ` <img src=${targetBook.img} alt="bookImage.png" style="width: 300px; height: 450px;"></a>`;
+document.querySelector('#bookImage').setAttribute('src',`${targetBook.img}`);
 
