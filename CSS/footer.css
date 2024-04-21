@@ -12,11 +12,11 @@ footer a:hover {
   
 footer {
     background-color: rgba(178, 146, 88, 0.8);
-    padding: 1.4pc;
+    padding: 1.5%;
     display: flex;
     justify-content: space-between;
-    border-top-right-radius: 2.5pc;
-    border-top-left-radius: 2.5pc;
+    border-top-right-radius: 35px;
+    border-top-left-radius: 35px;
 }
   
 footer #website {
@@ -30,9 +30,9 @@ footer #website #logo-copy {
 }
   
 footer #website #logo-copy p {
-    margin-top: 0.5pc;
+    margin-top: 1%;
 }
   
 footer section {
-    margin-right: 12pc; /* Increase right margin */
+    margin-right: 13%; /* Increase right margin */
 }
