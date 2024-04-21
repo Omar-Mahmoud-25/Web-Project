@@ -288,5 +288,63 @@ h1 {
 }
 
 
+/*addbook*/
+/* Styles for the form container */
+#addForm {
+  background-image: url("../images/addbook.jpg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(2, 2, 2, 0.8);
+}
+
+/* Styles for the form heading */
+#addForm h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* Styles for form labels and inputs */
+#addForm label {
+  font-size: 18px;
+}
+
+#addForm input[type="text"],
+#addForm input[type="image"],
+#addForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Styles for checkbox labels */
+#addForm label.checkbox-label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Styles for the submit button */
+#addForm input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #b38c32;
+  color: #fff;
+  cursor: pointer;
+}
+
+#addForm input[type="submit"]:hover {
+  background-color: #431b0b;
+}
 
 
