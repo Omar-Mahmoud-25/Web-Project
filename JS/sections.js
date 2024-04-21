@@ -32,7 +32,7 @@ biologySection.appendChild(biologyContainer);
 
 let comicsUrls = [
     'bookDetails.html?name=spider-man',
-    'bookDetails.html?name=the Amazing Spider-man',
+    'bookDetails.html?name=The Amazing Spider-man',
     'bookDetails.html?name=X-men',
     'bookDetails.html?name=The Avengers Vault',
     'bookDetails.html?name=DeadPool',
