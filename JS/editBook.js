@@ -27,7 +27,7 @@ function findBook(name) {
 
 function printBooks(data) {
   for (const key in data) {
-    console.log(data[key]);
+    // console.log(data[key]);
   }
 }
 

@@ -11,14 +11,19 @@ function adminHidden() {
         ele[i].style.display = "inline";
 }
 
+let borrow = document.getElementById('borrow');
 let User = sessionStorage.getItem("user");
 User = JSON.parse(User);
 
-console.log(User);
+// console.log(User);
+// console.log(User.isAdmin);
 
-if (User.isAdmin) {
+if (User == null)
+    borrow.style.display = 'inline',
+    borrow.addEventListener('click',function(){
+        window.location.href='login.html';
+    });
+else if (User.isAdmin) 
     adminHidden();
-}
-else {
+else 
     userHidden();
-}

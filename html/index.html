@@ -11,9 +11,9 @@
   <body>
     <!--Header-->
     <header id="nav"></header>
-
+ 
     <!--Main-->
-    <section class="main">
+    <section class="main afterNav">
       <h1 style="text-align: center">Welcome to the Online Library</h1>
       <p id="index-p" style="text-align: center">
         Find your favorite books and start reading!
@@ -22,21 +22,20 @@
         <!-- <button onclick="window.location.href='index.html'" class="index-button">
           Home
         </button> -->
-        <button
-          onclick="window.location.href='login.html'"
-          class="index-button"
-        >
-          Login
-        </button>
-        <br /><br /><br />
-        <button
-          onclick="window.location.href='signup.html'"
-          class="index-button"
-        >
-          Sign Up
-        </button>
       </nav>
-      <br /><br /><br /><br /><br /><br /><br /><br />
+      <section id="admin-home">
+        <section class="borrowed">
+            <h2 style="text-align: center;">Borrowed Books</h2> <br>
+            <div class="book-container">
+                <!-- Book items will be dynamically added here -->
+            </div>
+            <div class="pagination">
+                <button id="prevBtn" onclick="prevPage()">&lt;</button>
+                <button id="nextBtn" onclick="nextPage()"> &gt;</button>
+            </div>
+            
+        </section>
+      </section>
 
       <!-- About Us -->
       <section id="about" style="text-align: center">
@@ -56,9 +55,10 @@
   </body>
   <footer id="footer"></footer>
   <script src="../JS/snippet.js"></script>
-  <script>
+  <script src="../JS/borrowed.js"></script>
+  <!-- <script>
     window.onload = function () {
       localStorage.clear();
     };
-  </script>
+  </script> -->
 </html>

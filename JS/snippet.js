@@ -5,24 +5,30 @@ target.innerHTML =
 ;
 
 target.innerHTML +=
-  "<nav class='navigation'>\n<input type=\"text\" name=\"Search\" placeholder=\"Search\">\n<a href='#featured' class='nav-link'>Featured</a>\n<a class='nav-link' href='#newArrival'>New Arrival</a>\n<a class='nav-link' href='#reviews'>Reviews</a>\n<a class='nav-link' href='categories.html'>Available Books</a>\n<a class='nav-link index-button' id='logOut' href='index.html'>Log Out</a></nav>"
+  "<nav class='navigation'>\n<input type=\"text\" name=\"Search\" placeholder=\"Search\">\n<a href='login.html' id='loginButton' class='nav-link'>Login</a>\n<a href='signup.html' id='signupButton' class='nav-link'>Sign Up</a>\n<a href='#featured' class='nav-link'>Featured</a>\n<a class='nav-link' href='#newArrival'>New Arrival</a>\n<a class='nav-link' href='#reviews'>Reviews</a>\n<a class='nav-link' href='categories.html'>Available Books</a>\n<a class='nav-link index-button' id='logOut' href='index.html'>Log Out</a></nav>"
 ;
 
 let logo = document.getElementById('logo');
 let user = JSON.parse(sessionStorage.getItem('user'));
 let logOut = document.getElementById('logOut');
+let login = document.getElementById('loginButton');
+let signup = document.getElementById('signupButton');
+
 
 logOut.addEventListener('click',function(){
   sessionStorage.clear();
 });
 
-if (user){
-  logo.setAttribute('href','homepage.html');
-  logOut.style.display = 'inline';
-}
+if (user)
+  logOut.style.display = 'inline',
+  login.style.display = 'none',
+  signup.style.display = 'none';
+
 
 else
-  logOut.style.display = 'none';
+  logOut.style.display = 'none',
+  login.style.display = 'inline',
+  signup.style.display = 'inline';
 
 const footer = document.getElementById("footer");
 
