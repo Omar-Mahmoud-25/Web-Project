@@ -62,8 +62,8 @@ function displayBooks() {
         detailsButton.style.cursor = 'pointer';
         detailsButton.addEventListener('click', () => {
             // Handle details button click (e.g., redirect to book details page)
-            // window.location.href = 'bookDetails.html';
-            console.log(`Details for Book ${startIndex + index + 1}`);
+          window.location.href = 'bookDetails.html'; // Change to your desired URL
+
         });
         bookItem.appendChild(detailsButton);
 
