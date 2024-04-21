@@ -7,8 +7,8 @@ class User {
   }
 }
 
-let User = sessionStorage.getItem("user");
-User = JSON.parse(User);
+let currentUser = sessionStorage.getItem("user");
+currentUser = JSON.parse(currentUser);
 
 function confirmation() {
   // let confirmMsg = confirm('Are you sure you want to delete this book?');
@@ -28,12 +28,12 @@ function confirmation() {
       text: "",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: User == null ? "Login" : "Borrow",
+      confirmButtonText: currentUser == null ? "Login" : "Borrow",
       cancelButtonText: "Cancel",
       reverseButtons: true,
     })
     .then((result) => {
-      if (result.isConfirmed && User == null) {
+      if (result.isConfirmed && currentUser == null) {
         window.location.href = "login.html";
       } else if (result.isConfirmed){
         swalWithBootstrapButtons.fire({

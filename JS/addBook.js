@@ -12,15 +12,14 @@ class Book {
 var books = {};
 
 const form = document.getElementById("addForm");
-const name = document.getElementById("name");
+const Name = document.getElementById("name");
 const author = document.getElementById("author");
 const description = document.getElementById("description");
 const image = document.getElementById("image");
 const checkbox = [
-  document.getElementById("Romantic"),
-  document.getElementById("novel"),
-  document.getElementById("prog"),
-  document.getElementById("scary"),
+  document.getElementById("Comics"),
+  document.getElementById("Biology"),
+  document.getElementById("Programming"),
 ];
 
 function findBook(name) {
@@ -41,7 +40,7 @@ function add(name, author, description, category, image) {
     name.length &&
     author.length &&
     description.length &&
-    (category[0] || category[1] || category[2] || category[3]) &&
+    category &&
     image.length
   ) {
     books[name] = new Book(name, author, description, category, image);
@@ -54,15 +53,16 @@ function add(name, author, description, category, image) {
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  var found = findBook(name.value);
+  var found = findBook(Name.value);
   if (!found) {
+    let cat;
+    for (let i = 0; i < checkbox.length; i++) {
+      if (checkbox[i].checked) {
+        cat = checkbox[i].id;
+      }
+    }
     if (
-      add(name.value, author.value, description.value, [
-        checkbox[0].checked,
-        checkbox[1].checked,
-        checkbox[2].checked,
-        checkbox[3].checked,
-      ], image.value)
+      add(Name.value, author.value, description.value, cat, image.value)
     ) {
       alert("Added Successfully!");
       window.location.href = "admin-homepage.html";
