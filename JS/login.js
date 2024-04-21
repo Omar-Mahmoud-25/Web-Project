@@ -57,9 +57,9 @@ form.addEventListener("submit",function(event){
   const username = document.getElementById("username");
   const password = document.getElementById("password");
   const found = findUserByEmail(username.value, password.value);
-  console.log(found);
+  // // console.log(found);
   if (found)
-    window.location.href="homepage.html";
+    window.location.href="index.html";
   else {
     alert("Invalid username or password");
     username.value = "";

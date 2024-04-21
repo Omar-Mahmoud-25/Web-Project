@@ -20,7 +20,7 @@ function confirmation() {
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = 'homepage.html';
+            window.location.href = 'index.html';
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel

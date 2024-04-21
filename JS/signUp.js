@@ -36,11 +36,11 @@ function findUserByEmail() {
     // const foundUser = data[email.value];
     for (const key in data) {
       if (data[key].email == email.value) {
-        console.log("found email");
+        // console.log("found email");
         return [false, true];
       }
       if (data[key].userName == Name.value) {
-        console.log("found username");
+        // console.log("found username");
         return [true, false];
       }
     }
@@ -53,7 +53,7 @@ Name.addEventListener("input", function (event) {
   var messageUser = document.getElementById("usernameMessage");
   messageUser.style.color = "red";
   if (!valid[1] && valid[0]) {
-    console.log("in 1");
+    // console.log("in 1");
     messageUser.textContent = "this username is already in use";
   } else {
     messageUser.textContent = "";
@@ -66,7 +66,7 @@ email.addEventListener("input", function (event) {
   var messageEmail = document.getElementById("emailMessage");
   messageEmail.style.color = "red";
   if (!valid[0]) {
-    console.log("in 0");
+    // console.log("in 0");
     messageEmail.textContent = "this email is already in use";
   } else {
     messageEmail.textContent = "";
