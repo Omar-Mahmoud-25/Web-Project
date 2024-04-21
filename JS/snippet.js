@@ -1,12 +1,28 @@
 const target = document.getElementById("nav");
 
 target.innerHTML = 
-  "<!-- Header Section -->\n<a href = \"index.html\"><img id ='logo' src='../images/logo.png' alt='Book Store Logo' style='height: 43px;width: 50px;margin-left: 20px;'/></a>\n"
+  "<!-- Header Section -->\n<a id='logo' href = \"index.html\"><img src='../images/logo.png' alt='Book Store Logo' style='height: 43px;width: 50px;margin-left: 20px;'/></a>\n"
 ;
 
 target.innerHTML +=
-  "<nav class='navigation'>\n<input type=\"text\" name=\"Search\" placeholder=\"Search\">\n<a href='#featured' class='nav-link'>Featured</a>\n<a class='nav-link' href='#newArrival'>New Arrival</a>\n<a class='nav-link' href='#reviews'>Reviews</a>\n<a class='nav-link' href='categories.html'>Available Books</a>\n</nav>"
+  "<nav class='navigation'>\n<input type=\"text\" name=\"Search\" placeholder=\"Search\">\n<a href='#featured' class='nav-link'>Featured</a>\n<a class='nav-link' href='#newArrival'>New Arrival</a>\n<a class='nav-link' href='#reviews'>Reviews</a>\n<a class='nav-link' href='categories.html'>Available Books</a>\n<a class='nav-link index-button' id='logOut' href='index.html'>Log Out</a></nav>"
 ;
+
+let logo = document.getElementById('logo');
+let user = JSON.parse(sessionStorage.getItem('user'));
+let logOut = document.getElementById('logOut');
+
+logOut.addEventListener('click',function(){
+  sessionStorage.clear();
+});
+
+if (user){
+  logo.setAttribute('href','homepage.html');
+  logOut.style.display = 'inline';
+}
+
+else
+  logOut.style.display = 'none';
 
 const footer = document.getElementById("footer");
 

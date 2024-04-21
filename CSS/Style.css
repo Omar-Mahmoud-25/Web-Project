@@ -158,22 +158,14 @@ h1 {
   flex: 0.3;
 }
 
-.Book-Details.afterNav.main .imgAndButton #edit {
+#delete,#edit,#borrow {
   border-radius: 3rem;
   justify-content: center;
   width: 150px;
   cursor: pointer;
   margin-top: 3%;
   margin-left: 20%;
-  display: block;
-}
-.Book-Details.afterNav.main .imgAndButton #delete {
-  border-radius: 3rem;
-  justify-content: center;
-  width: 150px;
-  cursor: pointer;
-  margin-top: 3%;
-  margin-left: 20%;
+  display: none;
 }
 
 .category {
