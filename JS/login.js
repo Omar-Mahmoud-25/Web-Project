@@ -29,9 +29,9 @@ function findUserByEmail(email, password) {
   if (jsonData) {
     const data = JSON.parse(jsonData);
     const foundUser = data[email];
-    var user = JSON.stringify(foundUser);
-    sessionStorage.setItem("user", user);
     if (foundUser.password === password) {
+      var user = JSON.stringify(foundUser);
+      sessionStorage.setItem("user", user);
       return true;
     }
   }
