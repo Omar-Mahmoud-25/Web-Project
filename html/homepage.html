@@ -13,50 +13,21 @@
 
     <section class="main afterNav" id="admin-home">
         <section class="borrowed">
-            <h2>Borrowed Books</h2>
-            <div class="horizontal-list">
-                <div class="book-item">
-                    <p>Book 1</p>
-                    <!-- <button class="Book-Button">Borrow</button> -->
-                    <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">Details</button>
-                    <!-- <button class="Book-Button">Delete</button> -->
-                </div>
-                <div class="book-item">
-                    <p>Book 2</p>
-                    <!-- <button class="Book-Button">Borrow</button> -->
-                    <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">Details</button>
-                    <!-- <button class="Book-Button">Delete</button> -->
-                </div>
-
-                <div class="book-item">
-                  <p>Book 3</p>
-                  <!-- <button class="Book-Button">Borrow</button> -->
-                  <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">Details</button>
-                  <!-- <button class="Book-Button">Delete</button> -->
-              </div>
-
-              <div class="book-item">
-                <p>Book 4</p>
-                <!-- <button class="Book-Button">Borrow</button> -->
-                <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">Details</button>
-                <!-- <button class="Book-Button">Delete</button> -->
+            <h2 style="text-align: center;">Borrowed Books</h2> <br>
+            <div class="book-container">
+                <!-- Book items will be dynamically added here -->
             </div>
-
-            <div class="book-item">
-              <p>Book 5</p>
-              <!-- <button class="Book-Button">Borrow</button> -->
-              <button onclick="window.location.href = 'bookDetails.html'" class="Book-Button">Details</button>
-              <!-- <button class="Book-Button">Delete</button> -->
-          </div>
-                <!-- Add more book items as needed -->
+            <div class="pagination">
+                <button id="prevBtn" onclick="prevPage()">&lt;</button>
+                <button id="nextBtn" onclick="nextPage()"> &gt;</button>
             </div>
-            <br>
-            <!-- <button class="index-button" onclick="window.location.href='AddBook.html'">Add Book</button> -->
+            
         </section>
     </section>
 
     <footer id="footer"></footer>
 
     <script src="../JS/snippet.js"></script>
+    <script src="../JS/borrowed.js"></script>
 </body>
 </html>
