@@ -24,15 +24,23 @@ var targetBook = data[param];
 
 
 const form = document.getElementById("addForm");
-const name = document.getElementById("name").value = targetBook.bookName;
-const author = document.getElementById("author").value = targetBook.author;
-const description = document.getElementById("description").value = targetBook.description;
+const Name = document.getElementById("name");
+Name.value = targetBook.bookName;
+const author = document.getElementById("author");
+author.value = targetBook.author;
+const description = document.getElementById("description");
+description.value = targetBook.description;
 const checkbox = [
-  document.getElementById("Romantic"),
-  document.getElementById("novel"),
-  document.getElementById("prog"),
-  document.getElementById("scary"),
+  document.getElementById("Comics"),
+  document.getElementById("Biology"),
+  document.getElementById("Programming")
 ];
+if(targetBook.category == 'Comics')
+  checkbox[0].checked = true;
+else if(targetBook.category == 'Programming')
+  checkbox[2].checked = true;
+else if(targetBook.category == 'Biology')
+  checkbox[1].checked = true;
 
 function findBook(name) {
   const jsonData = localStorage.getItem("booksData");
@@ -54,25 +62,24 @@ function findBook(name) {
 //   }
 // }
 
-function edit(name, author, description, category) {
+function edit(author, description, category) {
   // var book = new Book(name, author, description, category);
   // const jsonData = JSON.stringify(books);
   // localStorage.setItem("booksData", jsonData);
+  targetBook.author = author;
+  targetBook.description = description;
+  targetBook.category = category;
 }
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-    var found = findBook(name.value);
-    if (!found) {
-      edit(name.value, author.value, description.value, [
-        checkbox[0].checked,
-        checkbox[1].checked,
-        checkbox[2].checked,
-        checkbox[3].checked,
-      ]);
-      alert("Saved Successfully!");
-      window.location.href = "admin-homepage.html";
-    } else {
-      alert("Nothing to modify!");
+    let cat;
+    for(let i=0; i<checkbox.length; ++i){
+      if(checkbox[i])
+        cat = checkbox[i].id;
     }
+    edit(author.value, description.value, cat);
+    alert("Saved Successfully!");
+    window.location.href = "index.html";
+  
   });
