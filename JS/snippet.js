@@ -5,7 +5,7 @@ target.innerHTML =
 ;
 
 target.innerHTML +=
-  "<nav class='navigation'>\n<input type=\"text\" name=\"Search\" placeholder=\"Search\">\n<a href='login.html' id='loginButton' class='nav-link'>Login</a>\n<a href='signup.html' id='signupButton' class='nav-link'>Sign Up</a>\n<a href='#featured' class='nav-link'>Featured</a>\n<a class='nav-link' href='#newArrival'>New Arrival</a>\n<a class='nav-link' href='#reviews'>Reviews</a>\n<a class='nav-link' href='categories.html'>Available Books</a>\n<a class='nav-link index-button' id='logOut' href='index.html'>Log Out</a></nav>"
+  "<nav class='navigation'>\n<input type=\"text\" name=\"Search\" placeholder=\"Search\">\n<a class='nav-link' href='homepage.html'>Home</a>\n<a class='nav-link' href='categories.html'>Available Books</a>\n<a href='login.html' id='loginButton' class='nav-link'>Login</a>\n<a href='signup.html' id='signupButton' class='nav-link'>Sign Up</a>\n<a class='nav-link index-button' id='logOut' href='index.html'>Log Out</a></nav>"
 ;
 
 let logo = document.getElementById('logo');
