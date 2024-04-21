@@ -1,3 +1,4 @@
+
 // Comics
 let comicsContainer = document.createElement('div');
 comicsContainer.style.textAlign = 'center';
@@ -29,18 +30,72 @@ let biologySection = document.getElementById('biology');
 biologySection.appendChild(biologyContainer);
 
 
+let comicsUrls = [
+    'bookDetails.html?name=spider-man',
+    'bookDetails.html?name=the Amazing Spider-man',
+    'bookDetails.html?name=X-men',
+    'bookDetails.html?name=The Avengers Vault',
+    'bookDetails.html?name=DeadPool',
+    'bookDetails.html?name=spider-man',
+    'bookDetails.html?name=the Amazing Spider-man',
+    'bookDetails.html?name=X-men',
+    'bookDetails.html?name=The Avengers Vault',
+    'bookDetails.html?name=DeadPool',
+    'bookDetails.html?name=the Amazing Spider-man',
+    'bookDetails.html?name=X-men',
+    'bookDetails.html?name=The Avengers Vault',
+    'bookDetails.html?name=DeadPool'
+];
+
+let programmingUrls = [
+    'bookDetails.html?name=Computer Fundamentals',
+    'bookDetails.html?name=Programming with JAVA',
+    'bookDetails.html?name=Computer Fundamentals and Programming in C',
+    'bookDetails.html?name=Computer Science with Python',
+    'bookDetails.html?name=Computer Science',
+    'bookDetails.html?name=Paradigms and Computer Programming Fundamentals',
+    'bookDetails.html?name=Computer Fundamentals',
+    'bookDetails.html?name=Programming with JAVA',
+    'bookDetails.html?name=Computer Fundamentals and Programming in C',
+    'bookDetails.html?name=Computer Science with Python',
+    'bookDetails.html?name=Computer Science',
+    'bookDetails.html?name=Programming with JAVA',
+    'bookDetails.html?name=Computer Fundamentals and Programming in C',
+    'bookDetails.html?name=Computer Science with Python',
+    'bookDetails.html?name=Computer Science'
+];
+
+let biologyUrls = [
+    'bookDetails.html?name=The Biology Book',
+    'bookDetails.html?name=Biology Dictionary',
+    'bookDetails.html?name=master the NCERT Biology 1',
+    'bookDetails.html?name=PUC Class 12 Biology',
+    'bookDetails.html?name=Elementary Biology',
+    'bookDetails.html?name=The Biology Book',
+    'bookDetails.html?name=Biology Dictionary',
+    'bookDetails.html?name=master the NCERT Biology 1',
+    'bookDetails.html?name=PUC Class 12 Biology',
+    'bookDetails.html?name=Elementary Biology',
+    'bookDetails.html?name=The Biology Book',
+    'bookDetails.html?name=Biology Dictionary',
+    'bookDetails.html?name=master the NCERT Biology 1',
+    'bookDetails.html?name=PUC Class 12 Biology',
+    'bookDetails.html?name=Elementary Biology',
+    'bookDetails.html?name=complete neet Biology'
+];
+
 let comicsImages = [
     '../images/img61.webp',
-    '../images/img62.webp',
+    '../images/Spidey.png',
     '../images/img63.webp',
     '../images/img64.webp',
     '../images/img65.webp',
     '../images/img61.webp',
-    '../images/img62.webp',
+    '../images/Spidey.png',
     '../images/img63.webp',
     '../images/img64.webp',
     '../images/img65.webp',
-    '../images/img62.webp',
+    '../images/Spidey.png',
     '../images/img63.webp',
     '../images/img64.webp',
     '../images/img65.webp'
@@ -83,7 +138,7 @@ let biologyImages = [
     '../images/img55.webp'
 ];
 
-function element(container, imageUrl, title) {
+function element(container, imageUrl, detailsUrl, title) {
     let card = document.createElement('div');
     let bookTitle = document.createElement('h3');
     let img = document.createElement('img');
@@ -115,7 +170,7 @@ function element(container, imageUrl, title) {
     showButton.innerHTML = 'Show Book'; // Button text
     showButton.style.marginTop = '10px'; // Adjust button styling
     showButton.style.cursor = 'pointer'; // Change cursor to pointer
-    showButton.href = 'bookDetails.html'; // Link to book details page
+    showButton.href = detailsUrl; // Link to book details page
     showButton.style.display = 'inline-block'; // Ensure button appears as an inline-block element
     showButton.style.textDecoration = 'none'; // Remove default underline
     showButton.style.backgroundColor = '#500'; // Button background color
@@ -139,20 +194,20 @@ function element(container, imageUrl, title) {
 
 
 
-function showBooks(container, images, startIndex) {
+function showBooks(container, images, Details, startIndex) {
     container.innerHTML = ''; // Clear previous content
     let numBooksPerPage = 6; // Changed from 5 to 8
     for (let i = startIndex; i < startIndex + numBooksPerPage && i < images.length; i++) {
         let title = 'Book ' + (i + 1);
-        element(container, images[i], title);
+        element(container, images[i], Details[i],  title);
     }
 }
 
 
 // Initialize books for each section
-showBooks(comicsContainer, comicsImages, 0);
-showBooks(programmingContainer, programmingImages, 0);
-showBooks(biologyContainer, biologyImages, 0);
+showBooks(comicsContainer, comicsImages, comicsUrls, 0);
+showBooks(programmingContainer, programmingImages, programmingUrls, 0);
+showBooks(biologyContainer, biologyImages, biologyUrls, 0);
 
 // Navigation buttons for comics
 let comicsNextBtn = document.createElement('button');
@@ -160,7 +215,7 @@ comicsNextBtn.innerHTML = '&#9658;'; // Right arrow Unicode
 comicsNextBtn.style.margin = '10px';
 comicsNextBtn.style.fontSize = '24px';
 comicsNextBtn.addEventListener('click', function () {
-    next(comicsContainer, comicsImages);
+    next(comicsContainer, comicsImages, comicsUrls);
 });
 
 let comicsPrevBtn = document.createElement('button');
@@ -168,7 +223,7 @@ comicsPrevBtn.innerHTML = '&#9668;'; // Left arrow Unicode
 comicsPrevBtn.style.margin = '10px';
 comicsPrevBtn.style.fontSize = '24px';
 comicsPrevBtn.addEventListener('click', function () {
-    previous(comicsContainer, comicsImages);
+    previous(comicsContainer, comicsImages, comicsUrls);
 });
 
 let comicsButtonDiv = document.createElement('div');
@@ -183,7 +238,7 @@ programmingNextBtn.innerHTML = '&#9658;'; // Right arrow Unicode
 programmingNextBtn.style.margin = '10px';
 programmingNextBtn.style.fontSize = '24px';
 programmingNextBtn.addEventListener('click', function () {
-    next(programmingContainer, programmingImages);
+    next(programmingContainer, programmingImages, programmingUrls);
 });
 
 let programmingPrevBtn = document.createElement('button');
@@ -191,7 +246,7 @@ programmingPrevBtn.innerHTML = '&#9668;'; // Left arrow Unicode
 programmingPrevBtn.style.margin = '10px';
 programmingPrevBtn.style.fontSize = '24px';
 programmingPrevBtn.addEventListener('click', function () {
-    previous(programmingContainer, programmingImages);
+    previous(programmingContainer, programmingImages, programmingUrls);
 });
 
 let programmingButtonDiv = document.createElement('div');
@@ -206,7 +261,7 @@ biologyNextBtn.innerHTML = '&#9658;'; // Right arrow Unicode
 biologyNextBtn.style.margin = '10px';
 biologyNextBtn.style.fontSize = '24px';
 biologyNextBtn.addEventListener('click', function () {
-    next(biologyContainer, biologyImages);
+    next(biologyContainer, biologyImages, biologyUrls);
 });
 
 let biologyPrevBtn = document.createElement('button');
@@ -214,7 +269,7 @@ biologyPrevBtn.innerHTML = '&#9668;'; // Left arrow Unicode
 biologyPrevBtn.style.margin = '10px';
 biologyPrevBtn.style.fontSize = '24px';
 biologyPrevBtn.addEventListener('click', function () {
-    previous(biologyContainer, biologyImages);
+    previous(biologyContainer, biologyImages, biologyUrls);
 });
 
 let biologyButtonDiv = document.createElement('div');
@@ -224,21 +279,22 @@ biologySection.appendChild(biologyButtonDiv);
 biologyButtonDiv.style.textAlign = 'center';
 
 // Function to navigate next
-function next(container, images) {
+function next(container, images, detailsurl) {
     let startIndex = parseInt(container.dataset.startIndex) || 0;
     if (startIndex + 6 < images.length) {
         startIndex++;
         container.dataset.startIndex = startIndex;
-        showBooks(container, images, startIndex);
+        showBooks(container, images, detailsurl,  startIndex);
     }
 }
 
 // Function to navigate previous
-function previous(container, images) {
+function previous(container, images, detailsurl) {
     let startIndex = parseInt(container.dataset.startIndex) || 0;
     if (startIndex >= 1) {
         startIndex--;
         container.dataset.startIndex = startIndex;
-        showBooks(container, images, startIndex);
+        showBooks(container, images, detailsurl, startIndex);
     }
 }
+
