@@ -1,20 +1,33 @@
 // Comics
 let comicsContainer = document.createElement('div');
 comicsContainer.style.textAlign = 'center';
+comicsContainer.style.display = 'flex'; // Adding display flex
+comicsContainer.style.flexWrap = 'nowrap'; // Adding flex-wrap nowrap
+comicsContainer.style.justifyContent = 'center'; // Center items horizontally
+comicsContainer.style.alignItems = 'center'; // Center items vertically
 let comicsSection = document.getElementById('comics');
 comicsSection.appendChild(comicsContainer);
 
 // Programming
 let programmingContainer = document.createElement('div');
 programmingContainer.style.textAlign = 'center';
+programmingContainer.style.display = 'flex'; // Adding display flex
+programmingContainer.style.flexWrap = 'nowrap'; // Adding flex-wrap nowrap
+programmingContainer.style.justifyContent = 'center'; // Center items horizontally
+programmingContainer.style.alignItems = 'center'; // Center items vertically
 let programmingSection = document.getElementById('programming');
 programmingSection.appendChild(programmingContainer);
 
 // Biology
 let biologyContainer = document.createElement('div');
 biologyContainer.style.textAlign = 'center';
+biologyContainer.style.display = 'flex'; // Adding display flex
+biologyContainer.style.flexWrap = 'nowrap'; // Adding flex-wrap nowrap
+biologyContainer.style.justifyContent = 'center'; // Center items horizontally
+biologyContainer.style.alignItems = 'center'; // Center items vertically
 let biologySection = document.getElementById('biology');
 biologySection.appendChild(biologyContainer);
+
 
 let comicsImages = [
     '../images/img61.webp',
