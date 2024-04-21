@@ -26,14 +26,15 @@ function findBook(name) {
   return false;
 }
 
-function add(name, author, description, category) {
+function add(name, author, description, category, image) {
   if (
     name.length &&
     author.length &&
     description.length &&
-    (category[0] || category[1] || category[2] || category[3])
+    (category[0] || category[1] || category[2] || category[3]) &&
+    image.length
   ) {
-    books[name] = new Book(name, author, description, category);
+    books[name] = new Book(name, author, description, category, image);
     const jsonData = JSON.stringify(books);
     localStorage.setItem("booksData", jsonData);
     return true;
