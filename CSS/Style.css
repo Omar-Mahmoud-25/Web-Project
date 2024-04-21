@@ -100,7 +100,8 @@ button {
 .showPassword{
   background-color: transparent;
   width: fit-content;
-  margin-left: -40px;
+  margin-left: -49px;
+  font-size: 17px
 };
 
 .Book-Button {
