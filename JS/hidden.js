@@ -10,20 +10,20 @@ function adminHidden() {
 }
 
 let borrow = document.getElementById('borrow');
-let User = sessionStorage.getItem("user");
-User = JSON.parse(User);
+let thisUser = sessionStorage.getItem("user");
+thisUser = JSON.parse(thisUser);
 
 // console.log(User);
 // console.log(User.isAdmin);
 // console.log(User === null);
 
-if (User === null){
+if (thisUser === null){
     borrow.style.display = 'inline',
     borrow.addEventListener('click',function(){
         window.location.href='login.html';
     });
 }
-else if (User.isAdmin) 
+else if (thisUser.isAdmin) 
     adminHidden();
 else 
     userHidden();

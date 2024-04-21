@@ -32,7 +32,9 @@ function confirmation() {
       }).then((result) => {
         if (result.isConfirmed) {
             delete bookData[param];
-            window.location.href = 'index.html';
+            console.log(param);
+            console.log(bookData);
+            // window.location.href = 'categories.html';
             swalWithBootstrapButtons.fire({
               title: "Deleted",
               icon: "success"

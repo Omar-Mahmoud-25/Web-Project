@@ -26,4 +26,5 @@ document.querySelector('.Book-Details.afterNav.main div .Author').innerHTML = `$
 document.querySelector('.Book-Details.afterNav.main div .Category').innerHTML = `${targetBook.category}`;
 document.querySelector('.Book-Details.afterNav.main div .Description').innerHTML = `${targetBook.description}`;
 document.querySelector('#bookImage').setAttribute('src',`${targetBook.img}`);
+document.querySelector('#edit').setAttribute('onclick', `window.location.href='edit.html?name=${targetBook.bookName}'`);
 
