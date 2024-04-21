@@ -1,9 +1,9 @@
 export default class Book {
-    constructor(bookImage, bookName, author, description, category) {
-        this.bookImage = bookImage;
+    constructor(bookName, author, description, category, img) {
         this.bookName = bookName;
         this.author = author;
         this.description = description;
         this.category = category;
+        this.img = img;
     }
 }
