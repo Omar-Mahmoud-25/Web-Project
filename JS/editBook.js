@@ -23,7 +23,7 @@ let param = getParameters();
 var targetBook = data[param];
 
 
-const form = document.getElementById("addForm");
+const form = document.getElementById("editForm");
 const Name = document.getElementById("name");
 Name.value = targetBook.bookName;
 const author = document.getElementById("author");
@@ -71,8 +71,8 @@ function edit(author, description, category) {
   targetBook.category = category;
 }
 
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
+form.addEventListener("submit",function(event){
+  event.preventDefault();
     let cat;
     for(let i=0; i<checkbox.length; ++i){
       if(checkbox[i])
