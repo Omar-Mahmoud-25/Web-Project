@@ -7,7 +7,7 @@ function getParameters(){
   return parameter;
 }
 
-function confirmation() {
+function confirmationd() {
     // let confirmMsg = confirm('Are you sure you want to delete this book?');
     // if(confirmMsg) {
     //     window.location.href = 'admin-homepage.html';

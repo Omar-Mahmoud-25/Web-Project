@@ -10,7 +10,7 @@ class User {
 let currentUser = sessionStorage.getItem("user");
 currentUser = JSON.parse(currentUser);
 
-function confirmation() {
+function confirmationb() {
   // let confirmMsg = confirm('Are you sure you want to delete this book?');
   // if(confirmMsg) {
   //     window.location.href = 'admin-homepage.html';
