@@ -1,6 +1,5 @@
 import Book from "./book.js";
-const jsonData = localStorage.getItem("booksData");
-const data = JSON.parse(jsonData);
+var data = localStorage.getItem('booksData') ? JSON.parse(localStorage.getItem('booksData')) : {};
 function getParameters(){
     var url = window.location;
     var paramsValues = window.location.search;
