@@ -48,28 +48,36 @@ input[type="Email"] {
   justify-content: center;
   /* background-image: url("../images/frame-with-writing-standing-books1.png"); */
   background-image: url("../images/form.png");
-
+  margin-top: -60px;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-size: 900px;
+  
   background-position: top 100px center;
-  width: 1300px;
-  height: 700px;
 }
+
 #loginForm {
   padding: 172px;
   padding-left: 580px;
+  background-size: 800px;
   /* padding-right: 470px; */
   color: black;
-  font-size: 12px;
+  font-size: 0px;
 }
 
 #signUpForm {
   padding: 140px;
   padding-left: 550px;
+  background-size:1000px;
   /* padding-right: 470px; */
   color: black;
   font-size: 0px;
+  width: fit-content;
+  height: fit-content;
+}
+
+form span{
+  font-size: 15px;
+  width: 10px;
 }
 
 .form {

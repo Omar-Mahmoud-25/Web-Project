@@ -21,9 +21,11 @@ const toggle = document.getElementById("togglePassword");
 
 toggle.addEventListener('click',function(){
   if (password.type == 'password')
-    password.type = 'text';
+    password.type = 'text',
+    Confirm.type = 'text';
   else
-    password.type = 'password';
+    password.type = 'password',
+    Confirm.type = 'password';
   toggle.innerHTML = (toggle.innerHTML == '👀'? '🙈':'👀');
 });
 
@@ -90,10 +92,10 @@ password.addEventListener("input", function () {
 
   if (isValidPassword()) {
     passMessage.textContent = "That is Ok";
-    passMessage.style.color = "greenyellow";
+    passMessage.style.color = "green";
   } else {
-    passMessage.textContent =
-      "Password must have at least 8 characters and contain: upper case letters,digits and special characters.";
+    passMessage.innerHTML =
+      "Password must have at least 8 characters and contain:<br>upper case letters,digits and special characters.";
     passMessage.style.color = "red";
   }
 });
@@ -105,7 +107,7 @@ Confirm.addEventListener("input", function () {
     confirmMessage.style.color = "red";
   } else {
     confirmMessage.textContent = "Password Match";
-    confirmMessage.style.color = "greenyellow";
+    confirmMessage.style.color = "green";
   }
 });
 
