@@ -6,6 +6,7 @@ const form = document.getElementById("addForm");
 const name = document.getElementById("name");
 const author = document.getElementById("author");
 const description = document.getElementById("description");
+const image = document.getElementById("image");
 const checkbox = [
   document.getElementById("Romantic"),
   document.getElementById("novel"),
@@ -52,7 +53,7 @@ form.addEventListener("submit", function (event) {
         checkbox[1].checked,
         checkbox[2].checked,
         checkbox[3].checked,
-      ])
+      ], image.value)
     ) {
       alert("Added Successfully!");
       window.location.href = "admin-homepage.html";
