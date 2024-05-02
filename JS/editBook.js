@@ -21,7 +21,6 @@ function getParameters(){
 
 let param = getParameters();
 let baseUrl = 'bookDetails.html';
-let completeUrl = baseUrl + '?name=' + param;
 var targetBook = data[param];
 
 
@@ -64,15 +63,17 @@ function findBook(name) {
 //   }
 // }
 
-function edit(author, description, category) {
+function edit(name, author, description, category) {
   // var book = new Book(name, author, description, category);
-  
-  
+  oldname = targetBook.bookName;
+  targetBook.bookName = name;
   targetBook.author = author;
   targetBook.description = description;
   targetBook.category = category;
   console.log(category);
+  delete data[oldname];
   data[targetBook.bookName] = targetBook;
+  // data[oldname] = targetBook;
   const jsonData = JSON.stringify(data);
   localStorage.setItem("booksData", jsonData);
 }
@@ -85,8 +86,9 @@ form.addEventListener("submit",function(event){
         cat = checkbox[i].id;
     }
     console.log(author.value, description.value);
-    edit(author.value, description.value, cat);
+    edit(Name.value, author.value, description.value, cat);
     alert("Saved Successfully!");
+    let completeUrl = baseUrl + '?name=' + targetBook.bookName;
     window.location.href = completeUrl;
   
   });
