@@ -65,7 +65,7 @@ form.addEventListener("submit", function (event) {
       add(Name.value, author.value, description.value, cat, image.value)
     ) {
       alert("Added Successfully!");
-      window.location.href = "admin-homepage.html";
+      window.location.href = "index.html";
     } else {alert("Fill all data!");}
   } else {
     alert("This book already exists!");
