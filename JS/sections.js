@@ -1,3 +1,21 @@
+// Function to retrieve books from local storage
+function getBooks(category) {
+    const jsonData = localStorage.getItem("booksData");
+    if (jsonData) {
+        const data = JSON.parse(jsonData);
+        console.log(data);
+        return Object.values(data).filter(book => book.category === category);
+    }
+    return [];
+}
+
+// Function to initialize books for each section from local storage
+function initializeBooks(container, category) {
+    const books = getBooks(category);
+    const images = books.map(book => book.img);
+    const detailsUrls = books.map(book => `bookDetails.html?name=${encodeURIComponent(book.bookName)}`);
+    showBooks(container, images, detailsUrls, 0);
+}
 
 // Comics
 let comicsContainer = document.createElement('div');
@@ -29,115 +47,7 @@ biologyContainer.style.alignItems = 'center'; // Center items vertically
 let biologySection = document.getElementById('biology');
 biologySection.appendChild(biologyContainer);
 
-
-let comicsUrls = [
-    'bookDetails.html?name=spider-man',
-    'bookDetails.html?name=The Amazing Spider-man',
-    'bookDetails.html?name=X-men',
-    'bookDetails.html?name=The Avengers Vault',
-    'bookDetails.html?name=DeadPool',
-    'bookDetails.html?name=spider-man',
-    'bookDetails.html?name=the Amazing Spider-man',
-    'bookDetails.html?name=X-men',
-    'bookDetails.html?name=The Avengers Vault',
-    'bookDetails.html?name=DeadPool',
-    'bookDetails.html?name=the Amazing Spider-man',
-    'bookDetails.html?name=X-men',
-    'bookDetails.html?name=The Avengers Vault',
-    'bookDetails.html?name=DeadPool'
-];
-
-let programmingUrls = [
-    'bookDetails.html?name=Computer Fundamentals',
-    'bookDetails.html?name=Programming with JAVA',
-    'bookDetails.html?name=Computer Fundamentals and Programming in C',
-    'bookDetails.html?name=Computer Science with Python',
-    'bookDetails.html?name=Computer Science',
-    'bookDetails.html?name=Paradigms and Computer Programming Fundamentals',
-    'bookDetails.html?name=Computer Fundamentals',
-    'bookDetails.html?name=Programming with JAVA',
-    'bookDetails.html?name=Computer Fundamentals and Programming in C',
-    'bookDetails.html?name=Computer Science with Python',
-    'bookDetails.html?name=Computer Science',
-    'bookDetails.html?name=Programming with JAVA',
-    'bookDetails.html?name=Computer Fundamentals and Programming in C',
-    'bookDetails.html?name=Computer Science with Python',
-    'bookDetails.html?name=Computer Science'
-];
-
-let biologyUrls = [
-    'bookDetails.html?name=The Biology Book',
-    'bookDetails.html?name=Biology Dictionary',
-    'bookDetails.html?name=master the NCERT Biology 1',
-    'bookDetails.html?name=PUC Class 12 Biology',
-    'bookDetails.html?name=Elementary Biology',
-    'bookDetails.html?name=The Biology Book',
-    'bookDetails.html?name=Biology Dictionary',
-    'bookDetails.html?name=master the NCERT Biology 1',
-    'bookDetails.html?name=PUC Class 12 Biology',
-    'bookDetails.html?name=Elementary Biology',
-    'bookDetails.html?name=The Biology Book',
-    'bookDetails.html?name=Biology Dictionary',
-    'bookDetails.html?name=master the NCERT Biology 1',
-    'bookDetails.html?name=PUC Class 12 Biology',
-    'bookDetails.html?name=Elementary Biology',
-    'bookDetails.html?name=complete neet Biology'
-];
-
-let comicsImages = [
-    '../images/img61.webp',
-    '../images/Spidey.png',
-    '../images/img63.webp',
-    '../images/img64.webp',
-    '../images/img65.webp',
-    '../images/img61.webp',
-    '../images/Spidey.png',
-    '../images/img63.webp',
-    '../images/img64.webp',
-    '../images/img65.webp',
-    '../images/Spidey.png',
-    '../images/img63.webp',
-    '../images/img64.webp',
-    '../images/img65.webp'
-];
-
-let programmingImages = [
-    '../images/img81.webp',
-    '../images/img82.webp',
-    '../images/img83.webp',
-    '../images/img84.webp',
-    '../images/img85.webp',
-    '../images/img86.webp',
-    '../images/img81.webp',
-    '../images/img82.webp',
-    '../images/img83.webp',
-    '../images/img84.webp',
-    '../images/img85.webp',
-    '../images/img82.webp',
-    '../images/img83.webp',
-    '../images/img84.webp',
-    '../images/img85.webp'
-];
-
-let biologyImages = [
-    '../images/img50.webp',
-    '../images/img51.webp',
-    '../images/img52.webp',
-    '../images/img53.webp',
-    '../images/img54.webp',
-    '../images/img50.webp',
-    '../images/img51.webp',
-    '../images/img52.webp',
-    '../images/img53.webp',
-    '../images/img54.webp',
-    '../images/img50.webp',
-    '../images/img51.webp',
-    '../images/img52.webp',
-    '../images/img53.webp',
-    '../images/img54.webp',
-    '../images/img55.webp'
-];
-
+// Function to create book elements
 function element(container, imageUrl, detailsUrl, title) {
     let card = document.createElement('div');
     let bookTitle = document.createElement('h3');
@@ -192,109 +102,63 @@ function element(container, imageUrl, detailsUrl, title) {
     showButton.target = '_self';
 }
 
-
-
-function showBooks(container, images, Details, startIndex) {
+// Function to populate books in a container
+function showBooks(container, images, detailsUrls, startIndex) {
     container.innerHTML = ''; // Clear previous content
     let numBooksPerPage = 6; // Changed from 5 to 8
     for (let i = startIndex; i < startIndex + numBooksPerPage && i < images.length; i++) {
         let title = 'Book ' + (i + 1);
-        element(container, images[i], Details[i],  title);
+        element(container, images[i], detailsUrls[i], title);
     }
 }
 
-
 // Initialize books for each section
-showBooks(comicsContainer, comicsImages, comicsUrls, 0);
-showBooks(programmingContainer, programmingImages, programmingUrls, 0);
-showBooks(biologyContainer, biologyImages, biologyUrls, 0);
+initializeBooks(comicsContainer, 'Comics');
+initializeBooks(programmingContainer, 'Programming');
+initializeBooks(biologyContainer, 'Biology');
+
+// Function to create navigation buttons
+function createNavigationButtons(container, nextFunction, prevFunction) {
+    let nextBtn = document.createElement('button');
+    nextBtn.innerHTML = '&#9658;'; // Right arrow Unicode
+    nextBtn.style.margin = '10px';
+    nextBtn.style.fontSize = '24px';
+    nextBtn.addEventListener('click', function () {
+        nextFunction();
+    });
+
+    let prevBtn = document.createElement('button');
+    prevBtn.innerHTML = '&#9668;'; // Left arrow Unicode
+    prevBtn.style.margin = '10px';
+    prevBtn.style.fontSize = '24px';
+    prevBtn.addEventListener('click', function () {
+        prevFunction();
+    });
+
+    let buttonDiv = document.createElement('div');
+    buttonDiv.appendChild(prevBtn);
+    buttonDiv.appendChild(nextBtn);
+    container.appendChild(buttonDiv);
+    buttonDiv.style.textAlign = 'center';
+}
 
 // Navigation buttons for comics
-let comicsNextBtn = document.createElement('button');
-comicsNextBtn.innerHTML = '&#9658;'; // Right arrow Unicode
-comicsNextBtn.style.margin = '10px';
-comicsNextBtn.style.fontSize = '24px';
-comicsNextBtn.addEventListener('click', function () {
+createNavigationButtons(comicsSection, function() {
     next(comicsContainer, comicsImages, comicsUrls);
-});
-
-let comicsPrevBtn = document.createElement('button');
-comicsPrevBtn.innerHTML = '&#9668;'; // Left arrow Unicode
-comicsPrevBtn.style.margin = '10px';
-comicsPrevBtn.style.fontSize = '24px';
-comicsPrevBtn.addEventListener('click', function () {
+}, function() {
     previous(comicsContainer, comicsImages, comicsUrls);
 });
 
-let comicsButtonDiv = document.createElement('div');
-comicsButtonDiv.appendChild(comicsPrevBtn);
-comicsButtonDiv.appendChild(comicsNextBtn);
-comicsSection.appendChild(comicsButtonDiv);
-comicsButtonDiv.style.textAlign = 'center';
-
 // Navigation buttons for programming
-let programmingNextBtn = document.createElement('button');
-programmingNextBtn.innerHTML = '&#9658;'; // Right arrow Unicode
-programmingNextBtn.style.margin = '10px';
-programmingNextBtn.style.fontSize = '24px';
-programmingNextBtn.addEventListener('click', function () {
+createNavigationButtons(programmingSection, function() {
     next(programmingContainer, programmingImages, programmingUrls);
-});
-
-let programmingPrevBtn = document.createElement('button');
-programmingPrevBtn.innerHTML = '&#9668;'; // Left arrow Unicode
-programmingPrevBtn.style.margin = '10px';
-programmingPrevBtn.style.fontSize = '24px';
-programmingPrevBtn.addEventListener('click', function () {
+}, function() {
     previous(programmingContainer, programmingImages, programmingUrls);
 });
 
-let programmingButtonDiv = document.createElement('div');
-programmingButtonDiv.appendChild(programmingPrevBtn);
-programmingButtonDiv.appendChild(programmingNextBtn);
-programmingSection.appendChild(programmingButtonDiv);
-programmingButtonDiv.style.textAlign = 'center';
-
 // Navigation buttons for biology
-let biologyNextBtn = document.createElement('button');
-biologyNextBtn.innerHTML = '&#9658;'; // Right arrow Unicode
-biologyNextBtn.style.margin = '10px';
-biologyNextBtn.style.fontSize = '24px';
-biologyNextBtn.addEventListener('click', function () {
+createNavigationButtons(biologySection, function() {
     next(biologyContainer, biologyImages, biologyUrls);
-});
-
-let biologyPrevBtn = document.createElement('button');
-biologyPrevBtn.innerHTML = '&#9668;'; // Left arrow Unicode
-biologyPrevBtn.style.margin = '10px';
-biologyPrevBtn.style.fontSize = '24px';
-biologyPrevBtn.addEventListener('click', function () {
+}, function() {
     previous(biologyContainer, biologyImages, biologyUrls);
 });
-
-let biologyButtonDiv = document.createElement('div');
-biologyButtonDiv.appendChild(biologyPrevBtn);
-biologyButtonDiv.appendChild(biologyNextBtn);
-biologySection.appendChild(biologyButtonDiv);
-biologyButtonDiv.style.textAlign = 'center';
-
-// Function to navigate next
-function next(container, images, detailsurl) {
-    let startIndex = parseInt(container.dataset.startIndex) || 0;
-    if (startIndex + 6 < images.length) {
-        startIndex++;
-        container.dataset.startIndex = startIndex;
-        showBooks(container, images, detailsurl,  startIndex);
-    }
-}
-
-// Function to navigate previous
-function previous(container, images, detailsurl) {
-    let startIndex = parseInt(container.dataset.startIndex) || 0;
-    if (startIndex >= 1) {
-        startIndex--;
-        container.dataset.startIndex = startIndex;
-        showBooks(container, images, detailsurl, startIndex);
-    }
-}
-
