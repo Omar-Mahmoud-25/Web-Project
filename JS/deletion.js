@@ -34,6 +34,8 @@ function confirmationd() {
             delete bookData[param];
             console.log(param);
             console.log(bookData);
+            const jsonData = JSON.stringify(bookData);
+            localStorage.setItem("booksData", jsonData);
             // window.location.href = 'categories.html';
             swalWithBootstrapButtons.fire({
               title: "Deleted",
