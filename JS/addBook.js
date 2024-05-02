@@ -8,8 +8,8 @@ class Book {
       this.img = img;
   }
 }
+var books = localStorage.getItem('booksData') ? JSON.parse(localStorage.getItem('booksData')) : {};
 
-var books = {};
 
 const form = document.getElementById("addForm");
 const Name = document.getElementById("name");
