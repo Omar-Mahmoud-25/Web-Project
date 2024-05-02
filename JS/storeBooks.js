@@ -44,23 +44,25 @@ function add(name, author, description, category, image) {
     }
     return true;
   }
-
-  for(let i=0; i<titles.length; ++i) {
-    const jsonData = localStorage.getItem("booksData");
+  const jsonData = localStorage.getItem("booksData");
     if (jsonData) {
       const data = JSON.parse(jsonData);
       console.log(data);
-      if(isEmpty(data)) {
-        if(i < 5 && !findBook(titles[i]))
-          add(titles[i], authors[i], text, categories[0], images[i]);
-        else if(i < 11 && !findBook(titles[i]))
-          add(titles[i], authors[i], text, categories[1], images[i]);
-        else if(!findBook(titles[i]))
-          add(titles[i], authors[i], text, categories[2], images[i]);
     
-        }
+      if(isEmpty(data)){
+        for(let i=0; i<titles.length; ++i) {
+                      
+          if(i < 5 && !findBook(titles[i]))
+            add(titles[i], authors[i], text, categories[0], images[i]);
+          else if(i < 11 && !findBook(titles[i]))
+            add(titles[i], authors[i], text, categories[1], images[i]);
+          else if(!findBook(titles[i]))
+            add(titles[i], authors[i], text, categories[2], images[i]);
+      
+              }
+            }
       }
-    }
+    
 //   function printBooks(data) {
 //     for (const key in data) {
 //       console.log(data[key]);
