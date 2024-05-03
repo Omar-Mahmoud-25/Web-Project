@@ -177,6 +177,14 @@ h1 {
   display: none;
 }
 
+#add{
+  display: none;
+  cursor: pointer;
+  justify-content: center;
+  border-radius: 3rem;
+
+}
+
 .category {
   color: white;
   font-size: 20px;
