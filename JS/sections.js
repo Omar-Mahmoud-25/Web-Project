@@ -10,11 +10,11 @@ function getBooks(category) {
 }
 
 // Function to initialize books for each section from local storage
-function initializeBooks(container, category) {
+function showind(container, category,index) {
     const books = getBooks(category);
     const images = books.map(book => book.img);
     const detailsUrls = books.map(book => `bookDetails.html?name=${encodeURIComponent(book.bookName)}`);
-    showBooks(container, images, detailsUrls, 0);
+    showBooks(container, images, detailsUrls, index);
 }
 
 // Comics
@@ -113,9 +113,9 @@ function showBooks(container, images, detailsUrls, startIndex) {
 }
 
 // Initialize books for each section
-initializeBooks(comicsContainer, 'Comics');
-initializeBooks(programmingContainer, 'Programming');
-initializeBooks(biologyContainer, 'Biology');
+showind(comicsContainer, 'Comics',0);
+showind(programmingContainer, 'Programming',0);
+showind(biologyContainer, 'Biology',0);
 
 // Function to create navigation buttons
 function createNavigationButtons(container, nextFunction, prevFunction) {
@@ -142,23 +142,108 @@ function createNavigationButtons(container, nextFunction, prevFunction) {
     buttonDiv.style.textAlign = 'center';
 }
 
+// Define current indices for each section
+let comicsIndex = 0;
+let programmingIndex = 0;
+let biologyIndex = 0;
+
+// Function to navigate next
+function next(container, category) {
+    let currindex = 0;
+    const books = getBooks(category);
+    const images = books.map(book => book.img);
+    let maxx=images.length-6;
+
+    switch (category) {
+        case 'Comics':
+            currindex = comicsIndex;
+            break;
+        case 'Programming':
+            currindex = programmingIndex;
+            break;
+        case 'Biology':
+            currindex = biologyIndex;
+            break;
+        default:
+            break;
+    }
+
+
+ if(currindex<maxx) showind(container, category, ++currindex);
+    switch (category) {
+        case 'Comics':
+            comicsIndex = currindex;
+            break;
+        case 'Programming':
+            programmingIndex = currindex;
+            break;
+        case 'Biology':
+            biologyIndex = currindex;
+            break;
+        default:
+            break;
+    }
+}
+
+// Function to navigate previous
+function previous(container, category) {
+    let currindex = 0;
+    switch (category) {
+        case 'Comics':
+            currindex = comicsIndex;
+            break;
+        case 'Programming':
+            currindex = programmingIndex;
+            break;
+        case 'Biology':
+            currindex = biologyIndex;
+            break;
+        default:
+            break;
+    }
+
+    if (currindex > 0) 
+        showind(container, category, --currindex);
+    
+
+    switch (category) {
+        case 'Comics':
+            comicsIndex = currindex;
+            break;
+        case 'Programming':
+            programmingIndex = currindex;
+            break;
+        case 'Biology':
+            biologyIndex = currindex;
+            break;
+        default:
+            break;
+    }
+}
+
 // Navigation buttons for comics
-createNavigationButtons(comicsSection, function() {
-    next(comicsContainer, comicsImages, comicsUrls);
-}, function() {
-    previous(comicsContainer, comicsImages, comicsUrls);
-});
+createNavigationButtons(comicsSection, 
+    function() {
+        next(comicsContainer, 'Comics');
+    }, 
+    function() {
+        previous(comicsContainer, 'Comics');
+    });
 
 // Navigation buttons for programming
-createNavigationButtons(programmingSection, function() {
-    next(programmingContainer, programmingImages, programmingUrls);
-}, function() {
-    previous(programmingContainer, programmingImages, programmingUrls);
-});
+createNavigationButtons(programmingSection, 
+    function() {
+        next(programmingContainer, 'Programming');
+    }, 
+    function() {
+        previous(programmingContainer, 'Programming');
+    });
 
 // Navigation buttons for biology
-createNavigationButtons(biologySection, function() {
-    next(biologyContainer, biologyImages, biologyUrls);
-}, function() {
-    previous(biologyContainer, biologyImages, biologyUrls);
-});
+createNavigationButtons(biologySection, 
+    function() {
+        next(biologyContainer, 'Biology');
+    }, 
+    function() {
+        previous(biologyContainer, 'Biology');
+    });
