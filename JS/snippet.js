@@ -1,15 +1,16 @@
 const target = document.getElementById("nav");
 
 target.innerHTML = 
-  "<!-- Header Section -->\n<a id='logo' href = \"index.html\"><img src='../images/logo.png' alt='Book Store Logo' style='height: 43px;width: 50px;margin-left: 20px;'/></a>\n"
+  "<!-- Header Section -->\n<a id='logo' href = 'index.html'><img src='../images/logo.png' alt='Book Store Logo' style='height: 43px;width: 50px;margin-left: 20px;'/></a>\n"
 ;
 
 target.innerHTML +=
-  "<nav class='navigation'>\n<input type=\"text\" name=\"Search\" placeholder=\"Search\">\n<a class='nav-link' href='index.html'>Home</a>\n<a class='nav-link' href='categories.html'>Available Books</a>\n<a href='login.html' id='loginButton' class='nav-link'>Login</a>\n<a href='signup.html' id='signupButton' class='nav-link'>Sign Up</a>\n<a class='nav-link index-button' id='logOut' href='index.html'>Log Out</a></nav>"
+  "<nav class='navigation'>\n<input type='text' name='Search' placeholder='Search'>\n<a class='nav-link' href='index.html'>Home</a>\n<a href='AddBook.html' id='addBook' class='nav-link'>Add Book</a>\n<a class='nav-link' href='categories.html'>Available Books</a>\n<a href='login.html' id='loginButton' class='nav-link'>Login</a>\n<a href='signup.html' id='signupButton' class='nav-link'>Sign Up</a>\n<a class='nav-link index-button' id='logOut' href='index.html'>Log Out</a></nav>"
 ;
 
 let logo = document.getElementById('logo');
 let user = JSON.parse(sessionStorage.getItem('user'));
+let add = document.getElementById('addBook');
 let logOut = document.getElementById('logOut');
 let login = document.getElementById('loginButton');
 let signup = document.getElementById('signupButton');
@@ -22,12 +23,13 @@ logOut.addEventListener('click',function(){
 if (user)
   logOut.style.display = 'inline',
   login.style.display = 'none',
-  signup.style.display = 'none';
-
-
+  signup.style.display = 'none',
+  add.style.display = User.Admin? 'inline':'none';
+  
 else
   logOut.style.display = 'none',
   login.style.display = 'inline',
+  add.style.display = 'none',
   signup.style.display = 'inline';
 
 const footer = document.getElementById("footer");
