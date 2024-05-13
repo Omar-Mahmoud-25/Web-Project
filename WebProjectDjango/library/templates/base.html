@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Online Library</title>
+    <link rel="stylesheet" href="../CSS/nav.css" />
+    <link rel="stylesheet" href="../CSS/Style.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="nav">
+      <a id="logo" href="index.html">
+        <img
+          src="../images/logo.png"
+          alt="Book Store Logo"
+          style="height: 43px; width: 50px; margin-left: 20px"
+        />
+      </a>
+      <nav class="navigation">
+        <input type="text" name="Search" placeholder="Search" />
+
+        <a class="nav-link" href="index.html">Home</a>
+
+        <a href="AddBook.html" id="addBook" class="nav-link">Add Book</a>
+
+        <a class="nav-link" href="categories.html">Available Books</a>
+
+        <a href="login.html" id="loginButton" class="nav-link">Login</a>
+
+        <a href="signup.html" id="signupButton" class="nav-link">Sign Up</a>
+
+        <a class="nav-link index-button" id="logOut" href="index.html">
+          Log Out
+        </a>
+      </nav>
+    </header>
+    <!-- End Header -->
+
+    <!--Main-->
+    <section class="main afterNav">
+      <!-- Add a Django block for displaying the body of any page -->
+    </section>
+    <!-- End Main -->
+  </body>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <section id="website">
+      <div id="logo-copy">
+        <img
+          src="../images/logo.png"
+          alt="Logo"
+          style="color: white; width: 30px"
+        />
+        <p>Online Library &copy; 2024</p>
+        <br />
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3>Contact Us</h3>
+      <p>Email: info@onlinelibrary.com</p>
+      <p>Phone: +010010101010</p>
+      <p>Address: 123 Library Street, City, Country</p>
+    </section>
+
+    <section id="social-media">
+      <h3>Connect With Us</h3>
+      <ul>
+        <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+        <li>
+          <a href="https://www.instagram.com" target="_blank">Instagram</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="subscribe">
+      <h3>Subscribe to Our Newsletter</h3>
+      <form action="...." method="post">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        /><button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </footer>
+  <!-- End Footer -->
+</html>
