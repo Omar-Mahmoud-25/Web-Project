@@ -1,57 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Web Project</title>
-    <link rel="stylesheet" href="../CSS/Style.css" />
-    <link rel="stylesheet" href="../CSS/nav.css" />
-    <link rel="stylesheet" href="../CSS/footer.css" />
-  </head>
-  <body class="blur">
-    <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
-    <header id="nav"></header>
-    <div class="main form">
-      <form id="loginForm" style="text-align: center" method="post" action="index.html">
+{% extends "base.html" %} {% load static %} {% block page %}
+<form
+  id="loginForm"
+  style="text-align: center"
+  method="post"
+  action="index.html"
+>
+  <label for="username">Username</label>
+  <br /><br />
+  <input
+    type="text"
+    name="username"
+    placeholder="UserName"
+    id="username"
+    required
+  />
+  <br /><br /><br />
+  <label for="password">Password</label>
+  <br /><br />
+  <input
+    id="password"
+    type="password"
+    placeholder="Password"
+    name="password"
+    required
+    minlength="8"
+    maxlength="16"
+  />
+  <button type="button" id="togglePassword" class="showPassword">👀</button>
+  <br />
+  <a href="" class="account">forget password?</a>
+  <br /><br />
+  <input
+    id="loginButton"
+    type="submit"
+    style="font-size: medium"
+    class="button"
+    value="login"
+  />
+  <br /><br /><br />
+  <p style="text-align: center">
+    <a href="signUp.html" class="account"> You don't have an account? </a>
+  </p>
+</form>
 
-        <label for="username">Username</label>
-        <br /><br />
-        <input
-          type="text"
-          name="username"
-          placeholder="UserName"
-          id="username"
-          required
-        />
-        <br /><br /><br />
-        <label for="password">Password</label>
-        <br /><br />
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          name="password"
-          required
-          minlength=8 
-          maxlength=16
-        />
-        <button type="button" id="togglePassword" class="showPassword">👀</button>
-        <br>
-        <a href="" class="account">forget password?</a>
-        <br /><br />
-        <input
-          id="loginButton"
-          type="submit"
-          style="font-size: medium"
-          class="button"
-          value="login"
-        >
-        <br /><br /><br />
-          <p style="text-align: center">
-          <a href="signUp.html" class="account"> You don't have an account? </a>
-         </p>
-      </form>
-    </div>
-    <script src="../JS/login.js"></script>
-  </body>
-  <footer id="footer"></footer>
-  <script src="../JS/snippet.js"></script>
-</html>
+{% endblock page %}

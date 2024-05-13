@@ -1,66 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Online Library</title>
-    <link rel="stylesheet" href="../CSS/nav.css" />
-    <link rel="stylesheet" href="../CSS/Style.css" />
-    <link rel="stylesheet" href="../CSS/footer.css" />
-  </head>
+{% extends "base.html" %}
+{% load static %}
 
-  <body>
-    <!--Header-->
-    <header id="nav"></header>
- 
-    <!--Main-->
-    <section class="main afterNav">
-      <h1 style="text-align: center">Welcome to the Online Library</h1>
-      <p id="index-p" style="text-align: center">
-        Find your favorite books and start reading!
-      </p>
-      <nav style="text-align: center">
-        <!-- <button onclick="window.location.href='index.html'" class="index-button">
+{% block page %}
+<h1 style="text-align: center">Welcome to the Online Library</h1>
+<p id="index-p" style="text-align: center">
+  Find your favorite books and start reading!
+</p>
+<nav style="text-align: center">
+  <!-- <button onclick="window.location.href='index.html'" class="index-button">
           Home
         </button> -->
-      </nav>
-      <section id="admin-home">
-        <section class="borrowed">
-            <h2 style="text-align: center;">Suggestions</h2> <br>
-            <div class="book-container">
-                <!-- Book items will be dynamically added here -->
-            </div>
-            <div class="pagination">
-                <button id="prevBtn" onclick="prevPage()">&lt;</button>
-                <button id="nextBtn" onclick="nextPage()"> &gt;</button>
-            </div>
-            <br><br>
-            <div style="text-align: center;">
-              <!-- <button class="admin" id="add" onclick="window.location.href='AddBook.html'"
+</nav>
+<section id="admin-home">
+  <section class="borrowed">
+    <h2 style="text-align: center">Suggestions</h2>
+    <br />
+    <div class="book-container">
+      <!-- Book items will be dynamically added here -->
+    </div>
+    <div class="pagination">
+      <button id="prevBtn" onclick="prevPage()">&lt;</button>
+      <button id="nextBtn" onclick="nextPage()">&gt;</button>
+    </div>
+    <br /><br />
+    <div style="text-align: center">
+      <!-- <button class="admin" id="add" onclick="window.location.href='AddBook.html'"
               >Add Book</button> -->
-            </div>
-            
-        </section>
-      </section>
-      <!-- About Us -->
-      <section id="about" style="text-align: center">
-        <h2>About Us:</h2>
-        <br />
-        <p>Welcome to Online Library!</p>
-        <p>
-          We are dedicated to providing you with a vast collection of books for
-          your reading pleasure.
-        </p>
-        <p>
-          Our mission is to make reading accessible and enjoyable for everyone.
-        </p>
-      </section>
-      <!-- End About Us -->
-    </section>
-  </body>
-  <footer id="footer"></footer>
-  <script src="../JS/snippet.js"></script>
-  <script src="../JS/borrowed.js"></script>
-  <!-- <script src="../JS/hidden.js"></script> -->
-  <script src="../JS/storeBooks.js"></script>
-  <script src="../JS/borrow.js"></script>
-</html>
+    </div>
+  </section>
+</section>
+<!-- About Us -->
+<section id="about" style="text-align: center">
+  <h2>About Us:</h2>
+  <br />
+  <p>Welcome to Online Library!</p>
+  <p>
+    We are dedicated to providing you with a vast collection of books for your
+    reading pleasure.
+  </p>
+  <p>Our mission is to make reading accessible and enjoyable for everyone.</p>
+</section>
+{% endblock page %}

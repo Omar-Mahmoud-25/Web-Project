@@ -1,19 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Online Library</title>
-    <link rel="stylesheet" href="../CSS/nav.css" />
-    <link rel="stylesheet" href="../CSS/Style.css" />
-    <link rel="stylesheet" href="../CSS/footer.css" />
+    <link rel="stylesheet" href="{% static "CSS/footer.css" %}" />
+    <link rel="stylesheet" href="{% static "CSS/nav.css" %}" />
+    <link rel="stylesheet" href="{% static "CSS/Style.css" %}" />
   </head>
 
   <body>
     <!-- Header -->
     <header id="nav">
-      <a id="logo" href="index.html">
+      <a id="logo" href="{% url "index" %}">
         <img
-          src="../images/logo.png"
+          src="{% static "images/logo.png" %}"
           alt="Book Store Logo"
           style="height: 43px; width: 50px; margin-left: 20px"
         />
@@ -21,17 +22,17 @@
       <nav class="navigation">
         <input type="text" name="Search" placeholder="Search" />
 
-        <a class="nav-link" href="index.html">Home</a>
+        <a href="{% url "index" %}" class="nav-link">Home</a>
 
-        <a href="AddBook.html" id="addBook" class="nav-link">Add Book</a>
+        <a href="{% url "add" %}" id="addBook" class="nav-link">Add Book</a>
 
-        <a class="nav-link" href="categories.html">Available Books</a>
+        <a href="{% url "available" %}" class="nav-link">Available Books</a>
 
-        <a href="login.html" id="loginButton" class="nav-link">Login</a>
+        <a href="{% url "login" %}" id="loginButton" class="nav-link">Login</a>
 
-        <a href="signup.html" id="signupButton" class="nav-link">Sign Up</a>
+        <a href="{% url "signup" %}" id="signupButton" class="nav-link">Sign Up</a>
 
-        <a class="nav-link index-button" id="logOut" href="index.html">
+        <a href="{% url "index" %}" class="nav-link index-button" id="logOut">
           Log Out
         </a>
       </nav>
@@ -41,6 +42,7 @@
     <!--Main-->
     <section class="main afterNav">
       <!-- Add a Django block for displaying the body of any page -->
+      {% block page %}{% endblock page %}
     </section>
     <!-- End Main -->
   </body>
@@ -50,7 +52,7 @@
     <section id="website">
       <div id="logo-copy">
         <img
-          src="../images/logo.png"
+          src="{% static "images/logo.png" %}"
           alt="Logo"
           style="color: white; width: 30px"
         />

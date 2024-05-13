@@ -1,50 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Web Project</title>
-        <link rel="stylesheet" href="../CSS/nav.css" />
-        <link rel="stylesheet" href="../CSS/Style.css">
-        <link rel="stylesheet" href="../CSS/footer.css">
-    </head>
-   
+{% extends "base.html" %} {% load static %} {% block page %}
 
-    <body class="blur">
-        <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
-        <header id="nav"></header>
-        <div class="main">
-        <h1 style="text-align: center;" class="afterNav">Edit Book details</h1>
-        <br>
-        <form id="editForm" method="post" action="index.html">
-            <div class="l">
-                <label style="font-size: large;" for="name">Book Name</label>
-                <br>
-                <input type="text" id="name" placeholder="Title">
-                <br><br><br>
-                <label style="font-size: large;" for="author">Author</label>
-                <br>
-                <input type="text" id="author" placeholder="Author">
-                <br><br><br>
-                <label style="font-size: large;" for="description">Description</label>
-                <br><br>
-                <textarea name="" id="description" cols="20" rows="3"></textarea><br>
-            </div> <br><br><br>            
-            <div class="r">
-            <label style="font-size:30px;">Category?</label>
-                <br><br>
-                <label for="Comics">Comics </label>
-                <input type="checkbox" id="Comics"> <br>
-                <label for="Programming">Programming </label>
-                <input type="checkbox" id="Programming"><br>
-                <label for="Biology">Biology </label>
-                <input type="checkbox" id="Biology"><br>
-                
-            </div>
-            <input type="submit" value="Save" class="index-button" style="text-align: center;">
-        </form>
-        </div>
-    </body>
-    <footer id="footer"></footer>
-    <script src="../JS/snippet.js"></script>
-    <script src="../JS/editBook.js"></script>
-
-</html>
+<h1 style="text-align: center" class="afterNav">Edit Book details</h1>
+<br />
+<form id="editForm" method="post" action="index.html">
+  <div class="l">
+    <label style="font-size: large" for="name">Book Name</label>
+    <br />
+    <input type="text" id="name" placeholder="Title" />
+    <br /><br /><br />
+    <label style="font-size: large" for="author">Author</label>
+    <br />
+    <input type="text" id="author" placeholder="Author" />
+    <br /><br /><br />
+    <label style="font-size: large" for="description">Description</label>
+    <br /><br />
+    <textarea name="" id="description" cols="20" rows="3"></textarea><br />
+  </div>
+  <br /><br /><br />
+  <div class="r">
+    <label style="font-size: 30px">Category?</label>
+    <br /><br />
+    <label for="Comics">Comics </label>
+    <input type="checkbox" id="Comics" /> <br />
+    <label for="Programming">Programming </label>
+    <input type="checkbox" id="Programming" /><br />
+    <label for="Biology">Biology </label>
+    <input type="checkbox" id="Biology" /><br />
+  </div>
+  <input
+    type="submit"
+    value="Save"
+    class="index-button"
+    style="text-align: center"
+  />
+</form>
+{% endblock page %}

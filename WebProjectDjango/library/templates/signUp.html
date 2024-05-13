@@ -1,89 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="../CSS/nav.css" />
-    <link rel="stylesheet" href="../CSS/Style.css" />
-    <link rel="stylesheet" href="../CSS/footer.css" />
-  </head>
-  <body class="blur">
-    <!-- <embed type="text/html" src="nav-bar.html" height="70px" /> -->
-    <header id="nav"></header>
-    <div class="main form">
-      <form
-        id="signUpForm"
-        method="post"
-        style="text-align: center"
-        action="login.html"
-      >
-        <label>Username</label>
-        <br />
-        <input
-          type="text"
-          name="UserName"
-          placeholder="UserName"
-          id="username"
-          required
-        />
-        <br>
-        <span id="usernameMessage"></span>
-        <br /><br /><br />
-        <label for="Email">Email </label>
-        <br />
-        <input
-          type="email"
-          name="Email"
-          placeholder="Email"
-          id="email"
-          required
-        />
-        <br>
-        <span id="emailMessage"></span>
-        <br /><br /><br />
-        <label for="password">Password</label>
-        <br />
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          name="password"
-          required
-          minlength=8 
-          maxlength=16
-        />
-        <button type="button" id="togglePassword" class="showPassword">👀</button>
-        <br>
-        <span id="passwordMessage"></span>
-        <br /><br />
-        <label for="confirm">Confirm Password</label>
-        <br />
-        <input
-          id="confirm"
-          type="password"
-          name="confirm"
-          placeholder="Confirm Password"
-          required
-        />
-        <br />
-        <span id="confirmMessage"></span>
-        <br />
-        <label for="admin">Admin? </label>
-        <input name="admin" id="admin" type="checkbox" />
-        <br /><br />
-        <input
-          type="submit"
-          value="Sign up"
-          id="signUp"
-          style="font-size: medium"
-          class="button"
-        />
-        <br /><br /><br /><br />  
-        <p style="text-align: center">
-          <a href="login.html" class="account"> Already have an account? </a>
-        </p>
-      </form>
-    </div>
-    <script src="../JS/signUp.js"></script>
-  </body>
-  <footer id="footer"></footer>
-  <script src="../JS/snippet.js"></script>
-</html>
+{% extends "base.html" %} {% load static %} {% block page %}
+
+<form
+  id="signUpForm"
+  method="post"
+  style="text-align: center"
+  action="login.html"
+>
+  <label>Username</label>
+  <br />
+  <input
+    type="text"
+    name="UserName"
+    placeholder="UserName"
+    id="username"
+    required
+  />
+  <br />
+  <span id="usernameMessage"></span>
+  <br /><br /><br />
+  <label for="Email">Email </label>
+  <br />
+  <input type="email" name="Email" placeholder="Email" id="email" required />
+  <br />
+  <span id="emailMessage"></span>
+  <br /><br /><br />
+  <label for="password">Password</label>
+  <br />
+  <input
+    id="password"
+    type="password"
+    placeholder="Password"
+    name="password"
+    required
+    minlength="8"
+    maxlength="16"
+  />
+  <button type="button" id="togglePassword" class="showPassword">👀</button>
+  <br />
+  <span id="passwordMessage"></span>
+  <br /><br />
+  <label for="confirm">Confirm Password</label>
+  <br />
+  <input
+    id="confirm"
+    type="password"
+    name="confirm"
+    placeholder="Confirm Password"
+    required
+  />
+  <br />
+  <span id="confirmMessage"></span>
+  <br />
+  <label for="admin">Admin? </label>
+  <input name="admin" id="admin" type="checkbox" />
+  <br /><br />
+  <input
+    type="submit"
+    value="Sign up"
+    id="signUp"
+    style="font-size: medium"
+    class="button"
+  />
+  <br /><br /><br /><br />
+  <p style="text-align: center">
+    <a href="login.html" class="account"> Already have an account? </a>
+  </p>
+</form>
+{% endblock page %}

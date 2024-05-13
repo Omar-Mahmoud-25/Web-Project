@@ -1,54 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/nav.css">
-    <link rel="stylesheet" href="../CSS/Style.css" />
-    <link rel="stylesheet" href="../CSS/footer.css">
-    <title>Book Store</title>
-</head>
+{% block page %}
+<h2>
+  <div class="content">
+    <h1>Welcome to <span>Book Store</span></h1>
+    <p>Here you can find your lovely Book</p>
+    <br />
+    <!-- <a href="#" class="btn btn-primary">Choose your book</a> -->
+    <p>Choose your book</p>
+  </div>
+</h2>
+<!-- Header section end -->
 
-<body>
-    <!-- Header section start -->
-    <header id="nav"></header>
-    <div class="main">
-        <h2>
-            <div class="content">
-                <h1>Welcome to <span>Book Store</span></h1>
-                <p>Here you can find your lovely Book</p>
-                <br>
-                <!-- <a href="#" class="btn btn-primary">Choose your book</a> -->
-                <p>Choose your book</p>
-            </div>
-        </h2>
-        <!-- Header section end -->
+<ul>
+  <li><a class="category" href="#comics">Comics</a></li>
+  <li><a class="category" href="#programming">Programming</a></li>
+  <li><a class="category" href="#biology">Biology</a></li>
+</ul>
+<br />
+<section id="comics">
+  <h2 style="text-align: center">Comics</h2>
+</section>
+<br />
+<section id="programming">
+  <h2 style="text-align: center">Programming</h2>
+</section>
+<br />
+<section id="biology">
+  <h2 style="text-align: center">Biology</h2>
+</section>
+<br />
 
-        <ul>
-            <li><a class="category" href="#comics">Comics</a></li>
-            <li><a class="category" href="#programming">Programming</a></li>
-            <li><a class="category" href="#biology">Biology</a></li>
-        </ul>
-        <br>
-        <section id="comics">
-            <h2 style="text-align: center;">Comics</h2>
-        </section>
-        <br>
-        <section id="programming">
-            <h2 style="text-align: center;">Programming</h2>
-        </section>
-        <br>
-        <section id="biology">
-            <h2 style="text-align: center;" >Biology</h2>
-        </section>
-        <br>
-        
-        <br>
-    </div>
-    <footer id="footer"></footer>
-    <script src="../JS/snippet.js"></script>
-    <script src="../JS/sections.js"></script>
-</body>
-
-</html>
+<br />
+{% endblock page %}
