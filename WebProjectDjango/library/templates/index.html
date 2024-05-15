@@ -16,7 +16,17 @@
     <h2 style="text-align: center">Suggestions</h2>
     <br />
     <div class="book-container">
-      <!-- Book items will be dynamically added here -->
+        {% for book in suggestions %}
+      <div class="book-item">
+        <!-- image -->
+        <img src="{{ book.bookImage.url }}" alt="{{ book.name }}">
+        <!-- Title -->
+        <p>{{ book.name }}</p>
+        <!-- Details button: add reference to the details of each book -->
+        <button style="padding: 8px 16px; margin-top: 8px; background-color: rgb(220,213,170);
+                color: rgb(0,0,0); border: none; border-radius: 4px; cursor: pointer;">Details</button>
+      </div>
+      {% endfor %}
     </div>
     <div class="pagination">
       <button id="prevBtn" onclick="prevPage()">&lt;</button>
