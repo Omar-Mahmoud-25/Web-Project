@@ -2,44 +2,38 @@
 <br />
 <form
   id="addForm"
-  method="post"
-  action="admin-homepage.html"
+  method="POST"
+  action="{% url 'add' %}"
   style="height: fit-content; text-align: center"
+  enctype="multipart/form-data"
 >
+    {% csrf_token %}
   <h1 style="text-align: center" class="afterNav">Add a new Book</h1>
+
   <!-- <div class="formBackGround"> -->
   <!-- <div> -->
-  <label style="font-size: large" for="image">Book Name</label>
-  <br />
-  <input type="text" name="image" id="image" placeholder="Image URL" />
-  <br /><br /><br />
   <label style="font-size: large" for="name">Book Name</label>
   <br />
-  <input type="text" id="name" placeholder="Title" />
+    {{ form.name }}
   <br /><br /><br />
   <label style="font-size: large" for="author">Author</label>
   <br />
-  <input type="text" id="author" placeholder="Author" />
+    {{ form.author }}
   <br /><br /><br />
   <label style="font-size: large" for="description">Description</label>
-  <br /><br />
-  <textarea name="" id="description" cols="20" rows="3"></textarea><br />
+  <br />
+    {{ form.description }}
+  <br /><br /><br />
   <!-- </div> -->
   <!-- <div> -->
   <label style="font-size: 30px">Category?</label>
   <br /><br />
-  <input type="checkbox" id="Comics" />
-  <label for="Comics">Comics </label>
-  <br />
-  <input type="checkbox" id="Biology" />
-  <label for="Biology">Biology </label>
-  <br />
-  <input type="checkbox" id="Programming" />
-  <label for="Programming">Programming </label>
+    {{ form.category }}
+{#  <!-- </div> -->#}
+  <!-- </div> -->
   <br /><br />
-  <!-- </div> -->
-  <!-- </div> -->
-  <br />
+    <label style="font-size: large" for="image">Image</label>
+    {{ form.bookImage }}
   <input type="submit" value="Add" class="index-button" />
 </form>
 {% endblock page %}
