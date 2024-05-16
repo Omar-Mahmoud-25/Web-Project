@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static "CSS/footer.css" %}" />
     <link rel="stylesheet" href="{% static "CSS/nav.css" %}" />
     <link rel="stylesheet" href="{% static "CSS/Style.css" %}" />
+    
   </head>
 
   <body>
@@ -23,7 +24,7 @@
         {% comment %} <div> {% endcomment %}
           {% comment %} {% csrf_token %} {% endcomment %}
           <input type="text" name="Search" placeholder="Search" />
-          <div id='resultBox' class='resultCard'>test</div>
+          {% comment %} <div id='resultBox' class='resultCard'>test</div> {% endcomment %}
         {% comment %} </div> {% endcomment %}
         <a href="{% url "index" %}" class="nav-link">Home</a>
 
@@ -94,5 +95,9 @@
       </form>
     </section>
   </footer>
+  {% block script %}
+    <script src="{% static 'JS/search.js' %}"></script>
+    {% comment %} <script src="{% static 'JS/hidden.js' %}"></script> {% endcomment %}
+  {% endblock script %}
   <!-- End Footer -->
 </html>
