@@ -4,10 +4,10 @@ from .models import *
 from .forms import *
 
 BookDictionary = {
-        'books': Book.objects.all(),
-        'suggestions': Book.objects.all()[:5],
-        'form': BookForm()
-    }
+    'books': Book.objects.all(),
+    'suggestions': Book.objects.all()[:5],
+    'form': BookForm()
+}
 
 def index(request):
     return render(request, "index.html", BookDictionary)
