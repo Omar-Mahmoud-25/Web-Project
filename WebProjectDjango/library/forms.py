@@ -6,14 +6,14 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = [
             'name',
-            'author',
+            'author_name',
             'category',
             'bookImage',
             'description'
         ]
         widgets = {
             'name': forms.TextInput(attrs={'placeholder' : 'Title'}),
-            'author': forms.TextInput(attrs={'placeholder':'Author'}),
+            'author_name': forms.TextInput(attrs={'placeholder' : 'Author'}),
             'category': forms.Select(attrs={'class':'form-control'}),
             'bookImage': forms.FileInput(attrs={'style':'padding-left: 140px'}),
             'description': forms.Textarea(attrs={'placeholder':'description'})
