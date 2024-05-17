@@ -21,3 +21,11 @@ class Book(models.Model):
     available = models.BooleanField(default=True)
     def __str__(self):
         return self.name
+    
+class User(models.Model):
+    username = models.CharField(max_length=20)
+    password = models.CharField(max_length=16)
+    email = models.EmailField(max_length=30)
+    isAdmin = models.BooleanField(default=False)
+    def __str__(self):
+        return self.username

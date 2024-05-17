@@ -134,3 +134,22 @@ form.addEventListener("submit", function (event) {
   window.location.href = "login.html";
   // You can also send data to a server using techniques like Fetch API or Axios
 });
+
+$(document).ready(function() {
+  $('#username_field').keyup(function() {
+    var username = $(this).val();
+    $.ajax({
+      url: '/validate_username/',  // Assuming the same URL pattern
+      type: 'POST',  // Change to POST method
+      data: {'username': username},
+      dataType: 'json',
+      success: function(data) {
+        if (data.exists) {
+          $('#username_error').text('Username already exists!').show();
+        } else {
+          $('#username_error').text('').hide();
+        }
+      }
+    });
+  });
+});
