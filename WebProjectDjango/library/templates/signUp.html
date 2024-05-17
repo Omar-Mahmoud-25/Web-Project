@@ -8,6 +8,7 @@
 >
   <label>Username</label>
   <br />
+  {% csrf_token %}
   <input
     type="text"
     name="UserName"
@@ -66,4 +67,8 @@
     <a href="login.html" class="account"> Already have an account? </a>
   </p>
 </form>
+{% block script %}
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="{% static 'JS/signUp.min.js' %}"></script>
+{% endblock script %}
 {% endblock page %}

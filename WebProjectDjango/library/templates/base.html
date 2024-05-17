@@ -95,9 +95,9 @@
       </form>
     </section>
   </footer>
-  {% block script %}
+  {% comment %} {% block script %}
     <script src="{% static 'JS/search.js' %}"></script>
-    {% comment %} <script src="{% static 'JS/hidden.js' %}"></script> {% endcomment %}
-  {% endblock script %}
+    <script src="{% static 'JS/hidden.js' %}"></script>
+  {% endblock script %} {% endcomment %}
   <!-- End Footer -->
 </html>

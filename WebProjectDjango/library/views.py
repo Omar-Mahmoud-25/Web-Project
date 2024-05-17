@@ -43,4 +43,8 @@ def signup(request):
 
 def usernameValidation(request):
     username = request.POST.get('username')
-    return JsonResponse({'exist':User.objects.filter(username==username).exists()})
+    exists = User.objects.filter(username==username).exists()
+    if (exists):
+        return JsonResponse({'exists':True})
+    else:
+        return JsonResponse({'exists':False})
