@@ -2,6 +2,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import *
 from .forms import *
+from django.http import JsonResponse
+import json
 
 BookDictionary = {
     'books': Book.objects.all(),
@@ -38,3 +40,7 @@ def login(request):
 
 def signup(request):
     return render(request, "signUp.html")
+
+def usernameValidation(self,request):
+    username = request.POST.get('username')
+    return JsonResponse({'exist':User.objects.filter(username==username).exists()})

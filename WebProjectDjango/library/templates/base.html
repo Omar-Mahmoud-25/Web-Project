@@ -23,7 +23,7 @@
       <nav class="navigation">
         {% comment %} <div> {% endcomment %}
           {% comment %} {% csrf_token %} {% endcomment %}
-          <input type="text" name="Search" placeholder="Search" />
+          <input type="text" name="Search" id='searchBar' placeholder="Search" />
           {% comment %} <div id='resultBox' class='resultCard'>test</div> {% endcomment %}
         {% comment %} </div> {% endcomment %}
         <a href="{% url "index" %}" class="nav-link">Home</a>
