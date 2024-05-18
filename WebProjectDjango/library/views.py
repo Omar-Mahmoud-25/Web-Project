@@ -84,18 +84,22 @@ from .models import Book
 def get_books_by_category(request):
     category_name = request.GET.get('category')
     page_number = int(request.GET.get('page'))
-
-    # Assuming you have a pagination logic in your application
-    # You can modify this part based on your pagination implementation
-    per_page = 10
-    start_index = (page_number - 1) * per_page
-    end_index = start_index + per_page
-
-    # Fetch books for the specified category
-    books = Book.objects.filter(category__name=category_name, available=True)[start_index:end_index]
-
-    # Serialize the queryset to JSON
-    books_data = [{'id': book.id, 'name': book.name, 'author': book.author_name, 'bookImage': book.bookImage.url if book.bookImage else ''} for book in books]
-
-    return JsonResponse({'books': books_data})
+    books = Book.objects.filter(category__name__iexact=category_name, available=True)
+    
+    paginator = Paginator(books, 5)  # Adjust the number of books per page if needed
+    page_obj = paginator.get_page(page_number)
+    
+    books_data = [
+        {
+            'id': book.id,
+            'name': book.name,
+            'bookImage': book.bookImage.url if book.bookImage else ''
+        } for book in page_obj.object_list
+    ]
+    
+    return JsonResponse({
+        'books': books_data,
+        'has_next': page_obj.has_next(),
+        'has_previous': page_obj.has_previous(),
+    })
 
