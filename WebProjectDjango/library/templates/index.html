@@ -7,36 +7,19 @@
   Find your favorite books and start reading!
 </p>
 <nav style="text-align: center">
-  <!-- <button onclick="window.location.href='index.html'" class="index-button">
-          Home
-        </button> -->
 </nav>
 <section id="admin-home">
   <section class="borrowed">
     <h2 style="text-align: center">Suggestions</h2>
     <br />
-    <div class="book-container" style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 10px;">
-        {% for book in suggestions %}
-      <div class="book-item">
-        <!-- image -->
-        <img src="{{ book.bookImage.url }}" alt="{{ book.name }}">
-        <!-- Title -->
-        <p>{{ book.name }}</p>
-        <!-- Details button: add reference to the details of each book -->
-        <button style="padding: 8px 16px; margin-top: 8px; background-color: rgb(220,213,170);
-                color: rgb(0,0,0); border: none; border-radius: 4px; cursor: pointer;">Details</button>
-      </div>
-      {% endfor %}
+    <div class="book-container" id="book-container" style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 10px;">
+      <!-- Books will be loaded here -->
     </div>
-    <div class="pagination">
+    <div class="pagination" style="text-align: center; margin-top: 10px;">
       <button id="prevBtn" onclick="prevPage()">&lt;</button>
       <button id="nextBtn" onclick="nextPage()">&gt;</button>
     </div>
     <br /><br />
-    <div style="text-align: center">
-      <!-- <button class="admin" id="add" onclick="window.location.href='AddBook.html'"
-              >Add Book</button> -->
-    </div>
   </section>
 </section>
 <!-- About Us -->
@@ -50,4 +33,81 @@
   </p>
   <p>Our mission is to make reading accessible and enjoyable for everyone.</p>
 </section>
+
+<style>
+.book-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  height: 315px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.book-item img {
+  width: 130px;
+  height: 180px;
+}
+
+.book-item p {
+  text-align: center;
+  margin: 10px 0;
+  flex-grow: 1;
+}
+
+.book-item button {
+  padding: 8px 16px;
+  background-color: rgb(220,213,170);
+  color: rgb(0,0,0);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+let currentPage = 1;
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadBooks(currentPage);
+});
+
+function loadBooks(page) {
+  fetch(`/paginated_books/?page=${page}`)
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('book-container');
+      container.innerHTML = '';
+      data.books.forEach(book => {
+        const bookItem = document.createElement('div');
+        bookItem.className = 'book-item';
+        bookItem.innerHTML = `
+          <img src="${book.bookImage}" alt="${book.name}">
+          <p>${book.name}</p>
+          <button onclick="window.location.href='/book/${book.id}/'">Details</button>
+        `;
+        container.appendChild(bookItem);
+      });
+
+      document.getElementById('prevBtn').disabled = !data.has_previous;
+      document.getElementById('nextBtn').disabled = !data.has_next;
+    })
+    .catch(error => console.error('Error loading books:', error));
+}
+
+function nextPage() {
+  currentPage++;
+  loadBooks(currentPage);
+}
+
+function prevPage() {
+  currentPage--;
+  loadBooks(currentPage);
+}
+</script>
 {% endblock page %}
