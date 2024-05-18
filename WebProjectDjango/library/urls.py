@@ -11,4 +11,6 @@ urlpatterns = [
     path("validate-username/",
         csrf_exempt(views.usernameValidation), 
         name="usernameValidation"),
+    path('paginated_books/', views.paginated_books, name='paginated_books'),
+    path('book/<int:book_id>/', views.book_details, name='book_details'),
 ]
