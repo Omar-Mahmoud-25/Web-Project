@@ -4,6 +4,9 @@ from .models import *
 from .forms import *
 from django.http import JsonResponse
 import json
+from django.core.paginator import Paginator
+
+
 
 BookDictionary = {
     'books': Book.objects.all(),
@@ -48,3 +51,27 @@ def usernameValidation(request):
         return JsonResponse({'exists':True})
     else:
         return JsonResponse({'exists':False})
+    
+def paginated_books(request):
+    page_number = request.GET.get('page', 1)
+    books = Book.objects.all()
+    paginator = Paginator(books, 5)  # 5 books per page
+    page_obj = paginator.get_page(page_number)
+    
+    books_list = [
+        {
+            'id': book.id,
+            'name': book.name,
+            'bookImage': book.bookImage.url if book.bookImage else ''
+        }
+        for book in page_obj.object_list
+    ]
+    return JsonResponse({
+        'books': books_list,
+        'has_next': page_obj.has_next(),
+        'has_previous': page_obj.has_previous(),
+    })
+
+def book_details(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return render(request, 'bookDetails.html', {'book': book})
