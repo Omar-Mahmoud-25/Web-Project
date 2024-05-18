@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block page %}
+<!-- {% extends "base.html" %} {% load static %} {% block page %}
 <br />
 <div class="imgAndButton">
   <img
@@ -53,4 +53,56 @@
     Temporibus, unde.
   </div>
 </div>
+{% endblock page %}
+ -->
+
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block page %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-FhBCIPKjkVpMPbJPW7n9rqV4Ww7f3yOyr6GjzVtYfvFr/3pbgFc2OQu3T+4ZjOrw" crossorigin="anonymous">
+    <style>
+        .book-title,
+        .borrow-button,
+        .action-buttons button {
+            font-family: 'Lora', serif;
+        }
+        .borrow-button,
+        .action-buttons button {
+            padding: 10px 20px;
+            background-color: rgb(220,213,170);
+            color: rgb(0,0,0);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .borrow-button:hover,
+        .action-buttons button:hover {
+            background-color: rgb(200,193,150);
+            color: rgb(255,255,255);
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center; margin-top: 20px;">
+    <h1 class="book-title">{{ book.name }}</h1>
+    <img src="{{ book.bookImage.url }}" alt="{{ book.name }}" 
+         style="width: 200px; height: 300px; border: 5px solid rgb(220, 213, 170); border-radius: 8px;">
+    <p><strong>Author:</strong> {{ book.author_name }}</p>
+    <p>{{ book.description }}</p>
+    <button class="borrow-button">Borrow</button>
+    <br><br>
+    <div class="action-buttons">
+        <button><i class="fas fa-eraser"></i> Erase</button>
+        <button><i class="fas fa-trash"></i> Delete</button>
+    </div>
+</div>
+</body>
+</html>
 {% endblock page %}
