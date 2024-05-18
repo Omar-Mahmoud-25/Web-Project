@@ -8,14 +8,14 @@ from django.core.paginator import Paginator
 
 
 
-BookDictionary = {
-    'books': Book.objects.all(),
-    'suggestions': Book.objects.all()[:5],
-    'form': BookForm()
-}
+# BookDictionary = {
+#     'books': Book.objects.all(),
+#     'suggestions': Book.objects.all()[:5],
+#     'form': BookForm()
+# }
 
 def index(request):
-    return render(request, "index.html", BookDictionary)
+    return render(request, "index.html", {'books':Book.objects.all()})
 
 
 def addBook(request):
@@ -30,7 +30,7 @@ def addBook(request):
         else:
             print(addedBook.errors)
 
-    return render(request, "AddBook.html", BookDictionary)
+    return render(request, "AddBook.html", {'form':BookForm()})
 
 
 def available(request):
@@ -75,3 +75,27 @@ def paginated_books(request):
 def book_details(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     return render(request, 'bookDetails.html', {'book': book})
+
+
+from django.core.paginator import Paginator
+from django.http import JsonResponse
+from .models import Book
+
+def get_books_by_category(request):
+    category_name = request.GET.get('category')
+    page_number = int(request.GET.get('page'))
+
+    # Assuming you have a pagination logic in your application
+    # You can modify this part based on your pagination implementation
+    per_page = 10
+    start_index = (page_number - 1) * per_page
+    end_index = start_index + per_page
+
+    # Fetch books for the specified category
+    books = Book.objects.filter(category__name=category_name, available=True)[start_index:end_index]
+
+    # Serialize the queryset to JSON
+    books_data = [{'id': book.id, 'name': book.name, 'author': book.author_name, 'bookImage': book.bookImage.url if book.bookImage else ''} for book in books]
+
+    return JsonResponse({'books': books_data})
+
