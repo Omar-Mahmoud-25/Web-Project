@@ -2,35 +2,149 @@
 {% load static %}
 
 {% block page %}
-<h2>
-  <div class="content">
-    <h1>Welcome to <span>Book Store</span></h1>
-    <p>Here you can find your lovely Book</p>
-    <br />
-    <!-- <a href="#" class="btn btn-primary">Choose your book</a> -->
-    <p>Choose your book</p>
-  </div>
-</h2>
-<!-- Header section end -->
+<div class="content">
+  <h1>Welcome to <span>Book Store</span></h1>
+  <p>Here you can find your lovely Book</p>
+  <br />
+  <p>Choose your book</p>
+</div>
 
 <ul>
   <li><a class="category" href="#comics">Comics</a></li>
   <li><a class="category" href="#programming">Programming</a></li>
-  <li><a class="category" href="#biology">Biology</a></li>
+  <li><a class="category" href="#science">Science</a></li>
 </ul>
 <br />
 <section id="comics">
-  <h2 style="text-align: center">Comics</h2>
+  <h2 style="text-align: center;">Comics</h2>
+  <div class="book-container" id="comics-container"></div>
+  <div class="pagination" style="text-align: center;">
+    <button class="prevBtn" onclick="changePage('comics', -1)">&lt;</button>
+    <button class="nextBtn" onclick="changePage('comics', 1)">&gt;</button>
+  </div>
 </section>
-<br />
+<br>
 <section id="programming">
-  <h2 style="text-align: center">Programming</h2>
+  <h2 style="text-align: center;">Programming</h2>
+  <div class="book-container" id="programming-container"></div>
+  <div class="pagination" style="text-align: center;">
+    <button class="prevBtn" onclick="changePage('programming', -1)">&lt;</button>
+    <button class="nextBtn" onclick="changePage('programming', 1)">&gt;</button>
+  </div>
 </section>
-<br />
-<section id="biology">
-  <h2 style="text-align: center">Biology</h2>
+<br>
+<section id="science">
+  <h2 style="text-align: center;">Science</h2>
+  <div class="book-container" id="science-container"></div>
+  <div class="pagination" style="text-align: center;">
+    <button class="prevBtn" onclick="changePage('science', -1)">&lt;</button>
+    <button class="nextBtn" onclick="changePage('science', 1)">&gt;</button>
+  </div>
 </section>
 <br />
 
-<br />
+<style>
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.book-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  height: 420px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.book-item img {
+  width: 130px;
+  height: 180px;
+}
+
+.book-item p {
+  text-align: center;
+  margin: 10px 0;
+  flex-grow: 1;
+}
+
+.book-item button {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 16px;
+  background-color: rgb(220,213,170);
+  color: rgb(0,0,0);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    loadBooks('comics', 1);
+    loadBooks('programming', 1);
+    loadBooks('science', 1);
+  });
+
+  let currentPage = {
+    comics: 1,
+    programming: 1,
+    science: 1
+  };
+
+  function loadBooks(category, page) {
+    fetch(`/get-books-by-category/?category=${category}&page=${page}`)
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById(`${category}-container`);
+        container.innerHTML = '';
+
+        data.books.forEach(book => {
+          const bookItem = document.createElement('div');
+          bookItem.className = 'book-item';
+          bookItem.innerHTML = `
+            <img src="${book.bookImage}" alt="${book.name}">
+            <p>${book.name}</p>
+            <button onclick="window.location.href='/book/${book.id}/'">Details</button>
+            <br>
+            <button onclick="editBook(${book.id})">Edit</button>
+            <br>
+            <button onclick="deleteBook(${book.id})">Delete</button>
+          `;
+          container.appendChild(bookItem);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+  function changePage(category, direction) {
+    const newPage = currentPage[category] + direction;
+    if (newPage > 0) {
+      currentPage[category] = newPage;
+      loadBooks(category, newPage);
+    }
+  }
+
+  function editBook(bookId) {
+    window.location.href = `/edit-book/${bookId}/`;
+  }
+
+ 
+</script>
+
 {% endblock page %}
