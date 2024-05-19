@@ -34,6 +34,24 @@ def addBook(request):
     return render(request, "AddBook.html", BookDictionary)
 
 
+def editBook(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    if request.method == "POST":
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = BookForm(instance=book)
+
+    return render(request, "edit.html", {"book": book, 'form': form})
+
+def delete(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    book.delete()
+    return redirect('index')
+
+
 def AdminAvailable(request):
     return render(request, "categories.html")
 
