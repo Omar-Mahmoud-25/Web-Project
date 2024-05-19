@@ -83,6 +83,24 @@ from .models import Book
 
 def get_books_by_category(request):
     category_name = request.GET.get('category')
+    books = Book.objects.filter(category__name__iexact=category_name, available=True)
+    
+    books_data = [
+        {
+            'id': book.id,
+            'name': book.name,
+            'bookImage': book.bookImage.url if book.bookImage else '',
+            'author': book.author_name,
+            'category': book.category.name
+        } for book in books
+    ]
+    
+    return JsonResponse({'books': books_data})
+
+
+
+def cat_books(request):
+    category_name = request.GET.get('category')
     page_number = int(request.GET.get('page'))
     books = Book.objects.filter(category__name__iexact=category_name, available=True)
     
@@ -102,4 +120,5 @@ def get_books_by_category(request):
         'has_next': page_obj.has_next(),
         'has_previous': page_obj.has_previous(),
     })
+
 
