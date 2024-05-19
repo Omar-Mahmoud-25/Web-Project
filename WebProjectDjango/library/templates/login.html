@@ -1,10 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block page %}
-<form
-  id="loginForm"
-  style="text-align: center"
-  method="post"
-  action="index.html"
->
+<form id="loginForm" style="text-align: center" method="post">
+  {% csrf_token %}
+
   <label for="username">Username</label>
   <br /><br />
   <input
@@ -39,7 +36,7 @@
   />
   <br /><br /><br />
   <p style="text-align: center">
-    <a href="signUp.html" class="account"> You don't have an account? </a>
+    <a href="{% url "signup" %}" class="account"> You don't have an account? </a>
   </p>
 </form>
 

@@ -4,7 +4,7 @@
   id="signUpForm"
   method="post"
   style="text-align: center"
-  action="login.html"
+  action="{% url "login" %}"
 >
   <label>Username</label>
   <br />
@@ -64,7 +64,7 @@
   />
   <br /><br /><br /><br />
   <p style="text-align: center">
-    <a href="login.html" class="account"> Already have an account? </a>
+    <a href="{% url "login" %}" class="account"> Already have an account? </a>
   </p>
 </form>
 {% block script %}
