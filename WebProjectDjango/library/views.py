@@ -16,7 +16,7 @@ BookDictionary = {
 
 
 def index(request):
-    return render(request, "index.html", BookDictionary)
+    return render(request, "index.html", {'books':Book.objects.all()})
 
 
 def addBook(request):
@@ -48,9 +48,9 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            user = User.objects.all().filter(username="cd", password="CD123456.")
+            user = User.objects.all().filter(username=username, password=password)
             if user:
-                login(request, user)  # Log user in
+                # login(request, user)  # Log user in
                 return redirect("index")  # Redirect to homepage after login
             else:
                 form.add_error(
@@ -58,11 +58,21 @@ def login_view(request):
                 )  # Add error message
     else:
         form = LoginForm()  # Create empty form for GET requests
-    return render(request, "login.html")
+    return render(request, "login.html", {'form':LoginForm()})
 
 
 def signup(request):
-    return render(request, "signUp.html")
+    if request.method == "POST":
+        userDetails = signupForm(request.POST)
+        if userDetails.is_valid():
+            userDetails.save()
+            return redirect('login')
+            # User.objects.create(username=userDetails.username, password=userDetails.password, email=userDetails.email, isAdmin=userDetails.isAdmin)
+        else:
+            print(userDetails.username)
+            print(userDetails.errors)
+
+    return render(request, "signUp.html", {'Form': signupForm()})
 
 
 def usernameValidation(request):
