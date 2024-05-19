@@ -5,17 +5,19 @@ from .forms import *
 from django.http import JsonResponse
 import json
 from django.core.paginator import Paginator
+from .models import Book
 
 
 
-# BookDictionary = {
-#     'books': Book.objects.all(),
-#     'suggestions': Book.objects.all()[:5],
-#     'form': BookForm()
-# }
+
+BookDictionary = {
+    'books': Book.objects.all(),
+    'suggestions': Book.objects.all()[:5],
+    'form': BookForm()
+}
 
 def index(request):
-    return render(request, "index.html", {'books':Book.objects.all()})
+    return render(request, "index.html", BookDictionary)
 
 
 def addBook(request):
@@ -30,11 +32,14 @@ def addBook(request):
         else:
             print(addedBook.errors)
 
-    return render(request, "AddBook.html", {'form':BookForm()})
+    return render(request, "AddBook.html", BookDictionary)
 
 
-def available(request):
+def AdminAvailable(request):
     return render(request, "categories.html")
+
+def UserAvailable(request):
+    return render(request, "Useravailable.html")
 
 
 def login(request):
@@ -120,5 +125,3 @@ def cat_books(request):
         'has_next': page_obj.has_next(),
         'has_previous': page_obj.has_previous(),
     })
-
-
