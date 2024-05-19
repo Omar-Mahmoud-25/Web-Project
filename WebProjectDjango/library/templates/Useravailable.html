@@ -2,18 +2,23 @@
 {% load static %}
 
 {% block page %}
-<div class="content">
-  <h1>Welcome to <span>Book Store</span></h1>
-  <p>Here you can find your lovely Book</p>
-  <br />
-  <p>Choose your book</p>
+<div class="welcome-section">
+    <div class="welcome-message">
+      <h1>Welcome to Our Book Store</h1>
+      <p>Embark on a journey through captivating stories and enriching knowledge
+           Explore our diverse collection and uncover your next favorite read.</p>
+    </div>
+  </div>
+  
+
+<div class="category-list">
+  <ul>
+    <li><a class="category" href="#comics">Comics</a></li>
+    <li><a class="category" href="#programming">Programming</a></li>
+    <li><a class="category" href="#science">Science</a></li>
+  </ul>
 </div>
 
-<ul>
-  <li><a class="category" href="#comics">Comics</a></li>
-  <li><a class="category" href="#programming">Programming</a></li>
-  <li><a class="category" href="#science">Science</a></li>
-</ul>
 <br />
 <section id="comics">
   <h2 style="text-align: center;">Comics</h2>
@@ -44,6 +49,45 @@
 <br />
 
 <style>
+
+     /* Category List Styles */
+  .category-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .category-list ul {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .category-list li {
+    margin-right: 20px;
+  }
+  
+  .category-list li:last-child {
+    margin-right: 0;
+  }
+  
+  .category-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-color: #c9882e; /* Add background color */
+  }
+  
+  .category-list li a:hover {
+    color: #dad7d3;
+    background-color: #2a200d;
+    border-color: #be873b;
+  }
+
 .section-container {
   display: flex;
   flex-direction: column;
@@ -92,6 +136,29 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.welcome-section {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.welcome-message {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.welcome-message h1 {
+  font-size: 36px;
+  color: #e2dfdf;
+}
+
+.welcome-message p {
+  font-size: 18px;
+  color: #eeeded;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
 </style>
 
 <script>
