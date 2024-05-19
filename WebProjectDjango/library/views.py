@@ -5,7 +5,6 @@ from .forms import *
 from django.http import JsonResponse
 import json
 from django.core.paginator import Paginator
-from .models import Book
 from django.contrib.auth import authenticate, login
 
 
@@ -67,12 +66,18 @@ def signup(request):
 
 
 def usernameValidation(request):
-    username = request.POST.get("username")
-    exists = User.objects.filter(username == username).exists()
-    if exists:
-        return JsonResponse({"exists": True})
-    else:
-        return JsonResponse({"exists": False})
+    username = request.GET.get("username")
+    exists = User.objects.filter(username = username).exists()
+    # print(exists)
+    # print(exists)
+    return JsonResponse({"exists": exists})
+
+def emailValidation(request):
+    email = request.GET.get("email")
+    exists = User.objects.filter(email = email).exists()
+    # print(exists)
+    # print(exists)
+    return JsonResponse({"exists": exists})
 
 
 def paginated_books(request):
@@ -103,9 +108,6 @@ def book_details(request, book_id):
     return render(request, "bookDetails.html", {"book": book})
 
 
-from django.core.paginator import Paginator
-from django.http import JsonResponse
-from .models import Book
 
 
 def get_books_by_category(request):

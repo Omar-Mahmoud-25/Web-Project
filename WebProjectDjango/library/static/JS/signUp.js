@@ -18,6 +18,9 @@ const password = document.getElementById("password");
 const Confirm = document.getElementById("confirm");
 const admin = document.getElementById("admin");
 const toggle = document.getElementById("togglePassword");
+var validUsername = false;
+var validEmail = false;
+
 
 toggle.addEventListener('click',function(){
   if (password.type == 'password')
@@ -27,50 +30,6 @@ toggle.addEventListener('click',function(){
     password.type = 'password',
     Confirm.type = 'password';
   toggle.innerHTML = (toggle.innerHTML == '👀'? '🙈':'👀');
-});
-
-function findUserByEmail() {
-  const jsonData = localStorage.getItem("formData");
-  if (jsonData) {
-    const data = JSON.parse(jsonData);
-    // const foundUser = data[email.value];
-    for (const key in data) {
-      if (data[key].email == email.value) {
-        // console.log("found email");
-        return [false, true];
-      }
-      if (data[key].userName == Name.value) {
-        // console.log("found username");
-        return [true, false];
-      }
-    }
-  }
-  return [true, true];
-}
-
-Name.addEventListener("input", function (event) {
-  var valid = findUserByEmail();
-  var messageUser = document.getElementById("usernameMessage");
-  messageUser.style.color = "red";
-  if (!valid[1] && valid[0]) {
-    // console.log("in 1");
-    messageUser.textContent = "this username is already in use";
-  } else {
-    messageUser.textContent = "";
-  }
-  if (Name.value.endsWith(" ")) Name.value = Name.value.slice(0, -1);
-});
-
-email.addEventListener("input", function (event) {
-  var valid = findUserByEmail();
-  var messageEmail = document.getElementById("emailMessage");
-  messageEmail.style.color = "red";
-  if (!valid[0]) {
-    // console.log("in 0");
-    messageEmail.textContent = "this email is already in use";
-  } else {
-    messageEmail.textContent = "";
-  }
 });
 
 function isValidPassword() {
@@ -112,47 +71,75 @@ Confirm.addEventListener("input", function () {
 });
 
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent default form submission
   // validation = isValidPassword();
-  var valid = findUserByEmail();
+  var messageEmail = document.getElementById("emailMessage");
+  var messageUser = document.getElementById("usernameMessage");
+  var passMessage = document.getElementById("passwordMessage");
+  var confirmMessage = document.getElementById("confirmMessage");
+  
+  // var valid = findUserByEmail();
   if (
-    isValidPassword() === false ||
+    !isValidPassword() ||
     password.value !== Confirm.value ||
-    !(valid[1] && valid[0])
-  )
+    !validEmail ||
+    !validUsername){
+    event.preventDefault(); // Prevent default form submission
     return alert("Invalid data!");
+  }
   // Process the form data (Name and email) using JavaScript
-  const userData = new User(
-    Name.value,
-    email.value,
-    password.value,
-    admin.checked
-  );
-  users[Name.value] = userData;
-  const jsonData = JSON.stringify(users);
-  localStorage.setItem("formData", jsonData);
+  // const userData = new User(
+  //   Name.value,
+  //   email.value,
+  //   password.value,
+  //   admin.checked
+  // );
+  // users[Name.value] = userData;
+  // const jsonData = JSON.stringify(users);
+  // localStorage.setItem("formData", jsonData);
   // window.location.href = "/WebProjectDjango/library/templates/login.html";
   // You can also send data to a server using techniques like Fetch API or Axios
 });
 
-$(document).ready(function() {
-  $('#username').keyup(function() {
-    // var userName = $(this).val();
-    // var csrftoken = $('input[name="csrfmiddlewaretoken"]').attr('value');  
-    console.log('in func');
-    // console.log(csrftoken);
-    $.ajax({
-      url: '/validate-username/',  // Assuming the same URL pattern
-      type: 'POST',  // Change to POST method
-      username: {'username': $(this).val()},
-      dataType: 'json',
-      success: function(username) {
-        if (username.exists) {
-          $('#usernameMessage').text('Username already exists!').show();
-        } else {
-          $('#usernameMessage').text('').hide();
-        }
-      }
-    });
-  });
+Name.addEventListener('input',function() {
+  var xml = new XMLHttpRequest();
+  var txt = Name.value;
+  xml.responseType = "json";
+  var messageUser = document.getElementById("usernameMessage");
+
+  xml.onreadystatechange = function(){
+    // if (this.status == 200)
+    //   console.log(this.responseText);
+    var data = this.response;
+    if (data.exists)
+      validUsername = false,
+      messageUser.style.color = 'red',
+      messageUser.textContent = "this username is already in use";
+    else
+      validUsername = true,
+      messageUser.textContent = " ";
+  };
+  xml.open('GET','Validate-username?username=' + encodeURIComponent(txt),true);
+  xml.send();
+});
+
+email.addEventListener('input',function() {
+  var xml = new XMLHttpRequest();
+  var txt = email.value;
+  xml.responseType = "json";
+  var messageEmail = document.getElementById("emailMessage");
+
+  xml.onreadystatechange = function(){
+    // if (this.status == 200)
+    //   console.log(this.responseText);
+    var data = this.response;
+    if (data.exists)
+      validEmail = false,
+      messageEmail.style.color = 'red',
+      messageEmail.textContent = "this email is already in use";
+    else
+      validEmail = true,
+      messageEmail.textContent = " ";
+  };
+  xml.open('GET','Validate-email?email=' + encodeURIComponent(txt),true);
+  xml.send();
 });

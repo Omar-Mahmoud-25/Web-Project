@@ -68,7 +68,8 @@
   </p>
 </form>
 {% block script %}
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-  <script src="{% static 'JS/signUp.min.js' %}"></script>
+  {% comment %} <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> {% endcomment %}
+  <script src="{% static 'JS/signUp.js' %}"></script>
+  <script src="{% static 'JS/hidden.js' %}"></script>
 {% endblock script %}
 {% endblock page %}

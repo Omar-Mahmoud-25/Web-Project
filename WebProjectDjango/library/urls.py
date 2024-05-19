@@ -10,14 +10,14 @@ urlpatterns = [
 
     path("login", views.login_view, name="login"),
     path("signup", views.signup, name="signup"),
-    path("validate-username/",
+    path("Validate-username/",
         csrf_exempt(views.usernameValidation), 
         name="usernameValidation"),
+    path("Validate-email/",
+        csrf_exempt(views.emailValidation), 
+        name="emailValidation"),
     path('paginated_books/', views.paginated_books, name='paginated_books'),
     path('get-books-by-category/', views.get_books_by_category, name='get_books_by_category'),
     path('cat_books/', views.cat_books, name='cat_books'),
     path('book/<int:book_id>/', views.book_details, name='book_details'),
-
-    
-
 ]
