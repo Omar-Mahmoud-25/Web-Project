@@ -41,13 +41,17 @@
     <br>
     <p>{{ book.description }}</p>
     <br>
-    <button class="borrow-button">Borrow</button>
+    <button class="borrow-button user" id='Borrow'>Borrow</button>
     <br><br>
     <div class="action-buttons">
-        <button><i class="fas fa-eraser"></i> Erase</button>
-        <button><i class="fas fa-trash"></i> Delete</button>
+        <button><i class="fas fa-eraser admin"></i> Erase</button>
+        <button><i class="fas fa-trash admin"></i> Delete</button>
     </div>
 </div>
 </body>
+
+{% block script %}
+  <script src="{% static 'JS/hidden.js' %}"></script>
+{% endblock script %}
 </html>
 {% endblock page %}

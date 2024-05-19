@@ -86,17 +86,6 @@ form.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default form submission
     return alert("Invalid data!");
   }
-  // Process the form data (Name and email) using JavaScript
-  // const userData = new User(
-  //   Name.value,
-  //   email.value,
-  //   password.value,
-  //   admin.checked
-  // );
-  // users[Name.value] = userData;
-  // const jsonData = JSON.stringify(users);
-  // localStorage.setItem("formData", jsonData);
-  // window.location.href = "/WebProjectDjango/library/templates/login.html";
   // You can also send data to a server using techniques like Fetch API or Axios
 });
 

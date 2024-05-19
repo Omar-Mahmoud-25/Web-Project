@@ -9,7 +9,9 @@ function adminHidden() {
         ele[i].style.display = "inline";
 }
 
-let borrow = document.getElementById('borrow');
+console.log("hi");
+
+let Borrow = document.getElementById('Borrow');
 let thisUser = sessionStorage.getItem("user");
 thisUser = JSON.parse(thisUser);
 
@@ -18,9 +20,9 @@ thisUser = JSON.parse(thisUser);
 // console.log(User === null);
 
 if (thisUser === null){
-    borrow.style.display = 'inline',
-    borrow.addEventListener('click',function(){
-        window.location.href='login.html';
+    Borrow.style.display = 'inline',
+    Borrow.addEventListener('click',function(){
+        window.location.href="{% url 'login' %}";
     });
 }
 else if (thisUser.isAdmin) 

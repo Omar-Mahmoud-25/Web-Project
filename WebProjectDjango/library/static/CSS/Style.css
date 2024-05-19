@@ -167,7 +167,7 @@ h1 {
   flex: 0.3;
 }
 
-#delete,#edit,#borrow {
+#delete,#edit {
   border-radius: 3rem;
   justify-content: center;
   width: 150px;
