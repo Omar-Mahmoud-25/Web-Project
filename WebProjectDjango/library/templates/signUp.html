@@ -2,58 +2,46 @@
 
 <form
   id="signUpForm"
-  method="post"
+  method="POST"
   style="text-align: center"
-  action="{% url "login" %}"
+  action="{% url "signup" %}"
+  enctype="multipart/form-data"
 >
+
+  {% csrf_token %}
   <label>Username</label>
   <br />
-  {% csrf_token %}
-  <input
-    type="text"
-    name="UserName"
-    placeholder="UserName"
-    id="username"
-    required
-  />
+  {{ Form.username }}
   <br />
   <span id="usernameMessage"></span>
   <br /><br /><br />
   <label for="Email">Email </label>
   <br />
-  <input type="email" name="Email" placeholder="Email" id="email" required />
+  {{ Form.email }}
   <br />
   <span id="emailMessage"></span>
   <br /><br /><br />
   <label for="password">Password</label>
   <br />
-  <input
-    id="password"
-    type="password"
-    placeholder="Password"
-    name="password"
-    required
-    minlength="8"
-    maxlength="16"
-  />
+    {{ Form.password }}
   <button type="button" id="togglePassword" class="showPassword">👀</button>
   <br />
   <span id="passwordMessage"></span>
   <br /><br />
-  <label for="confirm">Confirm Password</label>
-  <br />
-  <input
-    id="confirm"
-    type="password"
-    name="confirm"
-    placeholder="Confirm Password"
-    required
-  />
+{#  <label for="confirm">Confirm Password</label>#}
+{#  <br />#}
+{#  <input#}
+{#    id="confirm"#}
+{#    type="password"#}
+{#    name="confirm"#}
+{#    placeholder="Confirm Password"#}
+{#    required#}
+{#  />#}
   <br />
   <span id="confirmMessage"></span>
   <br />
   <label for="admin">Admin? </label>
-  <input name="admin" id="admin" type="checkbox" />
+    {{Form.isAdmin}}
   <br /><br />
   <input
     type="submit"
