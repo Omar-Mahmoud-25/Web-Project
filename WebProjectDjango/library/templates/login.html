@@ -1,28 +1,14 @@
 {% extends "base.html" %} {% load static %} {% block page %}
-<form id="loginForm" style="text-align: center" method="post">
+<form id="loginForm" style="text-align: center" method="POST">
   {% csrf_token %}
 
   <label for="username">Username</label>
   <br /><br />
-  <input
-    type="text"
-    name="username"
-    placeholder="UserName"
-    id="username"
-    required
-  />
+    {{ form.username }}
   <br /><br /><br />
   <label for="password">Password</label>
   <br /><br />
-  <input
-    id="password"
-    type="password"
-    placeholder="Password"
-    name="password"
-    required
-    minlength="8"
-    maxlength="16"
-  />
+    {{form.password}}
   <button type="button" id="togglePassword" class="showPassword">👀</button>
   <br />
   <a href="" class="account">forget password?</a>
