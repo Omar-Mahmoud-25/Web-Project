@@ -2,37 +2,39 @@
 
 <h1 style="text-align: center" class="afterNav">Edit Book details</h1>
 <br />
-<form id="editForm" method="post" action="index.html">
+<form id="editForm" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
   <div class="l">
     <label style="font-size: large" for="name">Book Name</label>
-    <br />
-    <input type="text" id="name" placeholder="Title" />
-    <br /><br /><br />
-    <label style="font-size: large" for="author">Author</label>
-    <br />
-    <input type="text" id="author" placeholder="Author" />
-    <br /><br /><br />
-    <label style="font-size: large" for="description">Description</label>
-    <br /><br />
-    <textarea name="" id="description" cols="20" rows="3"></textarea><br />
-  </div>
+  <br />
+    {{ form.name }}
   <br /><br /><br />
-  <div class="r">
-    <label style="font-size: 30px">Category?</label>
-    <br /><br />
-    <label for="Comics">Comics </label>
-    <input type="checkbox" id="Comics" /> <br />
-    <label for="Programming">Programming </label>
-    <input type="checkbox" id="Programming" /><br />
-    <label for="Biology">Biology </label>
-    <input type="checkbox" id="Biology" /><br />
-  </div>
+  <label style="font-size: large" for="author">Author</label>
+  <br />
+    {{ form.author_name }}
+  <br /><br /><br />
+  <label style="font-size: large" for="description">Description</label>
+  <br />
+    {{ form.description }}
+  <br /><br /><br />
+  <!-- </div> -->
+  <!-- <div> -->
+  <label style="font-size: 30px">Category?</label>
+  <br /><br />
+    {{ form.category }}
+{#  <!-- </div> -->#}
+  <!-- </div> -->
+  <br /><br />
+    <label style="font-size: large" for="image">Image</label>
+    {{ form.bookImage }}
+
   <input
     type="submit"
     value="Save"
     class="index-button"
     style="text-align: center"
   />
+  </div>
 </form>
 
 {% block script %}
