@@ -436,5 +436,7 @@ h1 {
   background-color: #8c7043;
 }
 
-
+.admin,.user{
+  display: none;
+}
 
