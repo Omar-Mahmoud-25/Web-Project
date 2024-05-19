@@ -2,149 +2,258 @@
 {% load static %}
 
 {% block page %}
-<div class="content">
-  <h1>Welcome to <span>Book Store</span></h1>
-  <p>Here you can find your lovely Book</p>
-  <br />
-  <p>Choose your book</p>
-</div>
-
-<ul>
-  <li><a class="category" href="#comics">Comics</a></li>
-  <li><a class="category" href="#programming">Programming</a></li>
-  <li><a class="category" href="#science">Science</a></li>
-</ul>
-<br />
-<section id="comics">
-  <h2 style="text-align: center;">Comics</h2>
-  <div class="book-container" id="comics-container"></div>
-  <div class="pagination" style="text-align: center;">
-    <button class="prevBtn" onclick="changePage('comics', -1)">&lt;</button>
-    <button class="nextBtn" onclick="changePage('comics', 1)">&gt;</button>
-  </div>
-</section>
-<br>
-<section id="programming">
-  <h2 style="text-align: center;">Programming</h2>
-  <div class="book-container" id="programming-container"></div>
-  <div class="pagination" style="text-align: center;">
-    <button class="prevBtn" onclick="changePage('programming', -1)">&lt;</button>
-    <button class="nextBtn" onclick="changePage('programming', 1)">&gt;</button>
-  </div>
-</section>
-<br>
-<section id="science">
-  <h2 style="text-align: center;">Science</h2>
-  <div class="book-container" id="science-container"></div>
-  <div class="pagination" style="text-align: center;">
-    <button class="prevBtn" onclick="changePage('science', -1)">&lt;</button>
-    <button class="nextBtn" onclick="changePage('science', 1)">&gt;</button>
-  </div>
-</section>
-<br />
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Store</title>
 <style>
-.section-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
+  /* Category List Styles */
+  .category-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .category-list ul {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .category-list li {
+    margin-right: 20px;
+  }
+  
+  .category-list li:last-child {
+    margin-right: 0;
+  }
+  
+  .category-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-color: #c9882e; /* Add background color */
+  }
+  
+  .category-list li a:hover {
+    color: #dad7d3;
+    background-color: #2a200d;
+    border-color: #be873b;
+  }
+  
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .book-container {
+    width: 1000px;
+    max-height: 550px;
+    overflow-y: auto;
+    margin-top: 20px;
+    background-color: #be873b;
+    padding: 0; /* Remove padding to avoid space before header */
+    border-radius: 10px; /* Add rounded corners */
+    text-align: center;
+    position: relative;
+  }
+  
+  .book-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0; /* Remove margin to avoid space before header */
+  }
+  
+  .book-table th,
+  .book-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center; /* Center content horizontally */
+    width: 150px; /* Set fixed width for cells */
+    font-size: 20px; /* Increased font size */
+  }
+  
+  .book-table th {
+    background-color: #c39745;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+    border-radius: 10px 10px 0 0; /* Add rounded corners to the top */
+  }
+  
+  .book-table td button {
+    background-color: #c23d23;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block; /* Make buttons block elements */
+    margin: auto; /* Center buttons horizontally */
+    margin-bottom: 5px; /* Add margin between buttons */
+    width: 100px; /* Set fixed width for buttons */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .book-table td button:hover {
+    background-color: #45a049;
+  }
+  
+  .book-table td a {
+    color: #e6e6e6;
+    text-decoration: none;
+  }
+  
+  .book-table td a:hover {
+    color: #281802;
+  }
+
+
+  .welcome-section {
+  padding: 50px 0;
+  text-align: center;
 }
 
-.book-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.welcome-message {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.book-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 170px;
-  height: 420px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.welcome-message h1 {
+  font-size: 36px;
+  color: #e2dfdf;
+}
+
+.welcome-message p {
+  font-size: 18px;
+  color: #eeeded;
+  line-height: 1.6;
   margin-bottom: 20px;
 }
 
-.book-item img {
-  width: 130px;
-  height: 180px;
-}
+  </style>
+  
 
-.book-item p {
-  text-align: center;
-  margin: 10px 0;
-  flex-grow: 1;
-}
 
-.book-item button {
-  display: block;
-  margin: 0 auto;
-  padding: 8px 16px;
-  background-color: rgb(220,213,170);
-  color: rgb(0,0,0);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-</style>
+</head>
+<body>
+  <div class="welcome-section">
+    <div class="welcome-message">
+      <h1>Welcome to Our Book Store</h1>
+      <p>Embark on a journey through captivating stories and enriching knowledge
+           Explore our diverse collection and uncover your next favorite read.</p>
+    </div>
+  </div>
+  
+
+<div class="category-list">
+  <ul>
+    <li><a class="category" href="#comics">Comics</a></li>
+    <li><a class="category" href="#programming">Programming</a></li>
+    <li><a class="category" href="#science">Science</a></li>
+  </ul>
+</div>
+
+<br />
+<section id="comics" class="section-container">
+  <h2>Comics</h2>
+  <div class="book-container" id="comics-container">
+    <table class="book-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Author</th>
+          <th>Images</th>
+          <th>Actions</th>        
+        </tr>
+      </thead>
+      <tbody id="comics-table-body"></tbody>
+    </table>
+  </div>
+</section>
+<br>
+<section id="programming" class="section-container">
+  <h2>Programming</h2>
+  <div class="book-container" id="programming-container">
+    <table class="book-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Author</th>
+          <th>Images</th>
+          <th>Actions</th>        
+        </tr>
+      </thead>
+      <tbody id="programming-table-body"></tbody>
+    </table>
+  </div>
+</section>
+<br>
+<section id="science" class="section-container">
+  <h2>Science</h2>
+  <div class="book-container" id="science-container">
+    <table class="book-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Author</th>
+          <th>Images</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="science-table-body"></tbody>
+    </table>
+  </div>
+</section>
+<br />
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    loadBooks('comics', 1);
-    loadBooks('programming', 1);
-    loadBooks('science', 1);
+    loadBooks('comics');
+    loadBooks('programming');
+    loadBooks('science');
   });
+  function loadBooks(category) {
+  fetch(`/get-books-by-category/?category=${category}`)
+    .then(response => response.json())
+    .then(data => {
+      const tbody = document.getElementById(`${category}-table-body`);
+      tbody.innerHTML = '';
 
-  let currentPage = {
-    comics: 1,
-    programming: 1,
-    science: 1
-  };
+      data.books.forEach(book => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td><a href="/book/${book.id}/">${book.name}</a></td>
+        <td>${book.author}</td>
+          <td><a href="/book/${book.id}/"><img src="${book.bookImage}" alt="${book.name}" width="100" height="150"></a></td>
+          <td>
+            <button>Edit</button>
+            <button>Delete</button>
 
-  function loadBooks(category, page) {
-    fetch(`/get-books-by-category/?category=${category}&page=${page}`)
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById(`${category}-container`);
-        container.innerHTML = '';
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    })
+    .catch(error => console.error('Error:', error));
+}
 
-        data.books.forEach(book => {
-          const bookItem = document.createElement('div');
-          bookItem.className = 'book-item';
-          bookItem.innerHTML = `
-            <img src="${book.bookImage}" alt="${book.name}">
-            <p>${book.name}</p>
-            <button onclick="window.location.href='/book/${book.id}/'">Details</button>
-            <br>
-            <button onclick="editBook(${book.id})">Edit</button>
-            <br>
-            <button onclick="deleteBook(${book.id})">Delete</button>
-          `;
-          container.appendChild(bookItem);
-        });
-      })
-      .catch(error => console.error('Error:', error));
-  }
+  
 
-  function changePage(category, direction) {
-    const newPage = currentPage[category] + direction;
-    if (newPage > 0) {
-      currentPage[category] = newPage;
-      loadBooks(category, newPage);
-    }
-  }
-
-  function editBook(bookId) {
-    window.location.href = `/edit-book/${bookId}/`;
-  }
-
- 
 </script>
 
+</body>
+</html>
 {% endblock page %}
