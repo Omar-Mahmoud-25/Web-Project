@@ -1,5 +1,5 @@
 from django import forms
-from .models import Book, User
+from .models import *
 from django.core.exceptions import ValidationError
 import re
 
@@ -25,3 +25,15 @@ class LoginForm(forms.ModelForm):
             "username": forms.TextInput(attrs={"placeholder": "UserName"}),
             "password": forms.PasswordInput(attrs={"placeholder": "Password"}),
         }
+
+class signupForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["username", "email", "password", "isAdmin"]
+        widgets = {
+            "username": forms.TextInput(attrs={"placeholder": "UserName"}),
+            "password": forms.PasswordInput(attrs={"placeholder": "Password"}),
+            "email": forms.TextInput(attrs={"placeholder": "Email"}),
+            "isAdmin": forms.CheckboxInput(),
+        }
+
