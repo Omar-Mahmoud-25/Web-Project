@@ -44,7 +44,9 @@
     <button class="borrow-button user" id='Borrow'>Borrow</button>
     <br><br>
     <div class="action-buttons">
-        <button><i class="fas fa-eraser admin"></i> Erase</button>
+        <a href="{% url 'edit' book.id %}">
+          <button> <i class="fas fa-eraser"></i> Edit</button>
+        </a>
         <button><i class="fas fa-trash admin"></i> Delete</button>
     </div>
 </div>
