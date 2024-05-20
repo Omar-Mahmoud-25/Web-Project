@@ -13,6 +13,7 @@ console.log("hi");
 
 let Borrow = document.getElementById('Borrow');
 let thisUser = sessionStorage.getItem("user");
+let BorrowForm = document.getElementById('borrow_form');
 thisUser = JSON.parse(thisUser);
 
 // console.log(User);
@@ -21,8 +22,9 @@ thisUser = JSON.parse(thisUser);
 
 if (thisUser === null && Borrow !== null){
     Borrow.style.display = 'inline',
-    Borrow.addEventListener('click',function(){
-        window.location.href="/login/";
+    BorrowForm.addEventListener('submit',function(event){
+        event.preventDefault();
+        window.location.href="/login";
     });
 }
 else if (thisUser.isAdmin) 

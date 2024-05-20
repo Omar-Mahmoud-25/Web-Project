@@ -42,6 +42,7 @@
     <p>{{ book.description }}</p>
     <br>
     <form id="borrow_form" method="post">
+        {% csrf_token %}
         <button type="submit" class="borrow-button user" id='Borrow'>Borrow</button>
     </form> 
     <br><br>
@@ -56,6 +57,9 @@
 
 {% block script %}
   <script src="{% static 'JS/hidden.js' %}"></script>
+  {% comment %} <script>
+    
+  </script> {% endcomment %}
 {% endblock script %}
 </html>
 {% endblock page %}
