@@ -26,6 +26,7 @@ class LoginForm(forms.ModelForm):
             "password": forms.PasswordInput(attrs={"placeholder": "Password"}),
         }
 
+
 class signupForm(forms.ModelForm):
     class Meta:
         model = User
@@ -37,3 +38,7 @@ class signupForm(forms.ModelForm):
             "isAdmin": forms.CheckboxInput(),
         }
 
+
+class BorrowForm(forms.ModelForm):
+    class Meta:
+        model = Book

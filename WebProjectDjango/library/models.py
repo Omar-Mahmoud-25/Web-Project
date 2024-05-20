@@ -29,3 +29,7 @@ class User(models.Model):
     isAdmin = models.BooleanField(default=False)
     def __str__(self):
         return self.username
+
+class Borrow(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    book = models.ForeignKey(Book, on_delete=models.PROTECT)

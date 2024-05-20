@@ -21,20 +21,194 @@
 <br />
 <section id="comics">
   <h2 style="text-align: center">Comics</h2>
+  <div class="book-container" id="comics-container"></div>
+  <div class="pagination" style="text-align: center;">
+    <button class="prevBtn" onclick="changePage('comics', -1)">&lt;</button>
+    <button class="nextBtn" onclick="changePage('comics', 1)">&gt;</button>
+  </div>
 </section>
 <br />
 <section id="programming">
   <h2 style="text-align: center">Programming</h2>
+  <div class="book-container" id="programming-container"></div>
+  <div class="pagination" style="text-align: center;">
+    <button class="prevBtn" onclick="changePage('programming', -1)">&lt;</button>
+    <button class="nextBtn" onclick="changePage('programming', 1)">&gt;</button>
+  </div>
 </section>
 <br />
-<section id="biology">
+<section id="science">
   <h2 style="text-align: center">Biology</h2>
+  <div class="book-container" id="science-container"></div>
+  <div class="pagination" style="text-align: center;">
+    <button class="prevBtn" onclick="changePage('science', -1)">&lt;</button>
+    <button class="nextBtn" onclick="changePage('science', 1)">&gt;</button>
+  </div>
 </section>
 <br />
 
 <br />
 
 {% block script %}
-  <script src="{% static 'JS/hidden.js' %}"></script>
+<style>
+
+     /* Category List Styles */
+  .category-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .category-list ul {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .category-list li {
+    margin-right: 20px;
+  }
+  
+  .category-list li:last-child {
+    margin-right: 0;
+  }
+  
+  .category-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-color: #c9882e; /* Add background color */
+  }
+  
+  .category-list li a:hover {
+    color: #dad7d3;
+    background-color: #2a200d;
+    border-color: #be873b;
+  }
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.book-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  height: 325px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.book-item img {
+  width: 130px;
+  height: 180px;
+}
+
+.book-item p {
+  text-align: center;
+  margin: 10px 0;
+  flex-grow: 1;
+}
+
+.book-item button {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 16px;
+  background-color: rgb(220,213,170);
+  color: rgb(0,0,0);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.welcome-section {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.welcome-message {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.welcome-message h1 {
+  font-size: 36px;
+  color: #e2dfdf;
+}
+
+.welcome-message p {
+  font-size: 18px;
+  color: #eeeded;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    loadBooks('comics', 1);
+    loadBooks('programming', 1);
+    loadBooks('science', 1);
+  });
+
+  let currentPage = {
+    comics: 1,
+    programming: 1,
+    science: 1
+  };
+
+  function loadBooks(category, page) {
+    fetch(`/cat_books/?category=${category}&page=${page}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Log the response to check if it contains the expected data
+            const container = document.getElementById(`${category}-container`);
+        
+            container.innerHTML = '';
+
+            data.books.forEach(book => {
+                const bookItem = document.createElement('div');
+                bookItem.className = 'book-item';
+                bookItem.innerHTML = `
+                    <img src="${book.bookImage}" alt="${book.name}">
+                    <p>${book.name}</p>
+                    <button onclick="window.location.href='/book/${book.id}/'">Details</button>
+                `;
+                container.appendChild(bookItem);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+  function changePage(category, direction) {
+    const newPage = currentPage[category] + direction;
+    if (newPage > 0) {
+      currentPage[category] = newPage;
+      loadBooks(category, newPage);
+    }
+  } 
+</script>
+<script src="{% url "JS/hidden.js" %}"></script>
 {% endblock script %}
+
 {% endblock page %}
