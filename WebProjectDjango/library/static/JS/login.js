@@ -1,16 +1,4 @@
-// import User from "./user.js";
-
-// class User {
-//   constructor(userName, email, password, isAdmin) {
-//       this.userName = userName;
-//       this.email = email;
-//       this.password = password;
-//       this.isAdmin = isAdmin;
-//   }
-// };
-
 const form = document.getElementById("loginForm");
-// console.log("in File");
 const password = document.getElementById("password");
 const toggle = document.getElementById("togglePassword");
 
@@ -23,69 +11,31 @@ toggle.addEventListener('click',function(){
   
 });
 
-// function findUserByEmail(email, password) {
-//   // console.log("in find");
-//   const jsonData = localStorage.getItem("formData");
-//   if (jsonData) {
-//     const data = JSON.parse(jsonData);
-//     const foundUser = data[email];
-//     if (foundUser.password === password) {
-//       var user = JSON.stringify(foundUser);
-//       sessionStorage.setItem("user", user);
-//       return true;
-//     }
-//   }
-//   return false;
-// }
-
-// function login() {
-//   const username = document.getElementById("username");
-//   const password = document.getElementById("password");
-//   const found = findUserByEmail(username.value, password.value);
-//   console.log(found);
-//   if (found[0])
-//     window.location.href="homepage.html";
-//   else {
-//     alert("Invalid username or password");
-//     username.value = "";
-//     password.value = "";
-//   }
-// }
-
-// form.addEventListener("submit",function(event){
-//   event.preventDefault();
-//   const username = document.getElementById("username");
-//   const password = document.getElementById("password");
-//   const found = findUserByEmail(username.value, password.value);
-//   // // console.log(found);
-//   if (found)
-//     window.location.href="index.html";
-//   else {
-//     alert("Invalid username or password");
-//     username.value = "";
-//     password.value = "";
-//   }
-// });
-// var button = document.getElementById("loginButton");
-// button.addEventListener("click", login());
-
 form.addEventListener('submit',function(event){
   event.preventDefault();
   const username = document.getElementById("username");
   const password = document.getElementById("password");
   var xml = new XMLHttpRequest();
+  xml.responseType = "json";
   xml.onreadystatechange = function(){
     var data = this.response;
     console.log(data);
-    if (data.success)
-      sessionStorage.setItem('isUserLoggedIn',true),
+    console.log(data.success);
+    console.log(typeof(data));
+    if (data.success){
+      console.log("in true");
+      sessionStorage.setItem('isUserLoggedIn',true);
       sessionStorage.setItem('isAdmin',data.isAdmin);
+      console.log(sessionStorage.getItem('isUserLoggedIn'));
+      window.location.href = "";
+    }
     else
-      alert("Invalid username or password"),
-      username.value = "",
-      password.value = "";
+      console.log('in false'),
+      alert("Invalid username or password");
   }
-  xml.open('POST','loginValidation',true);
-  xml.send('username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password));
+  xml.open('GET','loginValidation?username=' + encodeURIComponent(username.value) + '&password=' + encodeURIComponent(password.value),true);
+  xml.send()
+  console.log(username.value);
+  console.log(password.value);
 
 });
