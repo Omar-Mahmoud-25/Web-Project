@@ -43,13 +43,13 @@
     <br>
     <form id="borrow_form" method="post">
         <button type="submit" class="borrow-button user" id='Borrow'>Borrow</button>
-    </form>
+    </form> 
     <br><br>
     <div class="action-buttons">
         <a href="{% url 'edit' book.id %}">
-          <button> <i class="fas fa-eraser"></i> Edit</button>
+          <button class='admin'> <i class="fas fa-eraser"></i> Edit</button>
         </a>
-        <button><i class="fas fa-trash admin"></i> Delete</button>
+        <button class='admin'><i class="fas fa-trash"></i> Delete</button>
     </div>
 </div>
 </body>

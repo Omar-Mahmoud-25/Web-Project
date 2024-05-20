@@ -39,6 +39,6 @@ class signupForm(forms.ModelForm):
         }
 
 
-class BorrowForm(forms.ModelForm):
-    class Meta:
-        model = Book
+# class BorrowForm(forms.ModelForm):
+#     class Meta:
+#         model = Book

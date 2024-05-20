@@ -30,7 +30,7 @@
 
         <a href="{% url "add" %}" id="addBook" class="nav-link">Add Book</a>
 
-        <a href="{% url "available" %}" class="nav-link">Available Books</a>
+        <a id='available' class="nav-link">Available Books</a>
 
         <a href="{% url "login" %}" id="loginButton" class="nav-link">Login</a>
 
@@ -50,7 +50,6 @@
     </section>
     <!-- End Main -->
   </body>
-  {% comment %} <script src="{% static "JS/hidden.js" %}" {% endcomment %}
 
   <!-- Footer -->
   <footer id="footer">
@@ -96,5 +95,8 @@
       </form>
     </section>
   </footer>
+  {% block Script %}
+    <script src="{% static "JS/navButtonHidden.js" %}"></script>
+  {% endblock Script %}
   <!-- End Footer -->
 </html>

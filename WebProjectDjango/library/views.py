@@ -54,12 +54,10 @@ def delete(request, book_id):
 
 
 def AdminAvailable(request):
-    return render(request, "categories.html")
-
+    return render(request, "Adminavailable.html")
 
 def UserAvailable(request):
     return render(request, "Useravailable.html")
-
 
 def login_view(request):
     if request.method == "POST":
@@ -135,18 +133,18 @@ def paginated_books(request):
 
 def book_details(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    if request.method == "POST":
-        form = BorrowForm(request.POST)  # Create form instance with POST data
-        if form.is_valid():
-            book.available = False
-            if book:
-                return redirect("index")  # Redirect to homepage after login
-            else:
-                form.add_error(
-                    None, "An error occurred during borrowing"
-                )  # Add error message
-    else:
-        form = BorrowForm()
+    # if request.method == "POST":
+    #     form = BorrowForm(request.POST)  # Create form instance with POST data
+    #     if form.is_valid():
+    #         book.available = False
+    #         if book:
+    #             return redirect("index")  # Redirect to homepage after login
+    #         else:
+    #             form.add_error(
+    #                 None, "An error occurred during borrowing"
+    #             )  # Add error message
+    # else:
+    #     form = BorrowForm()
 
     return render(request, "bookDetails.html", {"book": book})
 
