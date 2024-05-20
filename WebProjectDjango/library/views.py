@@ -60,23 +60,35 @@ def UserAvailable(request):
     return render(request, "Useravailable.html")
 
 def login_view(request):
-    if request.method == "POST":
-        form = LoginForm(request.POST)  # Create form instance with POST data
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            user = User.objects.all().filter(username=username, password=password)
-            if user:
-                # login(request, user)  # Log user in
-                return redirect("index")  # Redirect to homepage after login
-            else:
-                form.add_error(
-                    None, "Invalid username or password"
-                )  # Add error message
-    else:
-        form = LoginForm()  # Create empty form for GET requests
+    # if request.method == "POST":
+    #     form = LoginForm(request.POST)  # Create form instance with POST data
+    #     if form.is_valid():
+    #         username = form.cleaned_data["username"]
+    #         password = form.cleaned_data["password"]
+    #         user = User.objects.all().filter(username=username, password=password)
+    #         if user:
+    #             # login(request, user)  # Log user in
+    #             return redirect("index")  # Redirect to homepage after login
+    #         else:
+    #             form.add_error(
+    #                 None, "Invalid username or password"
+    #             )  # Add error message
+    # else:
+    #     form = LoginForm()  # Create empty form for GET requests
     return render(request, "login.html", {"form": LoginForm()})
 
+def loginValidation(request):
+    Username = request.GET.get('username')
+    Password = request.GET.get('password')
+    # user = authenticate(Username=Username,Password=Password)
+    user = User.objects.filter(username=Username,password=Password)[0]
+    print(Username)
+    print(Password)
+    print(user)
+    if user:
+        return JsonResponse({'success':True,'isAdmin':user.isAdmin})
+    else:
+        return JsonResponse({'success':False})
 
 def signup(request):
     if request.method == "POST":

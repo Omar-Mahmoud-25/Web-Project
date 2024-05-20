@@ -23,20 +23,20 @@ toggle.addEventListener('click',function(){
   
 });
 
-function findUserByEmail(email, password) {
-  // console.log("in find");
-  const jsonData = localStorage.getItem("formData");
-  if (jsonData) {
-    const data = JSON.parse(jsonData);
-    const foundUser = data[email];
-    if (foundUser.password === password) {
-      var user = JSON.stringify(foundUser);
-      sessionStorage.setItem("user", user);
-      return true;
-    }
-  }
-  return false;
-}
+// function findUserByEmail(email, password) {
+//   // console.log("in find");
+//   const jsonData = localStorage.getItem("formData");
+//   if (jsonData) {
+//     const data = JSON.parse(jsonData);
+//     const foundUser = data[email];
+//     if (foundUser.password === password) {
+//       var user = JSON.stringify(foundUser);
+//       sessionStorage.setItem("user", user);
+//       return true;
+//     }
+//   }
+//   return false;
+// }
 
 // function login() {
 //   const username = document.getElementById("username");
@@ -52,19 +52,40 @@ function findUserByEmail(email, password) {
 //   }
 // }
 
-form.addEventListener("submit",function(event){
+// form.addEventListener("submit",function(event){
+//   event.preventDefault();
+//   const username = document.getElementById("username");
+//   const password = document.getElementById("password");
+//   const found = findUserByEmail(username.value, password.value);
+//   // // console.log(found);
+//   if (found)
+//     window.location.href="index.html";
+//   else {
+//     alert("Invalid username or password");
+//     username.value = "";
+//     password.value = "";
+//   }
+// });
+// var button = document.getElementById("loginButton");
+// button.addEventListener("click", login());
+
+form.addEventListener('submit',function(event){
   event.preventDefault();
   const username = document.getElementById("username");
   const password = document.getElementById("password");
-  const found = findUserByEmail(username.value, password.value);
-  // // console.log(found);
-  if (found)
-    window.location.href="index.html";
-  else {
-    alert("Invalid username or password");
-    username.value = "";
-    password.value = "";
+  var xml = new XMLHttpRequest();
+  xml.onreadystatechange = function(){
+    var data = this.response;
+    console.log(data);
+    if (data.success)
+      sessionStorage.setItem('isUserLoggedIn',true),
+      sessionStorage.setItem('isAdmin',data.isAdmin);
+    else
+      alert("Invalid username or password"),
+      username.value = "",
+      password.value = "";
   }
+  xml.open('POST','loginValidation',true);
+  xml.send('username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password));
+
 });
-// var button = document.getElementById("loginButton");
-// button.addEventListener("click", login());

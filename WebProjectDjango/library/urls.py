@@ -9,6 +9,9 @@ urlpatterns = [
     path("Uavailable", views.UserAvailable, name="Uavailable"),
 
     path("login", views.login_view, name="login"),
+    path('loginValidation',
+        csrf_exempt(views.loginValidation),
+        name='loginValidation'),
     path("signup", views.signup, name="signup"),
     path("Validate-username/",
         csrf_exempt(views.usernameValidation), 

@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% load static %} {% block page %}
-<form id="loginForm" style="text-align: center" method="POST">
+<form id="loginForm" style="text-align: center" method="POST" action={%url 'login'%}>
   {% csrf_token %}
 
   <label for="username">Username</label>
@@ -26,7 +26,49 @@
   </p>
 </form>
 {% block script %}
-  <script src="{% static 'JS/login.js' %}"></script>
+  {% comment %} <script src="{% static 'JS/login.js' %}"></script> {% endcomment %}
+  <script>
+const form = document.getElementById("loginForm");
+const password = document.getElementById("password");
+const toggle = document.getElementById("togglePassword");
+
+toggle.addEventListener('click',function(){
+  if (password.type == 'password')
+    password.type = 'text';
+  else
+    password.type = 'password';
+  toggle.innerHTML = (toggle.innerHTML == '👀'? '🙈':'👀');
   
+});
+
+form.addEventListener('submit',function(event){
+  event.preventDefault();
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
+  var xml = new XMLHttpRequest();
+  xml.responseType = "json";
+  xml.onreadystatechange = function(){
+    var data = this.response;
+    console.log(data);
+    console.log(data.success);
+    console.log(typeof(data));
+    if (data.success){
+      console.log("in true");
+      sessionStorage.setItem('isUserLoggedIn',true);
+      sessionStorage.setItem('isAdmin',data.isAdmin);
+      console.log(sessionStorage.getItem('isUserLoggedIn'));
+      window.location.href = "{% url 'index' %}";
+    }
+    else
+      console.log('in false'),
+      alert("Invalid username or password");
+  }
+  xml.open('GET','loginValidation?username=' + encodeURIComponent(username.value) + '&password=' + encodeURIComponent(password.value),true);
+  xml.send()
+  console.log(username.value);
+  console.log(password.value);
+
+});
+  </script>
 {% endblock script %}
 {% endblock page %}

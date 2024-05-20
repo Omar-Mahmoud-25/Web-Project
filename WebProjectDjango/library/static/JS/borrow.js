@@ -1,15 +1,3 @@
-class User {
-  constructor(userName, email, password, isAdmin) {
-    this.userName = userName;
-    this.email = email;
-    this.password = password;
-    this.isAdmin = isAdmin;
-  }
-}
-
-let currentUser = sessionStorage.getItem("user");
-currentUser = JSON.parse(currentUser);
-
 function confirmationb() {
   // let confirmMsg = confirm('Are you sure you want to delete this book?');
   // if(confirmMsg) {
@@ -28,12 +16,12 @@ function confirmationb() {
       text: "",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: currentUser == null ? "Login" : "Borrow",
+      confirmButtonText: !isUserLoggedIn ? "Login" : "Borrow",
       cancelButtonText: "Cancel",
       reverseButtons: true,
     })
     .then((result) => {
-      if (result.isConfirmed && currentUser == null) {
+      if (result.isConfirmed && !isUserLoggedIn) {
         window.location.href = "login.html";
       } else if (result.isConfirmed){
         swalWithBootstrapButtons.fire({

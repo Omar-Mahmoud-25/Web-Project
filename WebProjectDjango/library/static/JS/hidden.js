@@ -9,17 +9,12 @@ function adminHidden() {
         ele[i].style.display = "inline";
 }
 
-let Borrow = document.getElementById('Borrow');
-let thisUser = sessionStorage.getItem("user");
-let BorrowForm = document.getElementById('borrow_form');
-thisUser = JSON.parse(thisUser);
-
-if (thisUser === null && Borrow !== null){
+if (!isUserLoggedIn && Borrow !== null){
     Borrow.style.display = 'inline',
     BorrowForm.addEventListener('submit',function(event){
         event.preventDefault();
         window.location.href="/login";
     });
 }
-else if (thisUser !== null) 
-    thisUser.isAdmin? adminHidden():userHidden();
+else if (isUserLoggedIn) 
+    isAdmin? adminHidden():userHidden();
