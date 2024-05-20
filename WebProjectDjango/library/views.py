@@ -81,12 +81,12 @@ def loginValidation(request):
     Username = request.GET.get('username')
     Password = request.GET.get('password')
     # user = authenticate(Username=Username,Password=Password)
-    user = User.objects.filter(username=Username,password=Password)[0]
+    user = User.objects.filter(username=Username,password=Password)
     print(Username)
     print(Password)
     print(user)
     if user:
-        return JsonResponse({'success':True,'isAdmin':user.isAdmin})
+        return JsonResponse({'success':True,'isAdmin':user[0].isAdmin})
     else:
         return JsonResponse({'success':False})
 
