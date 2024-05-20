@@ -1,6 +1,6 @@
 // let user = JSON.parse(sessionStorage.getItem('user'));
-let isUserLoggedIn = sessionStorage.getItem('isUserLoggedIn');
-let isAdmin = sessionStorage.getItem('isAdmin');
+var isUserLoggedIn = sessionStorage.getItem('isUserLoggedIn');
+var isAdmin = sessionStorage.getItem('isAdmin');
 let add = document.getElementById('addBook');
 let logOut = document.getElementById('logOut');
 let login = document.getElementById('loginButton');
@@ -16,8 +16,8 @@ if (isUserLoggedIn)
   logOut.style.display = 'inline',
   login.style.display = 'none',
   signup.style.display = 'none',
-  add.style.display = isAdmin? 'inline':'none',
-  available.setAttribute('href',isAdmin? '/Aavailable':'Uavailable');
+  add.style.display = isAdmin == 'true' ? 'inline':'none',
+  available.setAttribute('href',isAdmin == 'true'? '/Aavailable':'Uavailable');
 else
   logOut.style.display = 'none',
   login.style.display = 'inline',
