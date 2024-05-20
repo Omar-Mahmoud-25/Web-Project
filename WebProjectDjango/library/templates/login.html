@@ -25,5 +25,8 @@
     <a href="{% url "signup" %}" class="account"> You don't have an account? </a>
   </p>
 </form>
-
+{% block script %}
+  <script src="{% static 'JS/login.js' %}"></script>
+  
+{% endblock script %}
 {% endblock page %}

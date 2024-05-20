@@ -28,15 +28,15 @@
   <br />
   <span id="passwordMessage"></span>
   <br /><br />
-{#  <label for="confirm">Confirm Password</label>#}
-{#  <br />#}
-{#  <input#}
-{#    id="confirm"#}
-{#    type="password"#}
-{#    name="confirm"#}
-{#    placeholder="Confirm Password"#}
-{#    required#}
-{#  />#}
+  <label for="confirm">Confirm Password</label>
+  <br />
+  <input
+    id="confirm"
+    type="password"
+    name="confirm"
+    placeholder="Confirm Password"
+    required
+  />
   <br />
   <span id="confirmMessage"></span>
   <br />
@@ -58,6 +58,6 @@
 {% block script %}
   {% comment %} <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> {% endcomment %}
   <script src="{% static 'JS/signUp.js' %}"></script>
-  <script src="{% static 'JS/hidden.js' %}"></script>
+  {% comment %} <script src="{% static 'JS/hidden.js' %}"></script> {% endcomment %}
 {% endblock script %}
 {% endblock page %}

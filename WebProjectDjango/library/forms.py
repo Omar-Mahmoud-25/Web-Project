@@ -22,8 +22,8 @@ class LoginForm(forms.ModelForm):
         model = User
         fields = ["username", "password"]
         widgets = {
-            "username": forms.TextInput(attrs={"placeholder": "UserName"}),
-            "password": forms.PasswordInput(attrs={"placeholder": "Password"}),
+            "username": forms.TextInput(attrs={"placeholder": "UserName","id":"username"}),
+            "password": forms.PasswordInput(attrs={"placeholder": "Password","id":"password"}),
         }
 
 
@@ -32,9 +32,9 @@ class signupForm(forms.ModelForm):
         model = User
         fields = ["username", "email", "password", "isAdmin"]
         widgets = {
-            "username": forms.TextInput(attrs={"placeholder": "UserName"}),
-            "password": forms.PasswordInput(attrs={"placeholder": "Password"}),
-            "email": forms.TextInput(attrs={"placeholder": "Email"}),
+            "username": forms.TextInput(attrs={"placeholder": "UserName","id":"username"}),
+            "password": forms.PasswordInput(attrs={"placeholder": "Password","id":"password"}),
+            "email": forms.TextInput(attrs={"placeholder": "Email","id":"email"}),
             "isAdmin": forms.CheckboxInput(),
         }
 
