@@ -66,7 +66,6 @@ input:focus {
   max-height: 200px; /* or however tall you want the results box to be */
   overflow-y: auto;
   background-color:rgb(178, 146, 88);
-  display: none; /* Hide initially */
   border-bottom-right-radius: 35px;
   border-bottom-left-radius: 35px;
   text-align: center;
