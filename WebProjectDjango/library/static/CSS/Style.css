@@ -65,8 +65,9 @@ input[type="Email"] {
 }
 
 #signUpForm {
-  padding: 10%;
-  padding-left: 42%;
+  margin-left: 200px;
+  padding: 140px;
+  padding-left: 550px;
   background-size: 106%;
   /* padding-right: 470px; */
   color: black;
