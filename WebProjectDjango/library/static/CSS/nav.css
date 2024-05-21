@@ -37,15 +37,6 @@ input:focus {
   color: rgb(182, 154, 103);
   outline: none;
 }
-#resultBox {
-  border-radius: 5px;
-}
-#resultBox a {
-  text-decoration: none;
-  color: white;
-  background-color: rgb(182, 154, 103);
-  border-radius: 5px;
-}
 
 .resultCard{
   /* width: 50; */
