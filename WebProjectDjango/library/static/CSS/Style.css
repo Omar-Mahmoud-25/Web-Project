@@ -52,13 +52,13 @@ input[type="Email"] {
   background-repeat: no-repeat;
   background-attachment: scroll;
   
-  background-position: top 100% center;
+  background-position: top 100px center;
 }
 
 #loginForm {
-  padding: 12.5%;
-  padding-left: 40%;
-  background-size: 85%;
+  padding: 172px;
+  padding-left: 580px;
+  background-size: 800px;
   /* padding-right: 470px; */
   color: black;
   font-size: 0px;
