@@ -29,6 +29,13 @@
             color: rgb(255,255,255);
         }
     </style>
+    <script>
+        function deleteconfirmation(id){
+              if(confirm("Are you sure you want to delete this boook?")){
+                  window.location.href= `/delete/${id}/`
+              }
+        }
+    </script>
 </head>
 <body>
 <div style="text-align: center; margin-top: 20px;">
@@ -50,7 +57,7 @@
         <a href="{% url 'edit' book.id %}">
           <button class='admin'> <i class="fas fa-eraser"></i> Edit</button>
         </a>
-        <button class='admin'><i class="fas fa-trash"></i> Delete</button>
+        <button class='admin' onclick="deleteconfirmation({{ book.id }})"><i class="fas fa-trash"></i> Delete</button>
     </div>
 </div>
 </body>
