@@ -240,7 +240,7 @@
           <td><a href="/book/${book.id}/"><img src="${book.bookImage}" alt="${book.name}" width="100" height="150"></a></td>
           <td>
             <button class='admin' onclick="window.location.href='/edit/${book.id}/'">Edit</button>
-            <button class='admin'>Delete</button>
+            <button class='admin' onclick="deleteConfirmation(${book.id})">Delete</button>
 
           </td>
         `;
@@ -250,6 +250,11 @@
     .catch(error => console.error('Error:', error));
 }
 
+function deleteConfirmation(id){
+      if(confirm("Are you sure you want to delete this boook?")){
+          window.location.href= `/delete/${id}/`
+      }
+}
   
 
 </script>
