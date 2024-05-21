@@ -61,18 +61,19 @@ input:focus {
 #resultBox {
   position: absolute;
   top: 100%;
-  left: 550px;
-  width: 400px;
+  width: 275px;
   max-height: 200px; /* or however tall you want the results box to be */
   overflow-y: auto;
   background-color:rgb(178, 146, 88);
   border-bottom-right-radius: 35px;
   border-bottom-left-radius: 35px;
-  text-align: center;
+  text-align: left;
+  line-height: 1.5;
 }
 
 #resultBox a{
   color: black;
+  padding: 0;
 }
 
 
