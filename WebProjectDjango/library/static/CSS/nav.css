@@ -2,6 +2,8 @@ header,
 #nav {
   width: 100%;
   z-index: 999;
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   background-color: rgb(178, 146, 88);
   padding: 0.375% 3.25% 0.375% 1.5%;
