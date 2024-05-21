@@ -16,6 +16,7 @@ urlpatterns = [
     path("Validate-username/",
         csrf_exempt(views.usernameValidation), 
         name="usernameValidation"),
+    path("search",views.search,name="search"),
     path("Validate-email/",
         csrf_exempt(views.emailValidation), 
         name="emailValidation"),

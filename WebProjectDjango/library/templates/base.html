@@ -22,9 +22,9 @@
       </a>
       <nav class="navigation">
         {% comment %} <div> {% endcomment %}
-          {% comment %} {% csrf_token %} {% endcomment %}
+          {% csrf_token %}
           <input type="text" name="Search" id='searchBar' placeholder="Search" />
-          {% comment %} <div id='resultBox' class='resultCard'>test</div> {% endcomment %}
+          <div id='resultBox'></div>
         {% comment %} </div> {% endcomment %}
         <a href="{% url "index" %}" class="nav-link">Home</a>
 
@@ -97,6 +97,7 @@
   </footer>
   {% block Script %}
     <script src="{% static "JS/navButtonHidden.js" %}"></script>
+    <script src="{% static "JS/search.js" %}"></script>
   {% endblock Script %}
   <!-- End Footer -->
 </html>

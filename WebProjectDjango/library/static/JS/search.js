@@ -1,5 +1,23 @@
-// console.log("hello");
+const searchBar = document.getElementById('searchBar'); 
+const resultBox = document.getElementById('resultBox');
 
-// const csrf = document.getElementsByName('csrfmiddlewaretoken')[0].nodeValue;
-
-// console.log(csrf);
+searchBar.addEventListener('input',function(){
+    var xhr = new XMLHttpRequest();
+    var searchTxt = searchBar.value;
+    xhr.responseType = "json";
+    xhr.onreadystatechange = function(){
+        // var data = this.response;
+        resultBox.innerHTML = '';
+        console.log(this.response);
+        this.response.results.forEach(book => {
+            var item = document.createElement('a');
+            item.textContent = book.name;
+            item.setAttribute('href','/book/' + book.id + '/');
+            var br = document.createElement('br');
+            resultBox.appendChild(item);
+            resultBox.appendChild(br);
+        });
+    }
+    xhr.open('GET','search?searchTxt=' + encodeURIComponent(searchTxt),true);
+    xhr.send();
+});

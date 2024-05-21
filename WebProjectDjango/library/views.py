@@ -5,6 +5,7 @@ from .forms import *
 from django.http import JsonResponse
 import json
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.contrib.auth import authenticate, login
 
 
@@ -80,7 +81,6 @@ def login_view(request):
 def loginValidation(request):
     Username = request.GET.get('username')
     Password = request.GET.get('password')
-    # user = authenticate(Username=Username,Password=Password)
     user = User.objects.filter(username=Username,password=Password)
     print(Username)
     print(Password)
@@ -103,14 +103,10 @@ def signup(request):
 
     return render(request, "signUp.html", {"Form": signupForm()})
 
-
 def usernameValidation(request):
     username = request.GET.get("username")
     exists = User.objects.filter(username=username).exists()
-    # print(exists)
-    # print(exists)
     return JsonResponse({"exists": exists})
-
 
 def emailValidation(request):
     email = request.GET.get("email")
@@ -164,6 +160,19 @@ def book_details(request, book_id):
 def borrowedBooks(request):
     return render(request, "borrowed.html")
 
+def search(request):
+    searchTxt = request.GET.get('searchTxt')
+    if (searchTxt):
+        books = Book.objects.filter(
+            Q(name__icontains=searchTxt) | 
+            Q(category__name__icontains=searchTxt) |
+            Q(author_name__icontains=searchTxt)
+        )
+        print(books)
+        resultBooks = [{'name':book.name,'id':book.id} for book in books]
+        return JsonResponse({'results':resultBooks})
+    else:
+        return JsonResponse({'results':[]})
 
 def get_borrowed_books_by_category(request):
     category_name = request.GET.get("category")
