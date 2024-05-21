@@ -16,6 +16,13 @@ BookDictionary = {
 }
 
 
+class LoggedInUser:
+    loggedInUser = None
+
+
+loggedInUser = LoggedInUser()
+
+
 def index(request):
     return render(request, "index.html", {"books": Book.objects.all()})
 
@@ -54,11 +61,23 @@ def delete(request, book_id):
     return redirect("index")
 
 
+def borrow(request, book_id, username):
+    # print("\n\n\n\nBefore searching\n\n\n\n")
+    book = get_object_or_404(Book, id=book_id)
+    # print("\n\n\n\nbook found\n\n\n\n")
+    book.available = False
+    book.owner = User.objects.filter(username=username)[0]
+    book.save()
+    return redirect("index")
+
+
 def AdminAvailable(request):
     return render(request, "Adminavailable.html")
 
+
 def UserAvailable(request):
     return render(request, "Useravailable.html")
+
 
 def login_view(request):
     # if request.method == "POST":
@@ -78,17 +97,20 @@ def login_view(request):
     #     form = LoginForm()  # Create empty form for GET requests
     return render(request, "login.html", {"form": LoginForm()})
 
+
 def loginValidation(request):
-    Username = request.GET.get('username')
-    Password = request.GET.get('password')
-    user = User.objects.filter(username=Username,password=Password)
+    Username = request.GET.get("username")
+    Password = request.GET.get("password")
+    user = User.objects.filter(username=Username, password=Password)
     print(Username)
     print(Password)
     print(user)
     if user:
-        return JsonResponse({'success':True,'isAdmin':user[0].isAdmin})
+        loggedInUser.loggedInUser = user[0]
+        return JsonResponse({"success": True, "isAdmin": user[0].isAdmin, "username":user[0].username})
     else:
-        return JsonResponse({'success':False})
+        return JsonResponse({"success": False})
+
 
 def signup(request):
     if request.method == "POST":
@@ -98,15 +120,16 @@ def signup(request):
             return redirect("login")
             # User.objects.create(username=userDetails.username, password=userDetails.password, email=userDetails.email, isAdmin=userDetails.isAdmin)
         else:
-            print(userDetails.username)
             print(userDetails.errors)
 
     return render(request, "signUp.html", {"Form": signupForm()})
+
 
 def usernameValidation(request):
     username = request.GET.get("username")
     exists = User.objects.filter(username=username).exists()
     return JsonResponse({"exists": exists})
+
 
 def emailValidation(request):
     email = request.GET.get("email")
@@ -160,41 +183,25 @@ def book_details(request, book_id):
 def borrowedBooks(request):
     return render(request, "borrowed.html")
 
+
 def search(request):
-    searchTxt = request.GET.get('searchTxt')
-    if (searchTxt):
+    searchTxt = request.GET.get("searchTxt")
+    if searchTxt:
         books = Book.objects.filter(
-            Q(name__icontains=searchTxt) | 
-            Q(category__name__icontains=searchTxt) |
-            Q(author_name__icontains=searchTxt)
+            Q(name__icontains=searchTxt)
+            | Q(category__name__icontains=searchTxt)
+            | Q(author_name__icontains=searchTxt)
         )
         print(books)
-        resultBooks = [{'name':book.name,'id':book.id} for book in books]
-        return JsonResponse({'results':resultBooks})
+        resultBooks = [{"name": book.name, "id": book.id} for book in books]
+        return JsonResponse({"results": resultBooks})
     else:
-        return JsonResponse({'results':[]})
-
-def get_borrowed_books_by_category(request):
-    category_name = request.GET.get("category")
-    books = Book.objects.filter(category__name__iexact=category_name, available=False)
-
-    books_data = [
-        {
-            "id": book.id,
-            "name": book.name,
-            "bookImage": book.bookImage.url if book.bookImage else "",
-            "author": book.author_name,
-            "category": book.category.name,
-        }
-        for book in books
-    ]
-
-    return JsonResponse({"books": books_data})
+        return JsonResponse({"results": []})
 
 
 def get_books_by_category(request):
     category_name = request.GET.get("category")
-    books = Book.objects.filter(category__name__iexact=category_name, available=True)
+    books = Book.objects.filter(category__name__iexact=category_name)
 
     books_data = [
         {
@@ -236,11 +243,15 @@ def cat_books(request):
     )
 
 
-def cat_borrowed_books(request):
+def cat_borrowed_books(request, username):
     category_name = request.GET.get("category")
     page_number = int(request.GET.get("page"))
-    books = Book.objects.filter(category__name__iexact=category_name, available=False)
-
+    books = Book.objects.filter(
+        category__name__iexact=category_name,
+        available=False,
+        owner__username=username,
+    )
+    print(books[0].owner)
     paginator = Paginator(books, 5)  # Adjust the number of books per page if needed
     page_obj = paginator.get_page(page_number)
 

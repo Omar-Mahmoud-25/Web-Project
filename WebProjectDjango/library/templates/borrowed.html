@@ -38,7 +38,7 @@
 </section>
 <br />
 <section id="science">
-  <h2 style="text-align: center">Biology</h2>
+  <h2 style="text-align: center">Science</h2>
   <div class="book-container" id="science-container"></div>
   <div class="pagination" style="text-align: center;">
     <button class="prevBtn" onclick="changePage('science', -1)">&lt;</button>
@@ -177,7 +177,8 @@
   };
 
   function loadBooks(category, page) {
-    fetch(`/cat_books/?category=${category}&page=${page}`)
+    var username = sessionStorage.getItem("username");
+    fetch(`/cat_borrowed_books/${username}/?category=${category}&page=${page}`)
         .then(response => response.json())
         .then(data => {
             console.log(data); // Log the response to check if it contains the expected data

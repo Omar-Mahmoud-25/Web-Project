@@ -26,6 +26,7 @@ form.addEventListener('submit',function(event){
       console.log("in true");
       sessionStorage.setItem('isUserLoggedIn',true);
       sessionStorage.setItem('isAdmin',data.isAdmin);
+      sessionStorage.setItem('username', data.username);
       console.log(sessionStorage.getItem('isUserLoggedIn'));
       window.location.href = "/";
     }

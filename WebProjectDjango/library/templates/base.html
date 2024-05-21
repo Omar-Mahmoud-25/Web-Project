@@ -24,14 +24,14 @@
         {% comment %} <div> {% endcomment %}
           {% csrf_token %}
           <input type="text" name="Search" id='searchBar' placeholder="Search" />
-          <div id='resultBox'></div>
-        {% comment %} </div> {% endcomment %}
-        <a href="{% url "index" %}" class="nav-link">Home</a>
-
-        <a href="{% url "add" %}" id="addBook" class="nav-link">Add Book</a>
-
-        <a id='available' class="nav-link">Available Books</a>
-
+          {% comment %} </div> {% endcomment %}
+          <a href="{% url "index" %}" class="nav-link">Home</a>
+          
+          <a href="{% url "add" %}" id="addBook" class="nav-link">Add Book</a>
+          
+          <a id='available' class="nav-link">Available Books</a>
+          <a href="{% url "borrowedBooks" %}" id='borrowed' class="nav-link">My Books</a>
+          
         <a href="{% url "login" %}" id="loginButton" class="nav-link">Login</a>
 
         <a href="{% url "signup" %}" id="signupButton" class="nav-link">Sign Up</a>
@@ -39,6 +39,7 @@
         <a href="{% url "index" %}" class="nav-link index-button" id="logOut">
           Log Out
         </a>
+        <div id='resultBox' style="position: absolute; z-index: 10; background-color: white; width: 250px;"></div>
       </nav>
     </header>
     <!-- End Header -->

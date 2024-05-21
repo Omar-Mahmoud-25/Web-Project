@@ -1,72 +1,99 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block page %}
+{% extends "base.html" %} {% load static %} {% block page %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
-    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-FhBCIPKjkVpMPbJPW7n9rqV4Ww7f3yOyr6GjzVtYfvFr/3pbgFc2OQu3T+4ZjOrw" crossorigin="anonymous"> {% endcomment %}
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    {% comment %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha384-FhBCIPKjkVpMPbJPW7n9rqV4Ww7f3yOyr6GjzVtYfvFr/3pbgFc2OQu3T+4ZjOrw"
+      crossorigin="anonymous"
+    />
+    {% endcomment %}
     <style>
-        .book-title,
-        .borrow-button,
-        .action-buttons button {
-            font-family: 'Lora', serif;
-        }
-        .borrow-button,
-        .action-buttons button {
-            padding: 10px 20px;
-            background-color: rgb(220,213,170);
-            color: rgb(0,0,0);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .borrow-button:hover,
-        .action-buttons button:hover {
-            background-color: rgb(200,193,150);
-            color: rgb(255,255,255);
-        }
+      .book-title,
+      .borrow-button,
+      .action-buttons button {
+        font-family: "Lora", serif;
+      }
+      .borrow-button,
+      .action-buttons button {
+        padding: 10px 20px;
+        background-color: rgb(220, 213, 170);
+        color: rgb(0, 0, 0);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      .borrow-button:hover,
+      .action-buttons button:hover {
+        background-color: rgb(200, 193, 150);
+        color: rgb(255, 255, 255);
+      }
     </style>
     <script>
-        function deleteconfirmation(id){
-              if(confirm("Are you sure you want to delete this boook?")){
-                  window.location.href= `/delete/${id}/`
-              }
+      function deleteconfirmation(id) {
+        if (confirm("Are you sure you want to delete this book?")) {
+          window.location.href = `/delete/${id}/`;
         }
+      }
+      function borrowconfirmation(id) {
+        var username = sessionStorage.getItem("username");
+        var loggedIn = sessionStorage.getItem("");
+        if (confirm("Are you sure you want to borrow this book?")) {
+          window.location.href = `/borrow/${id}/${username}`;
+        }
+      }
     </script>
-</head>
-<body>
-<div style="text-align: center; margin-top: 20px;">
-    <h1 class="book-title">{{ book.name }}</h1>
-    <p><strong>Category:</strong> {{ book.category.name }}</p> <!-- Add category information here -->
-    <br>
-    <img src="{{ book.bookImage.url }}" alt="{{ book.name }}" 
-         style="width: 200px; height: 300px; border: 5px solid rgb(220, 213, 170); border-radius: 8px;">
-    <p><strong>Author:</strong> {{ book.author_name }}</p>
-    <br>
-    <p>{{ book.description }}</p>
-    <br>
-    <form id="borrow_form" method="post">
-        {% csrf_token %}
-        <button type="submit" class="borrow-button user" id='Borrow'>Borrow</button>
-    </form> 
-    <br><br>
-    <div class="action-buttons">
+  </head>
+  <body>
+    <div style="text-align: center; margin-top: 20px">
+      <h1 class="book-title">{{ book.name }}</h1>
+      <p><strong>Category:</strong> {{ book.category.name }}</p>
+      <!-- Add category information here -->
+      <br />
+      <img
+        src="{{ book.bookImage.url }}"
+        alt="{{ book.name }}"
+        style="
+          width: 200px;
+          height: 300px;
+          border: 5px solid rgb(220, 213, 170);
+          border-radius: 8px;
+        "
+      />
+      <p><strong>Author:</strong> {{ book.author_name }}</p>
+      <br />
+      <p>{{ book.description }}</p>
+      <br />
+      <button
+        class="borrow-button user"
+        id="Borrow"
+        onclick="borrowconfirmation({{book.id}})"
+      >
+        Borrow
+      </button>
+      <br /><br />
+      <div class="action-buttons">
         <a href="{% url 'edit' book.id %}">
-          <button class='admin'> <i class="fas fa-eraser"></i> Edit</button>
+          <button class="admin"><i class="fas fa-eraser"></i> Edit</button>
         </a>
-        <button class='admin' onclick="deleteconfirmation({{ book.id }})"><i class="fas fa-trash"></i> Delete</button>
+        <button class="admin" onclick="deleteconfirmation({{ book.id }})">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 
-{% block script %}
+  {% block script %}
   <script src="{% static 'JS/hidden.js' %}"></script>
-  {% comment %} <script>
-    
-  </script> {% endcomment %}
-{% endblock script %}
+  {% comment %}
+  <script></script>
+  {% endcomment %} {% endblock script %}
 </html>
 {% endblock page %}

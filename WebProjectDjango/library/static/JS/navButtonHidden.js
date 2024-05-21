@@ -6,6 +6,7 @@ let logOut = document.getElementById('logOut');
 let login = document.getElementById('loginButton');
 let signup = document.getElementById('signupButton');
 let available = document.getElementById('available');
+let borrowed = document.getElementById('borrowed');
 
 
 logOut.addEventListener('click',function(){
@@ -17,10 +18,12 @@ if (isUserLoggedIn)
   login.style.display = 'none',
   signup.style.display = 'none',
   add.style.display = isAdmin == 'true' ? 'inline':'none',
+  borrowed.style.display = isAdmin == 'true'? 'none':'inline',
   available.setAttribute('href',isAdmin == 'true'? '/Aavailable':'Uavailable');
 else
   logOut.style.display = 'none',
   login.style.display = 'inline',
   add.style.display = 'none',
   signup.style.display = 'inline',
+  borrowed.style.display = 'none',
   available.setAttribute('href','Uavailable');

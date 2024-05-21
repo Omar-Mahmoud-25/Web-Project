@@ -1,8 +1,6 @@
 header,
 #nav {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   z-index: 999;
   position: fixed;
   background-color: rgb(178, 146, 88);
@@ -38,6 +36,15 @@ input:focus {
   border-color: transparent; */
   color: rgb(182, 154, 103);
   outline: none;
+}
+#resultBox {
+  border-radius: 5px;
+}
+#resultBox a {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(182, 154, 103);
+  border-radius: 5px;
 }
 
 .resultCard{
