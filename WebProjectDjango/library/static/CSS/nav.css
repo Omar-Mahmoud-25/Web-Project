@@ -56,3 +56,36 @@ input:focus {
   background-color: white;
   display: none;
 }
+
+#searchBar {
+  position: relative;
+  height: 30px;
+  padding: 5px 10px;
+  margin-right: 175px;
+}
+
+/* Style for the result box */
+#resultBox {
+  position: absolute;
+  top: 100%;
+  left: 550px;
+  width: 400px;
+  max-height: 200px; /* or however tall you want the results box to be */
+  overflow-y: auto;
+  background-color:rgb(178, 146, 88);
+  display: none; /* Hide initially */
+  border-bottom-right-radius: 35px;
+  border-bottom-left-radius: 35px;
+  text-align: center;
+}
+
+#resultBox a{
+  color: black;
+}
+
+
+/* Show the result box when it has content */
+#searchBar:focus + #resultBox,
+#resultBox:hover {
+  display: block;
+}
