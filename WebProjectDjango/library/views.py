@@ -164,19 +164,6 @@ def paginated_books(request):
 
 def book_details(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    # if request.method == "POST":
-    #     form = BorrowForm(request.POST)  # Create form instance with POST data
-    #     if form.is_valid():
-    #         book.available = False
-    #         if book:
-    #             return redirect("index")  # Redirect to homepage after login
-    #         else:
-    #             form.add_error(
-    #                 None, "An error occurred during borrowing"
-    #             )  # Add error message
-    # else:
-    #     form = BorrowForm()
-
     return render(request, "bookDetails.html", {"book": book})
 
 

@@ -36,20 +36,6 @@
         color: rgb(255, 255, 255);
       }
     </style>
-    <script>
-      function deleteconfirmation(id) {
-        if (confirm("Are you sure you want to delete this book?")) {
-          window.location.href = `/delete/${id}/`;
-        }
-      }
-      function borrowconfirmation(id) {
-        var username = sessionStorage.getItem("username");
-        var loggedIn = sessionStorage.getItem("");
-        if (confirm("Are you sure you want to borrow this book?")) {
-          window.location.href = `/borrow/${id}/${username}`;
-        }
-      }
-    </script>
   </head>
   <body>
     <div style="text-align: center; margin-top: 20px">
@@ -74,7 +60,7 @@
       <button
         class="borrow-button user"
         id="Borrow"
-        onclick="borrowconfirmation({{book.id}})"
+        onclick="borrowConfirmation({{book.id}}, {% if book.available %} true {% else %} false {% endif %})"
       >
         Borrow
       </button>
@@ -83,7 +69,7 @@
         <a href="{% url 'edit' book.id %}">
           <button class="admin"><i class="fas fa-eraser"></i> Edit</button>
         </a>
-        <button class="admin" onclick="deleteconfirmation({{ book.id }})">
+        <button class="admin" onclick="deleteConfirmation({{ book.id }})">
           <i class="fas fa-trash"></i> Delete
         </button>
       </div>

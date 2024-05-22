@@ -1,4 +1,3 @@
-// let user = JSON.parse(sessionStorage.getItem('user'));
 var isUserLoggedIn = sessionStorage.getItem('isUserLoggedIn');
 var isAdmin = sessionStorage.getItem('isAdmin');
 let add = document.getElementById('addBook');
@@ -19,11 +18,11 @@ if (isUserLoggedIn)
   signup.style.display = 'none',
   add.style.display = isAdmin == 'true' ? 'inline':'none',
   borrowed.style.display = isAdmin == 'true'? 'none':'inline',
-  available.setAttribute('href',isAdmin == 'true'? '/WebProjectDjango/library/templates/AdminAvailable.html':'/WebProjectDjango/library/templates/Useravailable.html');
+  available.setAttribute('href',isAdmin == 'true'? '/Aavailable':'/Uavailable');
 else
   logOut.style.display = 'none',
   login.style.display = 'inline',
   add.style.display = 'none',
   signup.style.display = 'inline',
   borrowed.style.display = 'none',
-  available.setAttribute('href','/WebProjectDjango/library/templates/Useravailable.html');
+  available.setAttribute('href','/Uavailable');

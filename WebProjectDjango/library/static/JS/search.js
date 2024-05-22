@@ -18,6 +18,6 @@ searchBar.addEventListener('input',function(){
             resultBox.appendChild(br);
         });
     }
-    xhr.open('GET','search?searchTxt=' + encodeURIComponent(searchTxt),true);
+    xhr.open('GET','/search?searchTxt=' + encodeURIComponent(searchTxt),true);
     xhr.send();
 });
