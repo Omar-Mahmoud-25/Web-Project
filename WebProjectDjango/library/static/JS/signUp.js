@@ -1,16 +1,4 @@
-// import User from "./user.js";
-
-// class User {
-//   constructor(userName, email, password, isAdmin) {
-//     this.userName = userName;
-//     this.email = email;
-//     this.password = password;
-//     this.isAdmin = isAdmin;
-//   }
-// }
-
 const form = document.getElementById("signUpForm");
-
 const users = {};
 const Name = document.getElementById("username");
 const email = document.getElementById("email");
@@ -20,7 +8,6 @@ const admin = document.getElementById("admin");
 const toggle = document.getElementById("togglePassword");
 var validUsername = false;
 var validEmail = false;
-
 
 toggle.addEventListener('click',function(){
   if (password.type == 'password')
@@ -38,7 +25,6 @@ function isValidPassword() {
   var num = false;
   var upper = false;
   var special = /[^a-zA-Z0-9\s]/.test(str);
-  // console.log(str);
   for (var i = 0; i < str.length; i++)
     if (str[i] === str[i].toUpperCase() && str[i] !== str[i].toLowerCase())
       upper = true;
@@ -48,36 +34,27 @@ function isValidPassword() {
 
 password.addEventListener("input", function () {
   var passMessage = document.getElementById("passwordMessage");
-
-  if (isValidPassword()) {
-    passMessage.textContent = "That is Ok";
+  if (isValidPassword()) 
+    passMessage.textContent = "That is Ok",
     passMessage.style.color = "green";
-  } else {
+  else 
     passMessage.innerHTML =
-      "Password must have at least 8 characters and contain:<br>upper case letters,digits and special characters.";
+      "Password must have at least 8 characters and contain:<br>upper case letters,digits and special characters.",
     passMessage.style.color = "red";
-  }
+  
 });
 
 Confirm.addEventListener("input", function () {
   var confirmMessage = document.getElementById("confirmMessage");
-  if (Confirm.value !== password.value) {
-    confirmMessage.textContent = "The password doesn't Match!";
+  if (Confirm.value !== password.value) 
+    confirmMessage.textContent = "The password doesn't Match!",
     confirmMessage.style.color = "red";
-  } else {
-    confirmMessage.textContent = "Password Match";
+  else 
+    confirmMessage.textContent = "Password Match",
     confirmMessage.style.color = "green";
-  }
 });
 
 form.addEventListener("submit", function (event) {
-  // validation = isValidPassword();
-  var messageEmail = document.getElementById("emailMessage");
-  var messageUser = document.getElementById("usernameMessage");
-  var passMessage = document.getElementById("passwordMessage");
-  var confirmMessage = document.getElementById("confirmMessage");
-  
-  // var valid = findUserByEmail();
   if (
     !isValidPassword() ||
     password.value !== Confirm.value ||
@@ -86,7 +63,6 @@ form.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default form submission
     return alert("Invalid data!");
   }
-  // You can also send data to a server using techniques like Fetch API or Axios
 });
 
 Name.addEventListener('input',function() {
@@ -96,10 +72,7 @@ Name.addEventListener('input',function() {
   var messageUser = document.getElementById("usernameMessage");
 
   xml.onreadystatechange = function(){
-    // if (this.status == 200)
-    //   console.log(this.responseText);
-    var data = this.response;
-    if (data.exists)
+    if (this.response.exists)
       validUsername = false,
       messageUser.style.color = 'red',
       messageUser.textContent = "this username is already in use";
@@ -118,10 +91,7 @@ email.addEventListener('input',function() {
   var messageEmail = document.getElementById("emailMessage");
 
   xml.onreadystatechange = function(){
-    // if (this.status == 200)
-    //   console.log(this.responseText);
-    var data = this.response;
-    if (data.exists)
+    if (this.response.exists)
       validEmail = false,
       messageEmail.style.color = 'red',
       messageEmail.textContent = "this email is already in use";

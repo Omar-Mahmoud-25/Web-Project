@@ -6,9 +6,7 @@ searchBar.addEventListener('input',function(){
     var searchTxt = searchBar.value;
     xhr.responseType = "json";
     xhr.onreadystatechange = function(){
-        // var data = this.response;
         resultBox.innerHTML = '';
-        console.log(this.response);
         this.response.results.forEach(book => {
             var item = document.createElement('a');
             item.textContent = book.name;

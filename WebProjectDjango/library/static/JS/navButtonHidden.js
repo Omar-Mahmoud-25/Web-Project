@@ -7,7 +7,6 @@ let signup = document.getElementById('signupButton');
 let available = document.getElementById('available');
 let borrowed = document.getElementById('borrowed');
 
-
 logOut.addEventListener('click',function(){
   sessionStorage.clear();
 });

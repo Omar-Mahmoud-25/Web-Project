@@ -8,7 +8,6 @@ toggle.addEventListener('click',function(){
   else
     password.type = 'password';
   toggle.innerHTML = (toggle.innerHTML == '👀'? '🙈':'👀');
-  
 });
 
 form.addEventListener('submit',function(event){
@@ -19,9 +18,6 @@ form.addEventListener('submit',function(event){
   xml.responseType = "json";
   xml.onreadystatechange = function(){
     var data = this.response;
-    console.log(data);
-    console.log(data.success);
-    console.log(typeof(data));
     if (data.success){
       console.log("in true");
       sessionStorage.setItem('isUserLoggedIn',true);
@@ -35,8 +31,5 @@ form.addEventListener('submit',function(event){
       alert("Invalid username or password");
   }
   xml.open('GET','loginValidation?username=' + encodeURIComponent(username.value) + '&password=' + encodeURIComponent(password.value),true);
-  xml.send()
-  console.log(username.value);
-  console.log(password.value);
-
+  xml.send();
 });
