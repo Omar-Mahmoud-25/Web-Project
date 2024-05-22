@@ -19,11 +19,11 @@ if (isUserLoggedIn)
   signup.style.display = 'none',
   add.style.display = isAdmin == 'true' ? 'inline':'none',
   borrowed.style.display = isAdmin == 'true'? 'none':'inline',
-  available.setAttribute('href',isAdmin == 'true'? '/Aavailable':'Uavailable');
+  available.setAttribute('href',isAdmin == 'true'? '/WebProjectDjango/library/templates/AdminAvailable.html':'/WebProjectDjango/library/templates/Useravailable.html');
 else
   logOut.style.display = 'none',
   login.style.display = 'inline',
   add.style.display = 'none',
   signup.style.display = 'inline',
   borrowed.style.display = 'none',
-  available.setAttribute('href','Uavailable');
+  available.setAttribute('href','/WebProjectDjango/library/templates/Useravailable.html');

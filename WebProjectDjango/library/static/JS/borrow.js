@@ -22,7 +22,7 @@ function confirmationb() {
     })
     .then((result) => {
       if (result.isConfirmed && !isUserLoggedIn) {
-        window.location.href = "login.html";
+        window.location.href = "/login";
       } else if (result.isConfirmed){
         swalWithBootstrapButtons.fire({
             title: "Borrowing Completed",
