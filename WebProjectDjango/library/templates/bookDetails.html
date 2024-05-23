@@ -35,6 +35,10 @@
         background-color: rgb(200, 193, 150);
         color: rgb(255, 255, 255);
       }
+      .borrow-button:disabled {
+        background-color: #624002;
+        color: #aaa;
+      }
     </style>
   </head>
   <body>
@@ -57,7 +61,7 @@
       <br />
       <p>{{ book.description }}</p>
       <br />
-      <button
+      <button disabled
         class="borrow-button user"
         id="Borrow"
         onclick="borrowConfirmation({{book.id}}, {% if book.available %} true {% else %} false {% endif %})"
@@ -74,6 +78,8 @@
         </button>
       </div>
     </div>
+    <div style="display:none;" id="book_owner">"{{ book.owner }}"</div>
+    <div style="display:none;" id="book_availability">{{ book.available }}</div>
   </body>
 
   {% block script %}

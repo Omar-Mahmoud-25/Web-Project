@@ -29,4 +29,5 @@ urlpatterns = [
     path('edit/<int:book_id>/', views.editBook, name='edit'),
     path('delete/<int:book_id>/', views.delete, name='delete'),
     path('borrow/<int:book_id>/<str:username>', views.borrow, name='borrow'),
+    path('return/<int:book_id>/<str:username>', views.returnBook, name='return'),
 ]

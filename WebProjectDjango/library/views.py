@@ -51,6 +51,13 @@ def borrow(request, book_id, username):
     book.save()
     return redirect("index")
 
+def returnBook(request, book_id, username):
+    book = get_object_or_404(Book, id=book_id)
+    book.available = True
+    book.owner = None
+    book.save()
+    return redirect("borrowedBooks")
+
 def AdminAvailable(request):
     return render(request, "Adminavailable.html")
 
@@ -187,7 +194,6 @@ def cat_borrowed_books(request, username):
         available=False,
         owner__username=username,
     )
-    print(books[0].owner)
     paginator = Paginator(books, 5)  # Adjust the number of books per page if needed
     page_obj = paginator.get_page(page_number)
 
